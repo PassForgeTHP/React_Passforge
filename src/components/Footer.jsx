@@ -12,7 +12,7 @@ export default function Footer() {
           RGPD
         </Link>
         <Link
-          to="/rgpd"
+          to="/faq"
           className="footer-link"
           target="_blank"
           rel="noopener noreferrer"
@@ -25,7 +25,7 @@ export default function Footer() {
       </div>
       <div className="footer-right">
         <Link
-          to="/rgpd"
+          to="/contact"
           className="footer-link"
           target="_blank"
           rel="noopener noreferrer"
