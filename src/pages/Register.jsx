@@ -1,7 +1,7 @@
 function Register() {
   return (
     <div>
-      <h1>Inscription</h1>
+      <h1>Sign Up</h1>
     </div>
   )
 }

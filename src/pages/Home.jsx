@@ -2,7 +2,7 @@ function Home() {
   return (
     <div>
       <h1>PassForge</h1>
-      <p>Gestionnaire de mots de passe securise</p>
+      <p>Secure password manager</p>
     </div>
   )
 }
