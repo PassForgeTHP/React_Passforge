@@ -1,9 +1,16 @@
+import Pricing from "../components/Pricing";
+
 function Home() {
   return (
-    <div>
-      <h1>PassForge</h1>
-      <p>Secure password manager</p>
-    </div>
+    <section>
+      <div className="text-container-home">
+        <h1>PassForge</h1>
+        <p>Secure password manager</p>
+      </div>
+      <div className="pricing-container-home">
+        <Pricing />
+      </div>
+    </section>
   );
 }
 
