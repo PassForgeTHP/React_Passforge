@@ -4,28 +4,42 @@ import logo from "../assets/images/logo.png";
 export default function Navbar() {
   // let navigate = useNavigate();
   return (
-    <nav className="navbar navbar-expand-lg ">
-      <div className="img-container">
-        <img src={logo} alt="logo" />
-      </div>
+    <nav className="navbar fixed-top navbar-expand-lg ">
       <div className="container-fluid">
+        <div className="img-container">
+          <img src={logo} alt="logo" />
+        </div>
         <button
           className="navbar-toggler"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <div className="pages-container">
+        <div
+          className="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
+              Menu
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div className="offcanvas-body">
             <div className="container-left">
-              <ul className="navbar-nav me-auto">
+              <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li className="nav-item">
-                  <Link to="/" className="nav-link">
+                  <Link to="/" className="nav-link active" aria-current="page">
                     Home
                   </Link>
                 </li>

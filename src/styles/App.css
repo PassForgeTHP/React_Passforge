@@ -2,14 +2,13 @@
 
 nav {
   border-bottom: 0.1rem solid var(--light);
-  padding-left: 1rem !important;
-  padding-right: 1rem !important;
 }
 
-#navbarNav {
+.container-fluid {
   display: flex;
-  justify-content: flex-start;
+  gap: 2rem;
 }
+
 .img-container img {
   width: 3rem;
   border-radius: 50%;
@@ -20,7 +19,19 @@ nav {
   color: var(--light);
 }
 
-.pages-container {
+.nav-link:hover {
+  color: var(--medium-red);
+}
+
+.offcanvas-body {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  border: 0.1rem solid var(--light);
+}
+
+.active {
+  background: var(--gradient);
+  border-radius: 1rem;
+  color: var(--light) !important;
 }
