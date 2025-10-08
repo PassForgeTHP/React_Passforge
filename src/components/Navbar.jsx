@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
+import { initializeNavbar } from "../javascript/navbar";
 import logo from "../assets/images/logo.png";
+import { useEffect } from "react";
 
 export default function Navbar() {
   // let navigate = useNavigate();
+
+  useEffect(() => {
+    initializeNavbar();
+  }, []);
   return (
     <nav className="navbar fixed-top navbar-expand-lg ">
       <div className="container-fluid">
@@ -16,25 +22,25 @@ export default function Navbar() {
           data-bs-target="#offcanvasNavbar"
           aria-controls="offcanvasNavbar"
         >
-          <i class="bi bi-list"></i>
+          <i className="bi bi-list"></i>
         </button>
         <div
           className="offcanvas offcanvas-end"
-          tabindex="-1"
+          tabIndex="-1"
           id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel"
         >
-          <div class="offcanvas-header">
+          <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
               Menu
             </h5>
             <button
               type="button"
-              class="close-btn"
+              className="close-btn"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
             >
-              <i class="bi bi-x-circle-fill"></i>
+              <i className="bi bi-x-circle-fill"></i>
             </button>
           </div>
           <div className="offcanvas-body">
