@@ -16,22 +16,45 @@ nav {
 }
 
 .nav-link {
-  color: var(--light);
+  width: fit-content;
+  padding: 0.5rem;
 }
 
 .nav-link:hover {
   color: var(--medium-red);
 }
 
-.offcanvas-body {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 0.1rem solid var(--light);
+.offcanvas {
+  background-color: var(--base-red) !important;
 }
 
 .active {
   background: var(--gradient);
   border-radius: 1rem;
+  color: var(--light) !important;
+}
+
+.navbar-toggler,
+.navbar-toggler-icon,
+.nav-link {
+  color: var(--light);
+}
+
+.navbar-toggler:hover {
+  background: var(--medium-red) !important;
+}
+
+.offcanvas-header {
+  color: var(--light) !important;
+  display: flex;
+  justify-content: space-between;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+}
+.offcanvas-header .close-btn i {
   color: var(--light) !important;
 }

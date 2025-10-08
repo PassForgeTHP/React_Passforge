@@ -16,7 +16,7 @@ export default function Navbar() {
           data-bs-target="#offcanvasNavbar"
           aria-controls="offcanvasNavbar"
         >
-          <span className="navbar-toggler-icon"></span>
+          <i class="bi bi-list"></i>
         </button>
         <div
           className="offcanvas offcanvas-end"
@@ -30,10 +30,12 @@ export default function Navbar() {
             </h5>
             <button
               type="button"
-              class="btn-close"
+              class="close-btn"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
-            ></button>
+            >
+              <i class="bi bi-x-circle-fill"></i>
+            </button>
           </div>
           <div className="offcanvas-body">
             <div className="container-left">
