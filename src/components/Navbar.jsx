@@ -5,7 +5,7 @@ export default function Navbar(){
   return (
     <nav>
       <div className='container'>
-                  <button
+          <button
             className='navbar-toggler'
             type='button'
             data-bs-toggle='collapse'
@@ -17,7 +17,7 @@ export default function Navbar(){
             <span className='navbar-toggler-icon'></span>
           </button>
           <div className='collapse navbar-collapse' id='navbarNav'>
-            
+
           </div>
       </div>
     </nav>
