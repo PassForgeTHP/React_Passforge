@@ -1,6 +1,6 @@
 export function initializeNavbar() {
+  // Links
   const links = document.querySelectorAll(".nav-item");
-
   links.forEach((link) => {
     link.addEventListener("click", function () {
       const navLink = link.querySelector(".nav-link");
