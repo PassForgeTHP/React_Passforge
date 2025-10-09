@@ -1,0 +1,17 @@
+.container {
+margin: 100px auto;
+}
+
+form {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 5rem;
+  border-radius: 12px;
+  border: 1px solid var(--base-red);
+  background: var(--dark);
+  box-shadow: 0 4px 15px var(--shadow-light);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

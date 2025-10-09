@@ -6,11 +6,12 @@ import { Routes, Route } from "react-router-dom";
   import Login from "./pages/Login";
   import Register from "./pages/Register";
   import Dashboard from "./pages/Dashboard";
-  import FAQ from "./pages/FAQ";
+  import FAQ from "./components/FAQ";
   import { initDB } from "./services/indexedDB";
   import "./styles/App.css";
   import "./styles/navbar.css";
   import "./styles/responsives.css";
+  import "./styles/form.css";
 
   function App() {
     // Initialize IndexedDB on app startup

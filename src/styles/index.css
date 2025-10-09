@@ -22,3 +22,7 @@ main {
   width: 95%;
   margin: 1rem auto;
 }
+
+h1, h2, h3 {
+  color: var(--base-red);
+}
