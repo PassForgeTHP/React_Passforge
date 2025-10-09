@@ -1,0 +1,33 @@
+/* FOOTER */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--dark);
+  padding: 0.5rem 2rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  border-top: 0.1rem solid var(--light);
+}
+
+.footer-left,
+.footer-right,
+.container-foot {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-link {
+  text-decoration: none;
+}
+
+.footer-link,
+.container-foot {
+  color: var(--light);
+}
+
+.footer-link:hover {
+  color: var(--medium-red);
+}

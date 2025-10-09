@@ -66,6 +66,11 @@ export default function Navbar() {
             <div className="container-right">
               <ul className="navbar-nav me-auto">
                 <li className="nav-item">
+                  <Link to="/dashboard" className="nav-link">
+                    Dashboard
+                  </Link>
+                </li>
+                <li className="nav-item">
                   <Link to="/profile" className="nav-link">
                     Profile
                   </Link>
@@ -76,9 +81,7 @@ export default function Navbar() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/logout" className="nav-link">
-                    Logout
-                  </Link>
+                  <button className="nav-link">Logout</button>
                 </li>
                 <li className="nav-item">
                   <Link to="/register" className="nav-link">
