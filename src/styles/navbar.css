@@ -39,7 +39,6 @@ nav {
   color: var(--light) !important;
 }
 
-.active,
 .nav-link:hover,
 .nav-item:hover {
   background: var(--gradient);

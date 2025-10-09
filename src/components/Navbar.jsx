@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { initializeNavbar } from "../javascript/navbar";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/logo.svg";
 import { useEffect } from "react";
 
 export default function Navbar() {
