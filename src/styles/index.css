@@ -1,8 +1,19 @@
-:root{
+:root {
   --base-red: #77080e;
   --dark: #1a1720;
   --dark-red: #470508;
   --light: #e3d3bf;
   --medium-red: #af0024;
   --font-family: "Outfit", sans-serif;
+  --gradient: linear-gradient(90deg, #af0024 0%, #77080e 50%, #470508 100%);
+  --shadow-light: rgba(255, 255, 255, 0.2);
+  --shadow-dark: rgba(0, 0, 0, 0.2);
+}
+
+body {
+  background: var(--dark);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
 }
