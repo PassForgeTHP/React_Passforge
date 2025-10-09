@@ -1,14 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { initializeNavbar } from "../javascript/navbar";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/logo.svg";
 import { useEffect } from "react";
 
 export default function Navbar() {
-  // let navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     initializeNavbar();
   }, []);
+
+  const scrollTo = (sectionId) => {
+    navigate("/");
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
+  };
+
   return (
     <nav className="navbar fixed-top navbar-expand-lg ">
       <div className="container-fluid">
@@ -46,20 +57,53 @@ export default function Navbar() {
           <div className="offcanvas-body">
             <div className="container-left">
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li className="nav-item">
-                  <Link to="/" className="nav-link active" aria-current="page">
+                <li class="nav-item dropdown">
+                  <Link
+                    to="/"
+                    class="nav-link dropdown-toggle"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
                     Home
                   </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/security-advice" className="nav-link">
-                    Security Advice
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/pricing" className="nav-link">
-                    Pricing
-                  </Link>
+                  <ul class="dropdown-menu">
+                    <li className="dropdown-item">
+                      <Link to="/security-advice" className="nav-link">
+                        Security Advice
+                      </Link>
+                    </li>
+                    <li className="dropdown-item">
+                      <button
+                        onClick={() => scrollTo("pricing")}
+                        className="nav-link"
+                        style={{
+                          background: "none",
+                          border: "none",
+                          cursor: "pointer",
+                          width: "100%",
+                          textAlign: "left",
+                        }}
+                      >
+                        Pricing
+                      </button>
+                    </li>
+                    <li className="dropdown-item">
+                      <button
+                        onClick={() => scrollTo("faq")}
+                        className="nav-link"
+                        style={{
+                          background: "none",
+                          border: "none",
+                          cursor: "pointer",
+                          width: "100%",
+                          textAlign: "left",
+                        }}
+                      >
+                        FAQ
+                      </button>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </div>

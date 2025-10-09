@@ -17,3 +17,8 @@ body {
   box-sizing: border-box;
   font-family: var(--font-family);
 }
+
+main {
+  width: 95%;
+  margin: 1rem auto;
+}
