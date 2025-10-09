@@ -7,7 +7,7 @@ function Home() {
         <h1>PassForge</h1>
         <p>Secure password manager</p>
       </div>
-      <div className="pricing-container-home">
+      <div className="pricing-container-home" id="pricing">
         <Pricing />
       </div>
     </section>
