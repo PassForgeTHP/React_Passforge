@@ -1,0 +1,59 @@
+nav {
+  border-bottom: 0.1rem solid var(--light);
+}
+
+.container-fluid {
+  display: flex;
+  gap: 2rem;
+}
+
+.img-container img {
+  width: 3rem;
+  border-radius: 50%;
+  border: 0.1rem solid var(--light);
+}
+
+.nav-link {
+  width: fit-content;
+  padding: 0.5rem;
+}
+
+.nav-link:hover {
+  color: var(--medium-red) !important;
+}
+
+.offcanvas {
+  background-color: var(--base-red) !important;
+}
+
+.active,
+.offcanvas-header,
+.offcanvas-header .close-btn i {
+  color: var(--light) !important;
+}
+
+.active {
+  background: var(--gradient);
+  border-radius: 1rem;
+}
+
+.navbar-toggler,
+.navbar-toggler-icon,
+.nav-link {
+  color: var(--light);
+}
+
+.offcanvas-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+}
+
+.offcanvas-body {
+  justify-content: space-between;
+}
