@@ -1,6 +1,6 @@
 export default function FAQ() {
   return (
-    <section className="faq-section">
+    <section className="faq-container-home" id="faq">
       <h2>🔐 FAQ</h2>
       <div className="faq-container">
         <div className="card">

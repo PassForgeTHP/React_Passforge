@@ -1,14 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { initializeNavbar } from "../javascript/navbar";
 import logo from "../assets/images/logo.png";
 import { useEffect } from "react";
 
 export default function Navbar() {
-  // let navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     initializeNavbar();
   }, []);
+
+  const scrollTo = (sectionId) => {
+    navigate("/");
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
+  };
+
   return (
     <nav className="navbar fixed-top navbar-expand-lg ">
       <div className="container-fluid">
@@ -57,9 +68,34 @@ export default function Navbar() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/#pricing" className="nav-link">
+                  <button
+                    onClick={() => scrollTo("pricing")}
+                    className="nav-link"
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      width: "100%",
+                      textAlign: "left",
+                    }}
+                  >
                     Pricing
-                  </Link>
+                  </button>
+                </li>
+                <li className="nav-item">
+                  <button
+                    onClick={() => scrollTo("faq")}
+                    className="nav-link"
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      width: "100%",
+                      textAlign: "left",
+                    }}
+                  >
+                    FAQ
+                  </button>
                 </li>
               </ul>
             </div>

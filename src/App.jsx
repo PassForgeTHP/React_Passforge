@@ -8,7 +8,6 @@ import "./styles/responsives.css";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
-import FAQ from "./pages/FAQ";
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/faq" element={<FAQ />} />
         </Routes>
       </main>
       <footer>

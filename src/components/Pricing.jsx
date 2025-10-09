@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 export default function Pricing() {
   return (
-    <>
-      <h2>Choose the plan that fits your needs</h2>
+    <section className="pricing-container-home" id="pricing">
+      <h2> 🪙 Choose the plan that fits your needs</h2>
       <div className="cards">
         <div className="card">
           <div class="card-body">
@@ -67,6 +67,6 @@ export default function Pricing() {
           </ul>
         </div>
       </div>
-    </>
+    </section>
   );
 }
