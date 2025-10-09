@@ -5,8 +5,8 @@ footer {
   left: 0;
   width: 100%;
   background-color: var(--dark);
-  padding: 0.5rem 2rem;
-  z-index: 1000;
+  padding: 0.3rem 3rem !important;
+  z-index: 1001;
   display: flex;
   justify-content: space-between;
   border-top: 0.1rem solid var(--light);
@@ -30,4 +30,42 @@ footer {
 
 .footer-link:hover {
   color: var(--medium-red);
+}
+
+/* FAQ */
+
+.faq-section {
+  padding: 2rem;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.faq-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--light);
+}
+
+.faq-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.faq-container .card {
+  background: var(--gradient);
+  border: 0.1rem solid var(--light);
+  color: var(--light);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 0 1rem var(--shadow-light);
+}
+
+.faq-container .card .card-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid var(--light);
 }

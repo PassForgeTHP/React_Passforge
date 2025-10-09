@@ -1,5 +1,11 @@
 nav {
   border-bottom: 0.1rem solid var(--light);
+  background: var(--dark) !important;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 6px var(--shadow-dark);
+  padding: 0.5rem 2rem;
 }
 
 .container-fluid {
