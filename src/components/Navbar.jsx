@@ -62,40 +62,53 @@ export default function Navbar() {
                     Home
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link to="/security-advice" className="nav-link">
-                    Security Advice
+                <li class="nav-item dropdown">
+                  <Link
+                    to="#"
+                    class="nav-link dropdown-toggle"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Informations
                   </Link>
-                </li>
-                <li className="nav-item">
-                  <button
-                    onClick={() => scrollTo("pricing")}
-                    className="nav-link"
-                    style={{
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      width: "100%",
-                      textAlign: "left",
-                    }}
-                  >
-                    Pricing
-                  </button>
-                </li>
-                <li className="nav-item">
-                  <button
-                    onClick={() => scrollTo("faq")}
-                    className="nav-link"
-                    style={{
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      width: "100%",
-                      textAlign: "left",
-                    }}
-                  >
-                    FAQ
-                  </button>
+                  <ul class="dropdown-menu">
+                    <li className="dropdown-item">
+                      <Link to="/security-advice" className="nav-link">
+                        Security Advice
+                      </Link>
+                    </li>
+                    <li className="dropdown-item">
+                      <button
+                        onClick={() => scrollTo("pricing")}
+                        className="nav-link"
+                        style={{
+                          background: "none",
+                          border: "none",
+                          cursor: "pointer",
+                          width: "100%",
+                          textAlign: "left",
+                        }}
+                      >
+                        Pricing
+                      </button>
+                    </li>
+                    <li className="dropdown-item">
+                      <button
+                        onClick={() => scrollTo("faq")}
+                        className="nav-link"
+                        style={{
+                          background: "none",
+                          border: "none",
+                          cursor: "pointer",
+                          width: "100%",
+                          textAlign: "left",
+                        }}
+                      >
+                        FAQ
+                      </button>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </div>

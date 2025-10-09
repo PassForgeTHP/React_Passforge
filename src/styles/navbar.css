@@ -24,8 +24,9 @@ nav {
   padding: 0.5rem;
 }
 
-.nav-link:hover {
-  color: var(--medium-red) !important;
+.nav-link:hover,
+.nav-item:hover {
+  color: var(--light) !important;
 }
 
 .offcanvas {
@@ -38,7 +39,9 @@ nav {
   color: var(--light) !important;
 }
 
-.active {
+.active,
+.nav-link:hover,
+.nav-item:hover {
   background: var(--gradient);
   border-radius: 1rem;
 }
@@ -62,4 +65,20 @@ nav {
 
 .offcanvas-body {
   justify-content: space-between;
+}
+
+.dropdown-menu {
+  background: var(--dark);
+  border: 0.1rem solid var(--light);
+}
+.dropdown-menu:hover {
+  background: var(--dark);
+  border: 0.1rem solid var(--light);
+}
+.dropdown-item {
+  color: var(--light);
+}
+.dropdown-item:hover {
+  background: var(--gradient);
+  color: var(--light);
 }
