@@ -57,20 +57,15 @@ export default function Navbar() {
           <div className="offcanvas-body">
             <div className="container-left">
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li className="nav-item">
-                  <Link to="/" className="nav-link active" aria-current="page">
-                    Home
-                  </Link>
-                </li>
                 <li class="nav-item dropdown">
                   <Link
-                    to="#"
+                    to="/"
                     class="nav-link dropdown-toggle"
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    Informations
+                    Home
                   </Link>
                   <ul class="dropdown-menu">
                     <li className="dropdown-item">
