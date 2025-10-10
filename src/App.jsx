@@ -5,8 +5,10 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard";
+// import Dashboard from "./pages/Dashboard";
 import { initDB } from "./services/indexedDB";
+import Pricing from "./pages/Pricing";
+import FAQ from "./pages/FAQ";
 import "./styles/App.css";
 import "./styles/navbar.css";
 import "./styles/responsives.css";
@@ -33,7 +35,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/faq" element={<FAQ />} />
         </Routes>
       </main>
       <footer>
