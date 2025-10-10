@@ -11,15 +11,29 @@
   --shadow-red: rgba(255, 0, 0, 0.2);
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-  background: var(--dark);
+  background: var(--dark) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: var(--font-family) !important;
+}
+
+#root {
+  width: 100%;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: var(--font-family);
 }
 
 main {
-  width: 95%;
-  margin: 1rem auto;
+  max-width: 1400px;
+  width: 90%;
+  margin: 1rem auto !important;
+  padding: 0 !important;
+  display: block !important;
 }
