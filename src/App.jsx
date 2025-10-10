@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
   import Register from "./pages/Register";
   import Dashboard from "./pages/Dashboard";
   import Profile from './pages/Profile';
+  import ForgotPassword from './pages/ForgotPassword';
   import FAQ from "./components/FAQ";
   import { initDB } from "./services/indexedDB";
   import "./styles/App.css";
@@ -38,6 +39,7 @@ import { Routes, Route } from "react-router-dom";
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/faq" element={<FAQ />} />
           </Routes>
         </main>
