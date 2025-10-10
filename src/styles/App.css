@@ -175,8 +175,9 @@ footer {
 
 .img-container-home {
   position: relative;
-  width: 50%;
-  padding-right: 5rem;
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
 }
 
 .img-container-home img {
@@ -186,7 +187,7 @@ footer {
   border: 0.5rem solid var(--light);
   border-radius: 0.5rem;
   box-shadow: 0 0 1rem var(--shadow-light);
-  transition: transform 0.3s;
+  transition: all 0.3s ease;
   margin-top: 5rem;
 }
 
@@ -212,23 +213,4 @@ footer {
 }
 .img-container-home img:hover {
   transform: translate(-50%, -50%) scale(1.05) rotate(0deg);
-}
-@media (max-width: 768px) {
-  .home-container {
-    flex-direction: column;
-  }
-  .img-container-home {
-    width: 80%;
-    margin-top: 2rem;
-  }
-  .img-container-home img {
-    position: static;
-    width: 10rem;
-    height: 10rem;
-    margin: 0.5rem;
-    transform: rotate(0deg);
-  }
-  .img-container-home img:hover {
-    transform: scale(1.05);
-  }
 }
