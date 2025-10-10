@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,6 +24,8 @@ function Login() {
     const data = await res.json();
     const token = res.headers.get("Authorization")?.split(" ")[1];
     login(data.user, token);
+
+    navigate("/profile");
   };
 
   return (
@@ -31,9 +35,9 @@ function Login() {
       </div>
       <div>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Email :</label>
+          <label htmlFor="email">Email</label>
           <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
-          <label htmlFor="password">Mot de passe :</label>
+          <label htmlFor="password">Password</label>
           <input value={password} onChange={(e) => setPassword(e.target.value)} type="password"/>
           <div>
             <button type="submit">Login</button>
