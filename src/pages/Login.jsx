@@ -35,10 +35,15 @@ function Login() {
       </div>
       <div>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Email</label>
-          <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
-          <label htmlFor="password">Password</label>
-          <input value={password} onChange={(e) => setPassword(e.target.value)} type="password"/>
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password"/>
+          </div>
           <div>
             <button type="submit">Login</button>
           </div>
