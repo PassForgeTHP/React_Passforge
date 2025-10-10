@@ -9,12 +9,14 @@ function Home() {
       <div className="text-container-home">
         <h1>PassForge</h1>
         <p>Not your vault, not your secrets</p>
-        <Link to="/security-advice" className="home-link">
-          Discover
-        </Link>
-        <Link to="/register" className="home-link">
-          Register
-        </Link>
+        <div>
+          <Link to="/security-advice" className="home-link">
+            Discover
+          </Link>
+          <Link to="/register" className="home-link">
+            Register
+          </Link>
+        </div>
       </div>
       <div className="img-container-home">
         <img src={img1} alt="image 1" />
