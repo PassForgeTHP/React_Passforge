@@ -30,26 +30,27 @@ function Login() {
 
   return (
     <div className="container">
-      <div>
-        <h2>Login</h2>
-      </div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
-          </div>
+      <div className="form-card">
+        <h1 className="title">Login</h1>
+      
+        <div>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
+            </div>
 
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password"/>
-          </div>
-          <div>
-            <button type="submit">Login</button>
-            <Link to="/forgot-password">Forgot password ?</Link>
-            <Link to="/register">Register</Link>
-          </div>
-        </form>
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input value={password} onChange={(e) => setPassword(e.target.value)} type="password"/>
+            </div>
+            <div className="form-actions">
+              <button type="submit">Login</button>
+              <Link to="/forgot-password" className="form-link">Forgot password ?</Link>
+              <Link to="/register" className="form-link">Register</Link>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   )

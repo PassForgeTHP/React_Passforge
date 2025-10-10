@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Register() {
   const { login } = useContext(AuthContext);
@@ -35,36 +35,45 @@ function Register() {
 
   return (
     <div className="container">
-      <div>
+      <div className="form-card">
         <h1>Sign Up</h1>
-      </div>
       
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Email</label>
-          <input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            placeholder="Mot de passe"
-          />
-          <label htmlFor="confirmation">Confirmation</label>
-          <input
-            value={passwordConfirmation}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
-            type="password"
-            placeholder="Confirmation"
-          />
-          <div>
-            <button type="submit">Sign In</button>
-          </div>
-        </form>
+        <div>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                placeholder="password"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="confirmation">Confirmation</label>
+              <input
+                value={passwordConfirmation}
+                onChange={(e) => setPasswordConfirmation(e.target.value)}
+                type="password"
+                placeholder="Confirmation"
+              />
+            </div>
+            <div className="form-actions">
+              <button type="submit">Sign In</button>
+              <Link to="/login" className="form-link">Login</Link>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   )

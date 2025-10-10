@@ -1,7 +1,12 @@
 const ForgotPassword = () => {
   return (
-    <div>
-      <h1>Reset my password</h1>
+    <div className="container">
+      <div className="form-card">
+        <h1 className="title">Forgot password ?</h1>
+      
+        <div>
+        </div>
+      </div>
     </div>
   );
 };

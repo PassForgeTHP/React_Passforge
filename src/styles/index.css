@@ -25,5 +25,5 @@ main {
 }
 
 h1, h2, h3 {
-  color: var(--base-red);
+  color: var(--medium-red);
 }
