@@ -106,3 +106,38 @@
     box-shadow: 2px 4px 10px var(--shadow-light) !important;
   }
 }
+
+@media screen and (min-width: 829px) and (max-width: 972px) {
+  .security-advice-container img {
+    width: 16rem;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 828px) {
+  .security-advice-container img {
+    width: 16rem;
+    height: auto;
+  }
+
+  .block-text-img {
+    flex-direction: column;
+  }
+
+  .block-one {
+    order: 1;
+  }
+  .block-two {
+    order: 2;
+  }
+
+  .security-advice-container {
+    margin: 7rem 2rem 10rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .block-two {
+    width: 14rem;
+  }
+}

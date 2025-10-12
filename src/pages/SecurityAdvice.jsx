@@ -14,8 +14,8 @@ export default function SecurityAdvice() {
         </p>
       </div>
       <div className="block-text-img left">
-        <img src={img1} alt="image 1" />
-        <div className="security-section">
+        <img src={img1} alt="image 1" className="block-two" />
+        <div className="security-section block-one">
           <h2>How to use ?</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit
@@ -27,7 +27,7 @@ export default function SecurityAdvice() {
         </div>
       </div>
       <div className="block-text-img right">
-        <div className="security-section">
+        <div className="security-section block-one">
           <h2>Our tips </h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit
@@ -37,7 +37,7 @@ export default function SecurityAdvice() {
             id sagittis
           </p>
         </div>
-        <img src={img2} alt="image 2" />
+        <img src={img2} alt="image 2" className="block-two" />
       </div>
     </section>
   );
