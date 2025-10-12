@@ -135,3 +135,40 @@ footer {
   background-color: var(--light);
   border-radius: 0.3rem;
 }
+
+/* Security advice */
+
+.security-advice-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  margin: 8rem 2rem 5rem;
+}
+.security-advice-container img {
+  width: 20rem;
+  height: auto;
+}
+
+.security-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.security-section h2 {
+  color: var(--medium-red);
+}
+
+.security-section p {
+  color: var(--light);
+}
+
+.block-text-img {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
