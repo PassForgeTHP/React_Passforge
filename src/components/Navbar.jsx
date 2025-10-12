@@ -14,16 +14,46 @@ export default function Navbar() {
         <div className="img-container">
           <img src={logo} alt="logo" />
         </div>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar"
-        >
-          <i className="bi bi-list"></i>
-        </button>
-        <div
+        <div className="links-container">
+          <ul className="container-left">
+            <li className="nav-item">
+              <Link to="/" className="nav-link">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/security-advice" className="nav-link">
+                Security Advice
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/pricing" className="nav-link">
+                Pricing
+              </Link>
+            </li>
+          </ul>
+          <ul className="container-right">
+            <li className="nav-item">
+              <Link to="/profile" className="nav-link">
+                Profile
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/login" className="nav-link">
+                Login
+              </Link>
+            </li>
+            <li className="nav-item">
+              <button className="nav-link">Logout</button>
+            </li>
+            <li className="nav-item">
+              <Link to="/register" className="nav-link">
+                Register
+              </Link>
+            </li>
+          </ul>
+        </div>
+        {/* <div
           className="offcanvas offcanvas-end"
           tabIndex="-1"
           id="offcanvasNavbar"
@@ -42,50 +72,17 @@ export default function Navbar() {
               <i className="bi bi-x-circle-fill"></i>
             </button>
           </div>
-          <div className="offcanvas-body">
-            <div className="container-left">
-              <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li className="nav-item">
-                  <Link to="/" className="nav-link">
-                    Home
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/security-advice" className="nav-link">
-                    Security Advice
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/pricing" className="nav-link">
-                    Pricing
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="container-right">
-              <ul className="navbar-nav me-auto">
-                <li className="nav-item">
-                  <Link to="/profile" className="nav-link">
-                    Profile
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/login" className="nav-link">
-                    Login
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <button className="nav-link">Logout</button>
-                </li>
-                <li className="nav-item">
-                  <Link to="/register" className="nav-link">
-                    Register
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+          <div className="offcanvas-body"></div>
+        </div> */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+        >
+          <i className="bi bi-list"></i>
+        </button>
       </div>
     </nav>
   );

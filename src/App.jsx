@@ -27,11 +27,11 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="app-wrapper">
       <header>
         <Navbar />
       </header>
-      <main>
+      <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -44,7 +44,7 @@ function App() {
       <footer>
         <Footer />
       </footer>
-    </>
+    </div>
   );
 }
 
