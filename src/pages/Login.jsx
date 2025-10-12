@@ -42,7 +42,7 @@ function Login() {
 
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input value={password} onChange={(e) => setPassword(e.target.value)} type="password"/>
+              <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password"/>
             </div>
             <div className="form-actions">
               <button type="submit">Login</button>
