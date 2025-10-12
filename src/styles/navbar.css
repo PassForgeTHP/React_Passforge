@@ -1,11 +1,12 @@
 .navbar {
   background-color: var(--dark);
   box-shadow: 0 0.1rem 0.5rem var(--shadow-dark);
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1000;
   height: 5rem;
   border-bottom: 0.2rem solid var(--light);
+  width: 100%;
 }
 
 .img-container img {
@@ -16,12 +17,12 @@
 }
 
 .container-fluid {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 2rem;
+  width: 100%;
 }
 
 .navbar-toggler {
@@ -41,15 +42,16 @@
 
 .links-container {
   display: flex;
-  gap: 3rem;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .container-left,
 .container-right {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 1rem;
   margin: 0;
   padding: 0;
 }

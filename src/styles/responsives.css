@@ -6,6 +6,10 @@
   .links-container {
     display: none;
   }
+
+  .container-fluid {
+    justify-content: space-between;
+  }
 }
 
 @media screen and (min-width: 1014px) {
@@ -39,5 +43,11 @@
   .container-foot p {
     display: flex;
     flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 1014px) and (max-width: 1118px) {
+  .nav-item a {
+    padding: 0.5rem 0.5rem;
   }
 }
