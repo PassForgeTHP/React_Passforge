@@ -1,88 +1,154 @@
-import { Link } from "react-router-dom";
-import { initializeNavbar } from "../javascript/navbar";
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import logo from "../assets/images/logo.svg";
-import { useEffect } from "react";
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
+
   useEffect(() => {
-    initializeNavbar();
-  }, []);
+    setIsOpen(false);
+  }, [location]);
 
   return (
-    <nav className="navbar fixed-top navbar-expand-lg ">
+    <nav className="navbar">
       <div className="container-fluid">
         <div className="img-container">
           <img src={logo} alt="logo" />
         </div>
+        <button
+          className="navbar-toggler"
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          ☰
+        </button>
         <div className="links-container">
           <ul className="container-left">
             <li className="nav-item">
-              <Link to="/" className="nav-link">
+              <Link
+                to="/"
+                className={location.pathname === "/" ? "active" : ""}
+              >
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/security-advice" className="nav-link">
+              <Link
+                to="/security-advice"
+                className={
+                  location.pathname === "/security-advice" ? "active" : ""
+                }
+              >
                 Security Advice
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/pricing" className="nav-link">
+              <Link
+                to="/pricing"
+                className={location.pathname === "/pricing" ? "active" : ""}
+              >
                 Pricing
               </Link>
             </li>
           </ul>
           <ul className="container-right">
             <li className="nav-item">
-              <Link to="/profile" className="nav-link">
+              <Link
+                to="/profile"
+                className={location.pathname === "/profile" ? "active" : ""}
+              >
                 Profile
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/login" className="nav-link">
+              <Link
+                to="/login"
+                className={location.pathname === "/login" ? "active" : ""}
+              >
                 Login
               </Link>
             </li>
             <li className="nav-item">
-              <button className="nav-link">Logout</button>
-            </li>
-            <li className="nav-item">
-              <Link to="/register" className="nav-link">
+              <Link
+                to="/register"
+                className={location.pathname === "/register" ? "active" : ""}
+              >
                 Register
               </Link>
             </li>
           </ul>
         </div>
-        {/* <div
-          className="offcanvas offcanvas-end"
-          tabIndex="-1"
-          id="offcanvasNavbar"
-          aria-labelledby="offcanvasNavbarLabel"
-        >
+        <div className={`offcanvas ${isOpen ? "open" : ""}`}>
           <div className="offcanvas-header">
-            <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-              Menu
-            </h5>
+            <h3>Menu</h3>
             <button
-              type="button"
               className="close-btn"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
+              onClick={closeMenu}
+              aria-label="Close menu"
             >
-              <i className="bi bi-x-circle-fill"></i>
+              X
             </button>
           </div>
-          <div className="offcanvas-body"></div>
-        </div> */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar"
-        >
-          <i className="bi bi-list"></i>
-        </button>
+          <ul>
+            <li>
+              <Link
+                to="/"
+                className={location.pathname === "/" ? "active" : ""}
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/security-advice"
+                className={
+                  location.pathname === "/security-advice" ? "active" : ""
+                }
+              >
+                Security Advice
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/pricing"
+                className={location.pathname === "/pricing" ? "active" : ""}
+              >
+                Pricing
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/profile"
+                className={location.pathname === "/profile" ? "active" : ""}
+              >
+                Profile
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/login"
+                className={location.pathname === "/login" ? "active" : ""}
+              >
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/register"
+                className={location.pathname === "/register" ? "active" : ""}
+              >
+                Register
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div
+          className={`overlay ${isOpen ? "show" : ""}`}
+          onClick={closeMenu}
+        ></div>
       </div>
     </nav>
   );
