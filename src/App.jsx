@@ -8,6 +8,7 @@ import { Routes, Route } from "react-router-dom";
   import Dashboard from "./pages/Dashboard";
   import Profile from './pages/Profile';
   import ForgotPassword from './pages/ForgotPassword';
+  import ResetPassword from "./pages/ResetPassword";
   import FAQ from "./components/FAQ";
   import { initDB } from "./services/indexedDB";
   import "./styles/App.css";
@@ -40,6 +41,7 @@ import { Routes, Route } from "react-router-dom";
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/faq" element={<FAQ />} />
           </Routes>
         </main>
