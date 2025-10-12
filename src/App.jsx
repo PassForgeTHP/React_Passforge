@@ -18,6 +18,8 @@ import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import "./styles/form.css";
 
+import GDPR from "./pages/GDPR";
+
 function App() {
   // Initialize IndexedDB on app startup
   useEffect(() => {
@@ -46,6 +48,7 @@ function App() {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/gdpr" element={<GDPR />} />
         </Routes>
       </main>
       <footer>

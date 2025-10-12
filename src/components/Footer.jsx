@@ -4,12 +4,12 @@ export default function Footer() {
     <footer>
       <div className="footer-left link-top-one">
         <Link
-          to="/rgpd"
+          to="/gdpr"
           className="footer-link "
           target="_blank"
           rel="noopener noreferrer"
         >
-          RGPD
+          GDPR
         </Link>
         <Link
           to="/faq"
