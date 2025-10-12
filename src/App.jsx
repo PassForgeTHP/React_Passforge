@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-// import Dashboard from "./pages/Dashboard";
+// import SecurityAdvice from "./pages/SecurityAdvice";
 import { initDB } from "./services/indexedDB";
 import Pricing from "./pages/Pricing";
 import FAQ from "./pages/FAQ";
@@ -35,7 +35,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+          {/* <Route path="/security-advice" element={<SecurityAdvice/>} /> */}
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/faq" element={<FAQ />} />
         </Routes>
