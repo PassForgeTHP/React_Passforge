@@ -21,7 +21,11 @@ export default function Footer() {
         </Link>
       </div>
       <div className="container-foot link-bottom">
-        <p>&copy; 2025- PassForge - All rights reserved.</p>
+        <p>
+          <span>&copy; 2025- PassForge</span>
+          <span> </span>
+          <span>All rights reserved.</span>
+        </p>
       </div>
       <div className="footer-right link-top-two">
         <Link

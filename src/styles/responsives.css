@@ -14,3 +14,30 @@
     display: none !important;
   }
 }
+
+@media screen and (max-width: 320px) {
+  footer {
+    font-size: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  footer {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 828px) {
+  /* Footer */
+  footer {
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.7rem;
+    gap: 1rem;
+  }
+
+  .container-foot p {
+    display: flex;
+    flex-direction: column;
+  }
+}
