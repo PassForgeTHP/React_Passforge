@@ -9,7 +9,8 @@ import { Routes, Route } from "react-router-dom";
   import Profile from './pages/Profile';
   import ForgotPassword from './pages/ForgotPassword';
   import ResetPassword from "./pages/ResetPassword";
-  import FAQ from "./components/FAQ";
+  import Pricing from "./pages/Pricing";
+  import FAQ from "./pages/FAQ";
   import { initDB } from "./services/indexedDB";
   import "./styles/App.css";
   import "./styles/navbar.css";
@@ -42,6 +43,7 @@ import { Routes, Route } from "react-router-dom";
             <Route path="/profile" element={<Profile />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="/faq" element={<FAQ />} />
           </Routes>
         </main>
