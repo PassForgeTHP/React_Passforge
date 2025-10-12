@@ -1,7 +1,89 @@
 .home-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
-  gap: 2rem;
+  height: 100vh;
+  width: 100%;
+  overflow-y: hidden;
+}
+
+.text-container-home {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.text-container-home h1 {
+  font-size: 2.5rem;
+  color: var(--medium-red);
+}
+
+.text-container-home p {
+  font-size: 1.2rem;
   color: var(--light);
+  line-height: 1.5;
+}
+
+.text-container-home div {
+  display: flex;
+  gap: 1rem;
+}
+
+.home-link {
+  padding: 0.5rem 1rem;
+  background: var(--medium-red);
+  color: var(--light);
+  text-decoration: none;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  box-shadow: 2px 4px 10px var(--shadow-light);
+}
+
+.img-container-home {
+  position: relative;
+  width: 60%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-container-home img {
+  position: absolute;
+  width: 16rem;
+  height: 16rem;
+  object-fit: cover;
+  border-radius: 1rem;
+  box-shadow: 2px 4px 10px var(--shadow-light);
+  border: 0.5rem solid var(--light);
+  transition: transform 0.3s;
+  margin-top: 5rem;
+}
+
+.img-container-home img:nth-child(1) {
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-10deg);
+}
+
+.img-container-home img:nth-child(2) {
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%) rotate(10deg);
+}
+
+.img-container-home img:nth-child(3) {
+  top: 50%;
+  left: 85%;
+  transform: translate(-50%, -50%) rotate(10deg);
+}
+
+.img-container-home img:nth-child(4) {
+  top: 95%;
+  left: 45%;
+  transform: translate(-50%, -50%) rotate(-10deg);
+}
+
+.img-container-home img:hover {
+  transform: translate(-50%, -50%) scale(1.05) rotate(0deg);
 }

@@ -5,7 +5,7 @@ footer {
   left: 0;
   width: 100%;
   background-color: var(--dark);
-  padding: 0.3rem 3rem !important;
+  padding: 1rem 3rem;
   z-index: 1001;
   display: flex;
   justify-content: space-between;
@@ -101,7 +101,7 @@ footer {
   box-shadow: 0 0 1rem var(--shadow-light);
   display: flex;
   flex-direction: column;
-  justify-content: center !important;
+  justify-content: center;
 }
 
 .pricing-container-home .cards .card .card-body {
@@ -132,6 +132,6 @@ footer {
 }
 
 .list-group {
-  background-color: var(--light) !important;
+  background-color: var(--light);
   border-radius: 0.3rem;
 }
