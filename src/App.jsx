@@ -13,6 +13,10 @@ import "./styles/App.css";
 import "./styles/navbar.css";
 import "./styles/responsives.css";
 import "./styles/home.css";
+import Profile from "./pages/Profile";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+import "./styles/form.css";
 
 function App() {
   // Initialize IndexedDB on app startup
@@ -37,6 +41,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/security-advice" element={<SecurityAdvice />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/faq" element={<FAQ />} />
         </Routes>
