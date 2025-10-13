@@ -1,29 +1,79 @@
 :root {
-    --base-red: #77080e;
-    --dark: #1a1720;
-    --dark-red: #470508;
-    --light: #e3d3bf;
-    --medium-red: #af0024;
-    --font-family: "Outfit", sans-serif;
-    --gradient: linear-gradient(90deg, #af0024 0%, #77080e 50%, #470508 100%);
-    --shadow-light: rgba(255, 255, 255, 0.3);
-    --shadow-dark: rgba(0, 0, 0, 0.3);
-    --shadow-red: rgba(175, 0, 36, 0.6);
-  }
+  --base-red: #77080e;
+  --dark: #1a1720;
+  --dark-red: #470508;
+  --light: #e3d3bf;
+  --medium-red: #af0024;
+  --font-family: "Outfit", sans-serif;
+  --gradient: linear-gradient(90deg, #af0024 0%, #77080e 50%, #470508 100%);
+  --shadow-light: rgba(255, 255, 255, 0.2);
+  --shadow-dark: rgba(0, 0, 0, 0.2);
+  --shadow-red: rgba(255, 0, 0, 0.2);
+  --rgba-dark: rgba(0, 0, 0, 0.5);
+}
 
-  body {
-    background: var(--dark);
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: var(--font-family);
-  }
+/* CSS Reset complet */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  main {
-    width: 95%;
-    margin: 1rem auto;
-  }
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-  h1, h2, h3 {
-    color: var(--medium-red);
-  }
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-family);
+  background-color: var(--dark);
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.app-wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+header,
+footer {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--medium-red);
+}
+
+main {
+  width: 95%;
+  margin: 1rem auto;
+}
