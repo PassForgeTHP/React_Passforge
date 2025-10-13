@@ -115,6 +115,11 @@ function PasswordItem({ password, onEdit, onDelete }) {
             </div>
           </div>
         )}
+        {password.created_at && (
+          <div style={{ marginTop: '8px', fontSize: '12px', opacity: 0.7 }}>
+            Created: {new Date(password.created_at).toLocaleString()}
+          </div>
+        )}
       </div>
     </div>
   )
