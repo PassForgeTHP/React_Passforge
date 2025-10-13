@@ -1,4 +1,8 @@
+import { useState } from 'react'
+
 function PasswordItem({ password }) {
+  const [showPassword, setShowPassword] = useState(false)
+
   return (
     <div className="password-item" style={{
       backgroundColor: 'var(--dark-red)',
@@ -33,6 +37,23 @@ function PasswordItem({ password }) {
             <strong>Domain:</strong> {password.domain}
           </div>
         )}
+        <div style={{ marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <strong>Password:</strong>
+          <span>{showPassword ? password.password : '••••••••'}</span>
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'var(--medium-red)',
+              cursor: 'pointer',
+              fontSize: '12px'
+            }}
+          >
+            {showPassword ? 'Hide' : 'Show'}
+          </button>
+        </div>
       </div>
     </div>
   )
