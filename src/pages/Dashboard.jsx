@@ -34,6 +34,8 @@ function Dashboard() {
             {showForm ? 'View Passwords' : 'Add Password'}
           </button>
         </div>
+
+        {showForm && <AddPasswordForm />}
       </div>
     </div>
   )
