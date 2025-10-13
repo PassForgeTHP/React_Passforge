@@ -21,6 +21,19 @@ function PasswordItem({ password }) {
           {password.title}
         </h3>
       </div>
+
+      <div style={{ color: 'var(--light)', fontSize: '14px' }}>
+        {password.username && (
+          <div style={{ marginBottom: '4px' }}>
+            <strong>Username:</strong> {password.username}
+          </div>
+        )}
+        {password.domain && (
+          <div style={{ marginBottom: '4px' }}>
+            <strong>Domain:</strong> {password.domain}
+          </div>
+        )}
+      </div>
     </div>
   )
 }
