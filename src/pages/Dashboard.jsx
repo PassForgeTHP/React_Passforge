@@ -1,9 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AddPasswordForm from '../components/AddPasswordForm'
 import PasswordList from '../components/PasswordList'
+import useVaultStore from '../stores/vaultStore'
 
 function Dashboard() {
   const [showForm, setShowForm] = useState(false)
+  const passwords = useVaultStore((state) => state.passwords)
+  const [prevPasswordCount, setPrevPasswordCount] = useState(passwords.length)
+
+  useEffect(() => {
+    // Auto-switch to list view when a new password is added
+    if (passwords.length > prevPasswordCount) {
+      setShowForm(false)
+    }
+    setPrevPasswordCount(passwords.length)
+  }, [passwords.length, prevPasswordCount])
 
   return (
     <div style={{ padding: '20px' }}>
