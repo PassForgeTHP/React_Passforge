@@ -7,6 +7,7 @@ function PasswordList() {
   const deletePassword = useVaultStore((state) => state.deletePassword)
   const [searchQuery, setSearchQuery] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
+  const [sortOrder, setSortOrder] = useState('newest') // 'newest' or 'oldest'
 
   const handleEdit = (password) => {
     // TODO: Implement edit modal
@@ -28,17 +29,39 @@ function PasswordList() {
     }
   }
 
-  const filteredPasswords = passwords.filter(pwd =>
-    pwd.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    (pwd.username && pwd.username.toLowerCase().includes(searchQuery.toLowerCase())) ||
-    (pwd.domain && pwd.domain.toLowerCase().includes(searchQuery.toLowerCase()))
-  )
+  const filteredPasswords = passwords
+    .filter(pwd =>
+      pwd.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (pwd.username && pwd.username.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (pwd.domain && pwd.domain.toLowerCase().includes(searchQuery.toLowerCase()))
+    )
+    .sort((a, b) => {
+      const dateA = new Date(a.created_at).getTime()
+      const dateB = new Date(b.created_at).getTime()
+      return sortOrder === 'newest' ? dateB - dateA : dateA - dateB
+    })
 
   return (
     <div className="container">
-      <h2 style={{ color: 'var(--light)', marginBottom: '20px' }}>
-        My Passwords ({passwords.length})
-      </h2>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+        <h2 style={{ color: 'var(--light)', margin: 0 }}>
+          My Passwords ({passwords.length})
+        </h2>
+        <button
+          onClick={() => setSortOrder(sortOrder === 'newest' ? 'oldest' : 'newest')}
+          style={{
+            padding: '8px 16px',
+            backgroundColor: 'var(--medium-red)',
+            color: 'var(--light)',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            fontSize: '14px'
+          }}
+        >
+          {sortOrder === 'newest' ? 'Newest First' : 'Oldest First'}
+        </button>
+      </div>
 
       <input
         type="text"
