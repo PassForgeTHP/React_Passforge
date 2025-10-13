@@ -19,7 +19,52 @@ const useVaultStore = create((set, get) => ({
   // Actions
   unlock: async (masterPassword) => {
     try {
-      // TODO: Will decrypt vault from IndexedDB in [S1-04]
+      // Step 1: Retrieve encrypted vault from IndexedDB
+      const storedVault = await vaultOperations.get()
+
+      // Handle first-time unlock (no vault exists yet)
+      if (!storedVault) {
+        // Generate new salt for this user
+        const newSalt = generateSalt()
+
+        // Create empty vault
+        const emptyVault = {
+          passwords: [],
+          version: '1.0',
+          createdAt: new Date().toISOString()
+        }
+
+        // Derive key from master password
+        const key = await deriveKey(masterPassword, newSalt)
+
+        // Serialize vault to JSON
+        const vaultJSON = JSON.stringify(emptyVault)
+
+        // Encrypt with new IV
+        const { encrypted, iv } = await encryptData(vaultJSON, key)
+
+        // Save to IndexedDB
+        await vaultOperations.set({
+          encrypted_vault: encrypted,
+          iv: iv,
+          salt: newSalt,
+          version: '1.0',
+          updatedAt: new Date().toISOString()
+        })
+
+        // Set state for unlocked empty vault
+        set({
+          isLocked: false,
+          passwords: [],
+          masterKey: key,
+          salt: newSalt,
+          iv: iv
+        })
+
+        return { success: true, message: 'Vault created and unlocked' }
+      }
+
+      // TODO: Continue with decryption for existing vault
       // For now, simulate unlocking with mock data
       await new Promise(resolve => setTimeout(resolve, 500))
 
