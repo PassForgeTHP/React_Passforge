@@ -33,7 +33,17 @@ const useVaultStore = create((set, get) => ({
     // Encrypt vault with AES-256-GCM (generates new IV internally)
     const { encrypted, iv: newIV } = await encryptData(vaultJSON, masterKey)
 
-    // TODO: Save to IndexedDB
+    // Save encrypted vault to IndexedDB
+    await vaultOperations.set({
+      encrypted_vault: encrypted,
+      iv: newIV,
+      salt: salt,
+      version: '1.0',
+      updatedAt: new Date().toISOString()
+    })
+
+    // Update IV in state (for next encryption)
+    set({ iv: newIV })
   },
 
   // Actions
