@@ -12,6 +12,7 @@ const useVaultStore = create((set, get) => ({
   // State
   isLocked: true,
   passwords: [],
+  masterKey: null, // CryptoKey object stored in RAM while unlocked
 
   // Actions
   unlock: async (masterPassword) => {
