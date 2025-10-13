@@ -103,12 +103,15 @@ form button:hover{
 .view-hide-pwd{
   margin-left: 50px;
   background: var(--dark);
-  border: 1px solid var(--dark);
+  border: none !important;
   padding: 0.1rem 0.2rem !important;
   box-shadow: none !important;
+  background: var(--dark)!important;
 }
 
 .view-hide-pwd:hover{
   cursor: pointer;
-  background: var(--dark);
+  background: var(--dark)!important;
+   box-shadow: none !important;
+   border: none !important;
 }
