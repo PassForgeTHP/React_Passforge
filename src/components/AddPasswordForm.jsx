@@ -41,6 +41,13 @@ function AddPasswordForm() {
         notes
       })
       setSuccessMessage('Password saved successfully')
+
+      // Reset form fields
+      setTitle('')
+      setDomain('')
+      setUsername('')
+      setPassword('')
+      setNotes('')
     } catch (err) {
       setError(err.message || 'Failed to save password')
     } finally {
