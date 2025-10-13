@@ -13,6 +13,7 @@ const useVaultStore = create((set, get) => ({
   isLocked: true,
   passwords: [],
   masterKey: null, // CryptoKey object stored in RAM while unlocked
+  salt: null, // 32-byte salt for PBKDF2 key derivation
 
   // Actions
   unlock: async (masterPassword) => {
