@@ -17,7 +17,11 @@ function Dashboard() {
   }, [passwords.length, prevPasswordCount])
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{
+      padding: '20px',
+      minHeight: '100vh',
+      backgroundColor: 'var(--dark)'
+    }}>
       <div style={{
         maxWidth: '1200px',
         margin: '0 auto'
@@ -26,9 +30,17 @@ function Dashboard() {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '30px'
+          marginBottom: '30px',
+          flexWrap: 'wrap',
+          gap: '16px'
         }}>
-          <h1 style={{ color: 'var(--light)', margin: 0 }}>Password Manager</h1>
+          <h1 style={{
+            color: 'var(--light)',
+            margin: 0,
+            fontSize: 'clamp(24px, 5vw, 32px)'
+          }}>
+            Password Manager
+          </h1>
           <button
             onClick={() => setShowForm(!showForm)}
             style={{
@@ -39,8 +51,11 @@ function Dashboard() {
               borderRadius: '8px',
               cursor: 'pointer',
               fontSize: '16px',
-              fontWeight: 'bold'
+              fontWeight: 'bold',
+              transition: 'background-color 0.2s ease'
             }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--base-red)'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--medium-red)'}
           >
             {showForm ? 'View Passwords' : 'Add Password'}
           </button>
