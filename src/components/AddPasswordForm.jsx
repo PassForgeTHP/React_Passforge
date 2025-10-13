@@ -6,6 +6,7 @@ function AddPasswordForm() {
   const [domain, setDomain] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [notes, setNotes] = useState('')
 
   return (
     <div className="container">
@@ -41,6 +42,14 @@ function AddPasswordForm() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter password"
             required
+          />
+
+          <FormField
+            label="Notes"
+            as="textarea"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            placeholder="Additional notes (optional)"
           />
         </form>
       </div>
