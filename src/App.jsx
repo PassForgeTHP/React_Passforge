@@ -17,7 +17,7 @@ import Profile from "./pages/Profile";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import "./styles/form.css";
-
+import "./styles/profile.css";
 import GDPR from "./pages/GDPR";
 
 function App() {

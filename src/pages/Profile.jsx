@@ -39,18 +39,23 @@ const Profile = () => {
   if (!user) return <p>No users logged in</p>;
 
   return (
-    <div className="container">
+    <div className="container-profile">
       <h1>My profile</h1>
-      <div>
+      <div className="profile-content">
         <img
           src={user.avatar || defaultAvatar}
           alt={`${user.name}'s avatar`}
           className="avatar"
         />
-      </div>
-      <div>
-        <p><strong>Name:</strong> {user.name}</p>
-        <p><strong>Email:</strong> {user.email}</p>
+      
+        <div className="profile-card">
+          <p><strong>Name:</strong> {user.name}</p>
+          <p><strong>Email:</strong> {user.email}</p>
+          <div className="buttons-profile">
+            <button>Edit profile</button>
+            <button>Delete profile</button>
+          </div>
+        </div>
       </div>
     </div>
   );
