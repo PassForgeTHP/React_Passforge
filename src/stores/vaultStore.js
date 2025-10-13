@@ -47,6 +47,21 @@ const useVaultStore = create((set, get) => ({
   },
 
   // Actions
+  /**
+   * Unlock the vault by decrypting it with the master password.
+   *
+   * For first-time users, creates a new encrypted vault.
+   * For existing users, decrypts the vault from IndexedDB.
+   *
+   * @param {string} masterPassword - User's master password
+   * @returns {Promise<{success: boolean, message?: string, error?: string}>} Result object
+   *
+   * @example
+   * const result = await unlock("MySecurePassword123")
+   * if (result.success) {
+   *   console.log("Vault unlocked:", result.message)
+   * }
+   */
   unlock: async (masterPassword) => {
     try {
       // Step 1: Retrieve encrypted vault from IndexedDB
@@ -124,6 +139,15 @@ const useVaultStore = create((set, get) => ({
     }
   },
 
+  /**
+   * Lock the vault by clearing all sensitive data from RAM.
+   *
+   * Clears: passwords, masterKey, salt, and iv.
+   * User must unlock again with master password to access vault.
+   *
+   * @example
+   * lock() // Vault is now locked, all data cleared from RAM
+   */
   lock: () => {
     // Clear all sensitive data from RAM
     set({
