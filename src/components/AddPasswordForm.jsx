@@ -10,11 +10,25 @@ function AddPasswordForm() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      // Form submission logic will be added next
+    } catch (err) {
+      setError(err.message || 'Failed to save password')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <div className="container">
       <div className="form-card">
         <h2>Add New Password</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <FormField
             label="Title"
             value={title}
