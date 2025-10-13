@@ -42,8 +42,15 @@ function PasswordList() {
     })
 
   return (
-    <div className="container">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+    <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '20px',
+        flexWrap: 'wrap',
+        gap: '12px'
+      }}>
         <h2 style={{ color: 'var(--light)', margin: 0 }}>
           My Passwords ({passwords.length})
         </h2>
@@ -76,8 +83,12 @@ function PasswordList() {
           border: '1px solid var(--base-red)',
           borderRadius: '8px',
           color: 'var(--light)',
-          fontSize: '14px'
+          fontSize: '14px',
+          transition: 'border-color 0.2s ease',
+          outline: 'none'
         }}
+        onFocus={(e) => e.target.style.borderColor = 'var(--medium-red)'}
+        onBlur={(e) => e.target.style.borderColor = 'var(--base-red)'}
       />
 
       {isDeleting && (
