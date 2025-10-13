@@ -7,6 +7,7 @@ import {
   decryptData
 } from '../services/cryptoService.js'
 import { vaultOperations } from '../services/indexedDB.js'
+import { downloadVault, uploadVault } from '../services/apiService.js'
 
 const useVaultStore = create((set, get) => ({
   // State
@@ -16,7 +17,7 @@ const useVaultStore = create((set, get) => ({
   salt: null, // 32-byte salt for PBKDF2 key derivation
   iv: null, // 12-byte IV for AES-GCM encryption (changes on each save)
 
-  // Internal helper: Save vault to IndexedDB (encrypted)
+  // Internal helper: Save vault to IndexedDB (encrypted) and sync to backend
   saveVault: async () => {
     const { passwords, masterKey, salt } = get()
 
@@ -33,14 +34,26 @@ const useVaultStore = create((set, get) => ({
     // Encrypt vault with AES-256-GCM (generates new IV internally)
     const { encrypted, iv: newIV } = await encryptData(vaultJSON, masterKey)
 
-    // Save encrypted vault to IndexedDB
-    await vaultOperations.set({
+    // Prepare encrypted vault payload
+    const encryptedVaultData = {
       encrypted_vault: encrypted,
       iv: newIV,
       salt: salt,
       version: '1.0',
       updatedAt: new Date().toISOString()
-    })
+    }
+
+    // Save encrypted vault to IndexedDB (always succeeds, for offline access)
+    await vaultOperations.set(encryptedVaultData)
+
+    // Try to sync to backend (optional, fails gracefully if offline)
+    try {
+      await uploadVault(encryptedVaultData)
+      console.log('Vault synced to backend successfully')
+    } catch (apiError) {
+      // Backend unavailable or user not authenticated, continue with local save
+      console.warn('Backend sync failed, vault saved locally only:', apiError.message)
+    }
 
     // Update IV in state (for next encryption)
     set({ iv: newIV })
@@ -64,8 +77,19 @@ const useVaultStore = create((set, get) => ({
    */
   unlock: async (masterPassword) => {
     try {
-      // Step 1: Retrieve encrypted vault from IndexedDB
-      const storedVault = await vaultOperations.get()
+      // Step 1: Try to fetch vault from backend API first (for sync)
+      let storedVault = null
+      try {
+        storedVault = await downloadVault()
+        // If backend returns vault, also save to IndexedDB for offline access
+        if (storedVault) {
+          await vaultOperations.set(storedVault)
+        }
+      } catch (apiError) {
+        // Backend unavailable or user not authenticated, fallback to IndexedDB
+        console.log('Backend unavailable, using IndexedDB:', apiError.message)
+        storedVault = await vaultOperations.get()
+      }
 
       // Handle first-time unlock (no vault exists yet)
       if (!storedVault) {
