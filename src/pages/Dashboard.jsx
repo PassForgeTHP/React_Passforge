@@ -35,7 +35,7 @@ function Dashboard() {
           </button>
         </div>
 
-        {showForm && <AddPasswordForm />}
+        {showForm ? <AddPasswordForm /> : <PasswordList />}
       </div>
     </div>
   )
