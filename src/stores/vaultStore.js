@@ -135,9 +135,10 @@ const useVaultStore = create((set, get) => ({
     })
   },
 
-  addPassword: (passwordData) => {
-    const { passwords } = get()
+  addPassword: async (passwordData) => {
+    const { passwords, saveVault } = get()
 
+    // Add password to RAM
     const newPassword = {
       id: Date.now(),
       ...passwordData,
@@ -148,7 +149,9 @@ const useVaultStore = create((set, get) => ({
       passwords: [...passwords, newPassword]
     })
 
-    // TODO: Will save to IndexedDB in [S1-04]
+    // Re-encrypt and save vault to IndexedDB
+    await saveVault()
+
     return { success: true, password: newPassword }
   },
 
