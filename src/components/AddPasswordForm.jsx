@@ -3,6 +3,7 @@ import FormField from './FormField'
 
 function AddPasswordForm() {
   const [title, setTitle] = useState('')
+  const [domain, setDomain] = useState('')
 
   return (
     <div className="container">
@@ -15,6 +16,13 @@ function AddPasswordForm() {
             onChange={(e) => setTitle(e.target.value)}
             placeholder="e.g., GitHub Account"
             required
+          />
+
+          <FormField
+            label="Domain"
+            value={domain}
+            onChange={(e) => setDomain(e.target.value)}
+            placeholder="e.g., github.com"
           />
         </form>
       </div>
