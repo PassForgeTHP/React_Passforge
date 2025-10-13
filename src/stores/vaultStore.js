@@ -99,7 +99,9 @@ const useVaultStore = create((set, get) => ({
     set({
       isLocked: true,
       passwords: [], // Clear decrypted passwords
-      masterKey: null // Clear encryption key (most critical)
+      masterKey: null, // Clear encryption key (most critical)
+      salt: null, // Clear salt
+      iv: null // Clear current IV
     })
   },
 
