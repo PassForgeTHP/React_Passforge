@@ -54,6 +54,14 @@ function PasswordItem({ password }) {
             {showPassword ? 'Hide' : 'Show'}
           </button>
         </div>
+        {password.notes && (
+          <div style={{ marginTop: '8px' }}>
+            <strong>Notes:</strong>
+            <div style={{ marginTop: '4px', fontSize: '13px', opacity: 0.9 }}>
+              {password.notes}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
