@@ -64,37 +64,30 @@ const useVaultStore = create((set, get) => ({
         return { success: true, message: 'Vault created and unlocked' }
       }
 
-      // TODO: Continue with decryption for existing vault
-      // For now, simulate unlocking with mock data
-      await new Promise(resolve => setTimeout(resolve, 500))
+      // Step 2: Decrypt existing vault
+      // Derive key from master password and stored salt
+      const key = await deriveKey(masterPassword, storedVault.salt)
 
-      const mockPasswords = [
-        {
-          id: 1,
-          title: 'GitHub',
-          domain: 'github.com',
-          username: 'user@example.com',
-          password: 'encrypted-password-1',
-          notes: 'My GitHub account',
-          created_at: new Date().toISOString()
-        },
-        {
-          id: 2,
-          title: 'Gmail',
-          domain: 'gmail.com',
-          username: 'user@gmail.com',
-          password: 'encrypted-password-2',
-          notes: '',
-          created_at: new Date().toISOString()
-        }
-      ]
+      // Decrypt vault using stored IV
+      const decryptedJSON = await decryptData(
+        storedVault.encrypted_vault,
+        key,
+        storedVault.iv
+      )
 
+      // Parse decrypted JSON
+      const vaultData = JSON.parse(decryptedJSON)
+
+      // Step 3: Load passwords into RAM
       set({
         isLocked: false,
-        passwords: mockPasswords
+        passwords: vaultData.passwords || [],
+        masterKey: key,
+        salt: storedVault.salt,
+        iv: storedVault.iv
       })
 
-      return { success: true }
+      return { success: true, message: 'Vault unlocked successfully' }
     } catch (error) {
       console.error('Unlock failed:', error)
       return { success: false, error: error.message }
