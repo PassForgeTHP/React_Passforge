@@ -19,6 +19,19 @@ function AddPasswordForm() {
     setError(null)
     setSuccessMessage(null)
 
+    // Validate required fields
+    if (!title.trim()) {
+      setError('Title is required')
+      setIsLoading(false)
+      return
+    }
+
+    if (!password.trim()) {
+      setError('Password is required')
+      setIsLoading(false)
+      return
+    }
+
     try {
       await addPassword({
         title,
