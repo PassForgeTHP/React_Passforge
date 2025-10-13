@@ -30,7 +30,10 @@ const useVaultStore = create((set, get) => ({
     // Serialize to JSON
     const vaultJSON = JSON.stringify(vaultData)
 
-    // TODO: Generate IV, encrypt, and save
+    // Generate new IV for this encryption (CRITICAL: must be unique)
+    const newIV = generateIV()
+
+    // TODO: Encrypt and save
   },
 
   // Actions
