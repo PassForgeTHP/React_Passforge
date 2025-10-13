@@ -24,6 +24,36 @@ function PasswordItem({ password }) {
         }}>
           {password.title}
         </h3>
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <button
+            type="button"
+            style={{
+              padding: '6px 12px',
+              backgroundColor: 'var(--medium-red)',
+              color: 'var(--light)',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '12px'
+            }}
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            style={{
+              padding: '6px 12px',
+              backgroundColor: 'var(--base-red)',
+              color: 'var(--light)',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '12px'
+            }}
+          >
+            Delete
+          </button>
+        </div>
       </div>
 
       <div style={{ color: 'var(--light)', fontSize: '14px' }}>
