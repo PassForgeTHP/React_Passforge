@@ -155,16 +155,19 @@ const useVaultStore = create((set, get) => ({
     return { success: true, password: newPassword }
   },
 
-  updatePassword: (id, updatedData) => {
-    const { passwords } = get()
+  updatePassword: async (id, updatedData) => {
+    const { passwords, saveVault } = get()
 
+    // Update password in RAM
     const updatedPasswords = passwords.map(pwd =>
       pwd.id === id ? { ...pwd, ...updatedData } : pwd
     )
 
     set({ passwords: updatedPasswords })
 
-    // TODO: Will update in IndexedDB in [S1-04]
+    // Re-encrypt and save vault to IndexedDB
+    await saveVault()
+
     return { success: true }
   },
 
