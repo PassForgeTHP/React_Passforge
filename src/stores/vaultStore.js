@@ -16,6 +16,11 @@ const useVaultStore = create((set, get) => ({
   salt: null, // 32-byte salt for PBKDF2 key derivation
   iv: null, // 12-byte IV for AES-GCM encryption (changes on each save)
 
+  // Internal helper: Save vault to IndexedDB (encrypted)
+  saveVault: async () => {
+    // TODO: Implement encryption and save logic
+  },
+
   // Actions
   unlock: async (masterPassword) => {
     try {
