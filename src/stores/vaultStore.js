@@ -30,10 +30,10 @@ const useVaultStore = create((set, get) => ({
     // Serialize to JSON
     const vaultJSON = JSON.stringify(vaultData)
 
-    // Generate new IV for this encryption (CRITICAL: must be unique)
-    const newIV = generateIV()
+    // Encrypt vault with AES-256-GCM (generates new IV internally)
+    const { encrypted, iv: newIV } = await encryptData(vaultJSON, masterKey)
 
-    // TODO: Encrypt and save
+    // TODO: Save to IndexedDB
   },
 
   // Actions
