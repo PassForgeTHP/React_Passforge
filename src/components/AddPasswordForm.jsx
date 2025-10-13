@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import FormField from './FormField'
+import useVaultStore from '../stores/vaultStore'
 
 function AddPasswordForm() {
+  const addPassword = useVaultStore((state) => state.addPassword)
   const [title, setTitle] = useState('')
   const [domain, setDomain] = useState('')
   const [username, setUsername] = useState('')
@@ -16,7 +18,13 @@ function AddPasswordForm() {
     setError(null)
 
     try {
-      // Form submission logic will be added next
+      await addPassword({
+        title,
+        domain,
+        username,
+        password,
+        notes
+      })
     } catch (err) {
       setError(err.message || 'Failed to save password')
     } finally {
