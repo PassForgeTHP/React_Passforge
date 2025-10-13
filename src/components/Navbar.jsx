@@ -134,30 +134,45 @@ export default function Navbar() {
                 Pricing
               </Link>
             </li>
-            <li>
-              <Link
-                to="/profile"
-                className={location.pathname === "/profile" ? "active" : ""}
-              >
-                Profile
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/login"
-                className={location.pathname === "/login" ? "active" : ""}
-              >
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/register"
-                className={location.pathname === "/register" ? "active" : ""}
-              >
-                Register
-              </Link>
-            </li>
+            {user ? (
+              <>
+                <li>
+                  <Link
+                    to="/profile"
+                    className={location.pathname === "/profile" ? "active" : ""}
+                    onClick={closeMenu}
+                  >
+                    My Profile
+                  </Link>
+                </li>
+                <li>
+                  <button className="logout-menu-btn" onClick={logout}>
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link
+                    to="/login"
+                    className={location.pathname === "/login" ? "active" : ""}
+                    onClick={closeMenu}
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/register"
+                    className={location.pathname === "/register" ? "active" : ""}
+                    onClick={closeMenu}
+                  >
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <div
