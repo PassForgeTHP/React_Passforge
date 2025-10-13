@@ -7,6 +7,12 @@ function PasswordList() {
   const deletePassword = useVaultStore((state) => state.deletePassword)
   const [searchQuery, setSearchQuery] = useState('')
 
+  const handleEdit = (password) => {
+    // TODO: Implement edit modal
+    console.log('Edit password:', password)
+    alert('Edit functionality coming soon')
+  }
+
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this password?')) {
       try {
@@ -74,6 +80,7 @@ function PasswordList() {
             <PasswordItem
               key={password.id}
               password={password}
+              onEdit={handleEdit}
               onDelete={handleDelete}
             />
           ))
