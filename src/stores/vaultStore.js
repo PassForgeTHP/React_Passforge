@@ -159,6 +159,23 @@ const useVaultStore = create((set, get) => ({
     })
   },
 
+  /**
+   * Add a new password to the vault.
+   *
+   * Adds password to RAM and re-encrypts entire vault to IndexedDB.
+   *
+   * @param {Object} passwordData - Password data (title, domain, username, password, notes)
+   * @returns {Promise<{success: boolean, password: Object}>} Result with created password
+   *
+   * @example
+   * const result = await addPassword({
+   *   title: "GitHub",
+   *   domain: "github.com",
+   *   username: "user@example.com",
+   *   password: "MyPassword123",
+   *   notes: "Personal account"
+   * })
+   */
   addPassword: async (passwordData) => {
     const { passwords, saveVault } = get()
 
@@ -179,6 +196,18 @@ const useVaultStore = create((set, get) => ({
     return { success: true, password: newPassword }
   },
 
+  /**
+   * Update an existing password in the vault.
+   *
+   * Updates password in RAM and re-encrypts entire vault to IndexedDB.
+   *
+   * @param {number|string} id - Password ID
+   * @param {Object} updatedData - Fields to update
+   * @returns {Promise<{success: boolean}>} Result object
+   *
+   * @example
+   * await updatePassword(123, { password: "NewPassword456" })
+   */
   updatePassword: async (id, updatedData) => {
     const { passwords, saveVault } = get()
 
@@ -195,6 +224,17 @@ const useVaultStore = create((set, get) => ({
     return { success: true }
   },
 
+  /**
+   * Delete a password from the vault.
+   *
+   * Removes password from RAM and re-encrypts entire vault to IndexedDB.
+   *
+   * @param {number|string} id - Password ID
+   * @returns {Promise<{success: boolean}>} Result object
+   *
+   * @example
+   * await deletePassword(123)
+   */
   deletePassword: async (id) => {
     const { passwords, saveVault } = get()
 
@@ -209,6 +249,19 @@ const useVaultStore = create((set, get) => ({
     return { success: true }
   },
 
+  /**
+   * Search passwords by title, domain, or username.
+   *
+   * Searches in RAM only (vault must be unlocked).
+   * Returns all passwords if query is empty.
+   *
+   * @param {string} query - Search query
+   * @returns {Array} Matching passwords
+   *
+   * @example
+   * const results = searchPasswords("github")
+   * // Returns passwords where title, domain, or username contains "github"
+   */
   searchPasswords: (query) => {
     const { passwords } = get()
 
