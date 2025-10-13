@@ -64,7 +64,6 @@ function Register() {
               <ViewPassword
                 value={passwordConfirmation}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
-                type="password"
                 placeholder="Confirmation"
               />
             </div>
