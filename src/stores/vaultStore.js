@@ -18,7 +18,19 @@ const useVaultStore = create((set, get) => ({
 
   // Internal helper: Save vault to IndexedDB (encrypted)
   saveVault: async () => {
-    // TODO: Implement encryption and save logic
+    const { passwords, masterKey, salt } = get()
+
+    // Create vault structure
+    const vaultData = {
+      passwords,
+      version: '1.0',
+      updatedAt: new Date().toISOString()
+    }
+
+    // Serialize to JSON
+    const vaultJSON = JSON.stringify(vaultData)
+
+    // TODO: Generate IV, encrypt, and save
   },
 
   // Actions
