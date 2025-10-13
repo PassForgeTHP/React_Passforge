@@ -6,6 +6,7 @@ function PasswordList() {
   const passwords = useVaultStore((state) => state.passwords)
   const deletePassword = useVaultStore((state) => state.deletePassword)
   const [searchQuery, setSearchQuery] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
 
   const handleEdit = (password) => {
     // TODO: Implement edit modal
@@ -15,11 +16,14 @@ function PasswordList() {
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this password?')) {
+      setIsDeleting(true)
       try {
         await deletePassword(id)
       } catch (error) {
         console.error('Failed to delete password:', error)
         alert('Failed to delete password')
+      } finally {
+        setIsDeleting(false)
       }
     }
   }
@@ -52,6 +56,19 @@ function PasswordList() {
           fontSize: '14px'
         }}
       />
+
+      {isDeleting && (
+        <div style={{
+          padding: '12px',
+          marginBottom: '16px',
+          backgroundColor: 'var(--dark-red)',
+          color: 'var(--light)',
+          borderRadius: '4px',
+          textAlign: 'center'
+        }}>
+          Deleting password...
+        </div>
+      )}
 
       <div>
         {filteredPasswords.length === 0 && passwords.length === 0 ? (
