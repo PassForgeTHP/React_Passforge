@@ -13,6 +13,7 @@ import { buildApiUrl, getAuthHeaders } from '../config/api.js'
  * @param {string} endpoint - API endpoint
  * @param {Object} options - Fetch options
  * @returns {Promise<Object>} Response data
+ * @throws {Error} Network error, authentication error, or server error
  */
 async function apiRequest(endpoint, options = {}) {
   const url = buildApiUrl(endpoint)
@@ -28,13 +29,36 @@ async function apiRequest(endpoint, options = {}) {
     // Parse response
     const data = await response.json().catch(() => ({}))
 
-    // Handle HTTP errors
+    // Handle HTTP errors with detailed messages
     if (!response.ok) {
+      // 401 Unauthorized - authentication required
+      if (response.status === 401) {
+        throw new Error('Authentication required. Please login.')
+      }
+      // 403 Forbidden - insufficient permissions
+      if (response.status === 403) {
+        throw new Error('Access forbidden. Insufficient permissions.')
+      }
+      // 404 Not Found - resource not found
+      if (response.status === 404) {
+        throw new Error('Resource not found.')
+      }
+      // 500+ Server errors
+      if (response.status >= 500) {
+        throw new Error('Server error. Please try again later.')
+      }
+      // Generic error with backend message
       throw new Error(data.error || data.message || `HTTP ${response.status}`)
     }
 
     return data
   } catch (error) {
+    // Network error (fetch failed, CORS, timeout, etc.)
+    if (error.name === 'TypeError' && error.message.includes('fetch')) {
+      console.error('Network Error:', error)
+      throw new Error('Network error. Check your internet connection.')
+    }
+    // Re-throw our custom errors or other errors
     console.error('API Request Error:', error)
     throw error
   }
