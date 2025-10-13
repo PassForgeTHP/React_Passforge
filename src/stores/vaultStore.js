@@ -1,4 +1,12 @@
 import { create } from 'zustand'
+import {
+  generateSalt,
+  generateIV,
+  deriveKey,
+  encryptData,
+  decryptData
+} from '../services/cryptoService.js'
+import { vaultOperations } from '../services/indexedDB.js'
 
 const useVaultStore = create((set, get) => ({
   // State
