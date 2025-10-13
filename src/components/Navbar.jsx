@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 import logo from "../assets/images/logo.svg";
 
 export default function Navbar() {
@@ -7,6 +8,7 @@ export default function Navbar() {
   const location = useLocation();
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
+  const { user, logout } = useContext(AuthContext);
 
   useEffect(() => {
     setIsOpen(false);
@@ -55,32 +57,45 @@ export default function Navbar() {
             </li>
           </ul>
           <ul className="container-right">
-            <li className="nav-item">
-              <Link
-                to="/profile"
-                className={location.pathname === "/profile" ? "active" : ""}
-              >
-                Profile
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/login"
-                className={location.pathname === "/login" ? "active" : ""}
-              >
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/register"
-                className={location.pathname === "/register" ? "active" : ""}
-              >
-                Register
-              </Link>
-            </li>
+           {user ? (
+              <>
+                <li className="nav-item">
+                  <Link
+                    to="/profile"
+                    className={location.pathname === "/profile" ? "active" : ""}
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <button onClick={logout} className="logout-btn">
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link
+                    to="/login"
+                    className={location.pathname === "/login" ? "active" : ""}
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    to="/register"
+                    className={location.pathname === "/register" ? "active" : ""}
+                  >
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
+
         <div className={`offcanvas ${isOpen ? "open" : ""}`}>
           <div className="offcanvas-header">
             <h3>Menu</h3>
