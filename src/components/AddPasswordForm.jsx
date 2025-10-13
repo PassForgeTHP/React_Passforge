@@ -4,6 +4,8 @@ import FormField from './FormField'
 function AddPasswordForm() {
   const [title, setTitle] = useState('')
   const [domain, setDomain] = useState('')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
   return (
     <div className="container">
@@ -23,6 +25,22 @@ function AddPasswordForm() {
             value={domain}
             onChange={(e) => setDomain(e.target.value)}
             placeholder="e.g., github.com"
+          />
+
+          <FormField
+            label="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="e.g., user@example.com"
+          />
+
+          <FormField
+            label="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter password"
+            required
           />
         </form>
       </div>
