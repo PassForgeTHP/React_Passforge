@@ -33,6 +33,8 @@ export default function Contact() {
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input 
+              id="email"
+              autoComplete="email"
               placeholder="Email" 
               type="email" 
               value={email}
@@ -43,6 +45,7 @@ export default function Contact() {
             <div className="form-group">
               <label htmlFor="subject">Subject</label>
               <input 
+              id="subject"
               type="text" 
               placeholder="subject" 
               value={subject}
@@ -52,8 +55,8 @@ export default function Contact() {
             </div>
             <div className="form-group">
               <label htmlFor="content">Content</label>
-              <input 
-              type="text" 
+              <textarea 
+              id="content"
               placeholder="content" 
               value={content}
               onChange={e=>setContent(e.target.value)}
