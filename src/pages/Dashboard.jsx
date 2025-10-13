@@ -1,3 +1,5 @@
+import AddPasswordForm from '../components/AddPasswordForm'
+
 function Dashboard() {
   return (
     <div>
