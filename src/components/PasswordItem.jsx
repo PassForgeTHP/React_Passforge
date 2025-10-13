@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function PasswordItem({ password }) {
+function PasswordItem({ password, onEdit, onDelete }) {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
@@ -27,6 +27,7 @@ function PasswordItem({ password }) {
         <div style={{ display: 'flex', gap: '8px' }}>
           <button
             type="button"
+            onClick={() => onEdit && onEdit(password)}
             style={{
               padding: '6px 12px',
               backgroundColor: 'var(--medium-red)',
@@ -41,6 +42,7 @@ function PasswordItem({ password }) {
           </button>
           <button
             type="button"
+            onClick={() => onDelete && onDelete(password.id)}
             style={{
               padding: '6px 12px',
               backgroundColor: 'var(--base-red)',
