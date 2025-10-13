@@ -98,7 +98,8 @@ const useVaultStore = create((set, get) => ({
     // Clear all sensitive data from RAM
     set({
       isLocked: true,
-      passwords: [] // Clear decrypted passwords
+      passwords: [], // Clear decrypted passwords
+      masterKey: null // Clear encryption key (most critical)
     })
   },
 
