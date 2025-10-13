@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import defaultAvatar from "../assets/images/default-avatar.jpg";
 
 const Profile = () => {
   const { token, user, setUser } = useContext(AuthContext);
@@ -40,6 +41,13 @@ const Profile = () => {
   return (
     <div className="container">
       <h1>My profile</h1>
+      <div>
+        <img
+          src={user.avatar || defaultAvatar}
+          alt={`${user.name}'s avatar`}
+          className="avatar"
+        />
+      </div>
       <div>
         <p><strong>Name:</strong> {user.name}</p>
         <p><strong>Email:</strong> {user.email}</p>
