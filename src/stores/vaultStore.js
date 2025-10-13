@@ -171,14 +171,17 @@ const useVaultStore = create((set, get) => ({
     return { success: true }
   },
 
-  deletePassword: (id) => {
-    const { passwords } = get()
+  deletePassword: async (id) => {
+    const { passwords, saveVault } = get()
 
+    // Remove password from RAM
     const filteredPasswords = passwords.filter(pwd => pwd.id !== id)
 
     set({ passwords: filteredPasswords })
 
-    // TODO: Will delete from IndexedDB in [S1-04]
+    // Re-encrypt and save vault to IndexedDB
+    await saveVault()
+
     return { success: true }
   },
 
