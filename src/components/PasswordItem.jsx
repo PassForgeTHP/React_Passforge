@@ -17,7 +17,17 @@ function PasswordItem({ password, onEdit, onDelete }) {
       padding: '16px',
       marginBottom: '12px',
       borderRadius: '8px',
-      border: '1px solid var(--base-red)'
+      border: '1px solid var(--base-red)',
+      transition: 'all 0.2s ease',
+      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)'
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.transform = 'translateY(-2px)'
+      e.currentTarget.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)'
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.transform = 'translateY(0)'
+      e.currentTarget.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)'
     }}>
       <div style={{
         display: 'flex',
