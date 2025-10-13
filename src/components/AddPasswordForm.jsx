@@ -11,11 +11,13 @@ function AddPasswordForm() {
   const [notes, setNotes] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
+  const [successMessage, setSuccessMessage] = useState(null)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
     setError(null)
+    setSuccessMessage(null)
 
     try {
       await addPassword({
@@ -25,6 +27,7 @@ function AddPasswordForm() {
         password,
         notes
       })
+      setSuccessMessage('Password saved successfully')
     } catch (err) {
       setError(err.message || 'Failed to save password')
     } finally {
@@ -36,6 +39,31 @@ function AddPasswordForm() {
     <div className="container">
       <div className="form-card">
         <h2>Add New Password</h2>
+
+        {successMessage && (
+          <div style={{
+            padding: '12px',
+            marginBottom: '16px',
+            backgroundColor: 'var(--dark-red)',
+            color: 'var(--light)',
+            borderRadius: '4px'
+          }}>
+            {successMessage}
+          </div>
+        )}
+
+        {error && (
+          <div style={{
+            padding: '12px',
+            marginBottom: '16px',
+            backgroundColor: 'var(--medium-red)',
+            color: 'var(--light)',
+            borderRadius: '4px'
+          }}>
+            {error}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit}>
           <FormField
             label="Title"
