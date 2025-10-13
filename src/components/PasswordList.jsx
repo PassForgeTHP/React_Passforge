@@ -4,7 +4,19 @@ import PasswordItem from './PasswordItem'
 
 function PasswordList() {
   const passwords = useVaultStore((state) => state.passwords)
+  const deletePassword = useVaultStore((state) => state.deletePassword)
   const [searchQuery, setSearchQuery] = useState('')
+
+  const handleDelete = async (id) => {
+    if (window.confirm('Are you sure you want to delete this password?')) {
+      try {
+        await deletePassword(id)
+      } catch (error) {
+        console.error('Failed to delete password:', error)
+        alert('Failed to delete password')
+      }
+    }
+  }
 
   const filteredPasswords = passwords.filter(pwd =>
     pwd.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -59,7 +71,11 @@ function PasswordList() {
           </div>
         ) : (
           filteredPasswords.map((password) => (
-            <PasswordItem key={password.id} password={password} />
+            <PasswordItem
+              key={password.id}
+              password={password}
+              onDelete={handleDelete}
+            />
           ))
         )}
       </div>
