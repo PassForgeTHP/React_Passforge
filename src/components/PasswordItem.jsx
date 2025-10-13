@@ -3,6 +3,14 @@ import { useState } from 'react'
 function PasswordItem({ password, onEdit, onDelete }) {
   const [showPassword, setShowPassword] = useState(false)
 
+  const handleCopyPassword = async () => {
+    try {
+      await navigator.clipboard.writeText(password.password)
+    } catch (err) {
+      console.error('Failed to copy password:', err)
+    }
+  }
+
   return (
     <div className="password-item" style={{
       backgroundColor: 'var(--dark-red)',
@@ -84,6 +92,19 @@ function PasswordItem({ password, onEdit, onDelete }) {
             }}
           >
             {showPassword ? 'Hide' : 'Show'}
+          </button>
+          <button
+            type="button"
+            onClick={handleCopyPassword}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'var(--medium-red)',
+              cursor: 'pointer',
+              fontSize: '12px'
+            }}
+          >
+            Copy
           </button>
         </div>
         {password.notes && (
