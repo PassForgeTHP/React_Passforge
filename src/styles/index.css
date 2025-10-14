@@ -73,6 +73,10 @@ h3 {
   color: var(--medium-red);
 }
 
+p {
+  color: var(--light);
+}
+
 main {
   width: 95%;
   margin: 1rem auto;
