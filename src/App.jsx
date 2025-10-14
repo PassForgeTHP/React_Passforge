@@ -16,6 +16,7 @@ import "./styles/home.css";
 import Profile from "./pages/Profile";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
+import Contact from "./pages/Contact";
 import "./styles/form.css";
 
 import GDPR from "./pages/GDPR";
@@ -49,6 +50,7 @@ function App() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/gdpr" element={<GDPR />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
       <footer>
