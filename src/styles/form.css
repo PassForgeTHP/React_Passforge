@@ -34,7 +34,7 @@ label {
   color: var(--light);
 }
 
-form input {
+.email-input {
   padding: 0.5rem 1rem;
   background-color: var(--dark);
   color: var(--light);  
@@ -82,4 +82,36 @@ form button:hover{
 
 .form-link {
   color: var(--light);
+}
+
+.password-input{
+  border: none;
+  background-color: var(--dark);
+  color: var(--light);  
+  font-size: 1rem;
+}
+
+.password-hide-view{
+  display: flex;
+  padding: 0.1rem 1rem;
+  border: 1px solid var(--medium-red);
+  box-shadow: 0 0 8px var(--shadow-red);
+  border-radius: 8px;
+
+}
+
+.view-hide-pwd{
+  margin-left: 50px;
+  background: var(--dark);
+  border: none !important;
+  padding: 0.1rem 0.2rem !important;
+  box-shadow: none !important;
+  background: var(--dark)!important;
+}
+
+.view-hide-pwd:hover{
+  cursor: pointer;
+  background: var(--dark)!important;
+   box-shadow: none !important;
+   border: none !important;
 }

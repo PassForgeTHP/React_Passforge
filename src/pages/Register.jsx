@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
+import ViewPassword from "../components/ViewPassword";
 
 function Register() {
   const { login } = useContext(AuthContext);
@@ -46,25 +47,23 @@ function Register() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
+                className="email-input"
               />
             </div>
 
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                placeholder="password"
-              />
-            </div>
+              <ViewPassword 
+              value={password}
+              onChange={(e)=>setPassword(e.target.value)}
+              placeholder='password'
+              /></div>
 
             <div className="form-group">
               <label htmlFor="confirmation">Confirmation</label>
-              <input
+              <ViewPassword
                 value={passwordConfirmation}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
-                type="password"
                 placeholder="Confirmation"
               />
             </div>

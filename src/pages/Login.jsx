@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
+import ViewPassword from "../components/ViewPassword";
 
 function Login() {
   const { login } = useContext(AuthContext);
@@ -37,12 +38,15 @@ function Login() {
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
+              <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" className="email-input"/>
             </div>
-
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password"/>
+              <ViewPassword 
+              value={password}
+              onChange={(e)=>setPassword(e.target.value)}
+              placeholder='password'
+              />
             </div>
             <div className="form-actions">
               <button type="submit">Login</button>

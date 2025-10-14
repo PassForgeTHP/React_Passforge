@@ -1,5 +1,6 @@
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import ViewPassword from "../components/ViewPassword";
 
 const ResetPassword = () => {
   const [searchParams] = useSearchParams();
@@ -45,14 +46,12 @@ const ResetPassword = () => {
 
         <div>
           <form onSubmit={handleSubmit}>
-            <input
-              type="password"
+            <ViewPassword
               placeholder="New password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <input
-              type="password"
+            <ViewPassword
               placeholder="Confirm password"
               value={passwordConfirmation}
               onChange={(e) => setPasswordConfirmation(e.target.value)}
