@@ -6,16 +6,12 @@ export default function Footer() {
         <Link
           to="/gdpr"
           className="footer-link "
-          target="_blank"
-          rel="noopener noreferrer"
         >
           GDPR
         </Link>
         <Link
           to="/faq"
           className="footer-link"
-          target="_blank"
-          rel="noopener noreferrer"
         >
           FAQ
         </Link>
@@ -31,8 +27,6 @@ export default function Footer() {
         <Link
           to="/contact"
           className="footer-link"
-          target="_blank"
-          rel="noopener noreferrer"
         >
           Contact
         </Link>

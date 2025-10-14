@@ -67,12 +67,12 @@
 }
 
 .nav-item a:hover {
-  background: var(--gradient);
+  background: var(--gradient-dark);
   color: var(--light);
 }
 
 .nav-item a.active {
-  background-color: var(--gradient);
+  background-color: var(--gradient-dark);
   color: var(--light);
 }
 
@@ -141,12 +141,12 @@
 }
 
 .offcanvas a:hover {
-  background: var(--gradient);
+  background: var(--gradient-dark);
   color: var(--light);
 }
 
 .offcanvas a.active {
-  background: var(--gradient);
+  background: var(--gradient-dark);
   color: var(--light);
 }
 

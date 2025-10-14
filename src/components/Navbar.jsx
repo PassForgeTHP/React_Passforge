@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import useTheme from "../hooks/useTheme";
 import logo from "../assets/images/logo.svg";
 
 export default function Navbar() {
@@ -7,6 +8,7 @@ export default function Navbar() {
   const location = useLocation();
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
+  const {theme, toggleTheme}=useTheme();
 
   useEffect(() => {
     setIsOpen(false);
@@ -78,6 +80,15 @@ export default function Navbar() {
               >
                 Register
               </Link>
+            </li>
+            <li>
+              <button 
+              className="theme-toggle"
+              onClick={toggleTheme}
+              type="button"
+              >
+                {theme === "dark" ?  "☀️": "🌙"}
+              </button>
             </li>
           </ul>
         </div>

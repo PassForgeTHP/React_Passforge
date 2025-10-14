@@ -39,6 +39,7 @@ export default function Contact() {
               type="email" 
               value={email}
               onChange={e=> setEmail(e.target.value)}
+              className="email-input"
               required
               />
             </div>
@@ -51,6 +52,7 @@ export default function Contact() {
               value={subject}
               onChange={e=>setSubject(e.target.value)}
               required
+              className="subject-input"
               />
             </div>
             <div className="form-group">
@@ -61,6 +63,7 @@ export default function Contact() {
               value={content}
               onChange={e=>setContent(e.target.value)}
               required
+              className="content-input"
               />
             </div>
             <div className="form-actions">

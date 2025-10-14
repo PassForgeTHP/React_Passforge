@@ -5,21 +5,26 @@
   --light: #e3d3bf;
   --medium-red: #af0024;
   --font-family: "Outfit", sans-serif;
-  --gradient: linear-gradient(90deg, #af0024 0%, #77080e 50%, #470508 100%);
+  --gradient-dark: linear-gradient(90deg, #af0024 0%, #77080e 50%, #470508 100%);
+  --gradient-dark-light: linear-gradient(90deg, #77080e 0%, #af0024 50%, #e3d3bf 100%);
   --shadow-light: rgba(255, 255, 255, 0.2);
   --shadow-dark: rgba(0, 0, 0, 0.2);
   --shadow-red: rgba(255, 0, 0, 0.2);
   --rgba-dark: rgba(0, 0, 0, 0.5);
+  --all-Light: #e3d3bf;
+  --all-dark: #1a1720;
 }
 
-[data-theme="dark"] {
-  --base-red: #77080e;
-  --dark: #1a1720;
+[data-theme="light"] {
+  --all-Light: #e3d3bf;
+  --all-dark: #1a1720;
+  --base-red: #e3d3bf;
+  --dark: #e3d3bf;
   --dark-red: #470508;
-  --light: #e3d3bf;
+  --light: #1a1720;
   --medium-red: #af0024;
   --font-family: "Outfit", sans-serif;
-  --gradient: linear-gradient(90deg, #af0024 0%, #77080e 50%, #470508 100%);
+  --gradient-dark:  #e3d3bf ;
   --shadow-light: rgba(255, 255, 255, 0.2);
   --shadow-dark: rgba(0, 0, 0, 0.2);
   --shadow-red: rgba(255, 0, 0, 0.2);
@@ -92,4 +97,22 @@ main {
   margin: 1rem auto;
 }
 
+.theme-toggle{
+  cursor: pointer;
+  background: var(--light);
+  color: var(--dark);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 3rem;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle:hover{
+  transform: scale(1.05);
+}
+
+li{
+  list-style: none;
+}
 

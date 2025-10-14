@@ -34,7 +34,7 @@ label {
   color: var(--light);
 }
 
-.email-input {
+.email-input, .subject-input, .content-input{
   padding: 0.5rem 1rem;
   background-color: var(--dark);
   color: var(--light);  
@@ -42,6 +42,11 @@ label {
   box-shadow: 0 0 8px var(--shadow-red);
   border-radius: 8px;
   font-size: 1rem;
+}
+
+.content-input{
+  min-height: 150px;
+  resize: vertical;
 }
 
 form input:focus {
