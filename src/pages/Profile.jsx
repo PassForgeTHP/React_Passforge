@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import defaultAvatar from "../assets/images/default-avatar.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const { token, user, setUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
-
+  const navigate = useNavigate();
   
 
   useEffect(() => {
@@ -52,7 +53,7 @@ const Profile = () => {
           <p><strong>Name:</strong> {user.name}</p>
           <p><strong>Email:</strong> {user.email}</p>
           <div className="buttons-profile">
-            <button>Edit profile</button>
+            <button onClick={() => navigate("/edit-profile")}>Edit profile</button>
             <button>Delete profile</button>
           </div>
         </div>
