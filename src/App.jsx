@@ -17,6 +17,7 @@ import Profile from "./pages/Profile";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import EditProfile from "./pages/EditProfile";
+import Contact from "./pages/Contact";
 import "./styles/form.css";
 import "./styles/profile.css";
 import GDPR from "./pages/GDPR";
@@ -51,6 +52,7 @@ function App() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/gdpr" element={<GDPR />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
       <footer>
