@@ -87,6 +87,11 @@ const Profile = () => {
           </div>
         </div>
       </div>
+
+      <div className="buttons-profile">
+        <button className="btn-edit">Download the extension</button>
+        <button className="btn-edit">Export my data</button>
+      </div>
     </div>
   );
 };

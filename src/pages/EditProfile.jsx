@@ -156,7 +156,16 @@ const EditProfile = () => {
         </div>
       </div>
 
-      <button onClick={handleDelete} className="btn-edit">Delete profile</button>
+      <div>
+        <div className="buttons-profile"> 
+          <button className="btn-edit">Download the extension</button>
+          <button className="btn-edit" onClick={() => navigate("/profile")}>go to my profile</button>
+        </div>
+        <div>
+          <button onClick={handleDelete} className="btn-edit">Delete profile</button>
+        </div>
+      </div>
+      
 
       {message && <p className="status-message">{message}</p>}
     </div>
