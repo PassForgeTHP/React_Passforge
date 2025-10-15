@@ -1,6 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 import useTheme from "../hooks/useTheme";
+
 import logo from "../assets/images/logo.svg";
 
 export default function Navbar() {
@@ -8,7 +11,11 @@ export default function Navbar() {
   const location = useLocation();
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
+
   const {theme, toggleTheme}=useTheme();
+
+  const { user, logout } = useContext(AuthContext);
+
 
   useEffect(() => {
     setIsOpen(false);
@@ -57,31 +64,43 @@ export default function Navbar() {
             </li>
           </ul>
           <ul className="container-right">
-            <li className="nav-item">
-              <Link
-                to="/profile"
-                className={location.pathname === "/profile" ? "active" : ""}
-              >
-                Profile
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/login"
-                className={location.pathname === "/login" ? "active" : ""}
-              >
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/register"
-                className={location.pathname === "/register" ? "active" : ""}
-              >
-                Register
-              </Link>
-            </li>
-            <li>
+           {user ? (
+              <>
+                <li className="nav-item">
+                  <Link
+                    to="/profile"
+                    className={location.pathname === "/profile" ? "active" : ""}
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <button onClick={logout} className="logout-btn">
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link
+                    to="/login"
+                    className={location.pathname === "/login" ? "active" : ""}
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    to="/register"
+                    className={location.pathname === "/register" ? "active" : ""}
+                  >
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
+                        <li>
               <button 
               className="theme-toggle"
               onClick={toggleTheme}
@@ -92,6 +111,7 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
+
         <div className={`offcanvas ${isOpen ? "open" : ""}`}>
           <div className="offcanvas-header">
             <h3>Menu</h3>
@@ -130,30 +150,45 @@ export default function Navbar() {
                 Pricing
               </Link>
             </li>
-            <li>
-              <Link
-                to="/profile"
-                className={location.pathname === "/profile" ? "active" : ""}
-              >
-                Profile
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/login"
-                className={location.pathname === "/login" ? "active" : ""}
-              >
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/register"
-                className={location.pathname === "/register" ? "active" : ""}
-              >
-                Register
-              </Link>
-            </li>
+            {user ? (
+              <>
+                <li>
+                  <Link
+                    to="/profile"
+                    className={location.pathname === "/profile" ? "active" : ""}
+                    onClick={closeMenu}
+                  >
+                    My Profile
+                  </Link>
+                </li>
+                <li>
+                  <button className="logout-menu-btn" onClick={logout}>
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link
+                    to="/login"
+                    className={location.pathname === "/login" ? "active" : ""}
+                    onClick={closeMenu}
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/register"
+                    className={location.pathname === "/register" ? "active" : ""}
+                    onClick={closeMenu}
+                  >
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <div

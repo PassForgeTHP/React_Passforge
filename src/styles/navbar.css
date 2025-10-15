@@ -166,3 +166,32 @@
   visibility: visible;
   opacity: 1;
 }
+
+.logout-btn {
+  outline: none;
+  background: none;
+  border: none;
+  color: var(--light);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  display: block;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+}
+
+.logout-btn:hover {
+  color: var(--medium-red);
+  text-decoration: none;
+}
+
+.logout-menu-btn {
+    outline: none;
+  background: none;
+  border: none;
+  color: var(--dark);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  display: block;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+}

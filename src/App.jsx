@@ -16,10 +16,11 @@ import "./styles/home.css";
 import Profile from "./pages/Profile";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
+import EditProfile from "./pages/EditProfile";
 import Contact from "./pages/Contact";
 import { ThemeProvider } from "./contexts/ThemeProvider";
 import "./styles/form.css";
-
+import "./styles/profile.css";
 import GDPR from "./pages/GDPR";
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/security-advice" element={<SecurityAdvice />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/pricing" element={<Pricing />} />
