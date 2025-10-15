@@ -46,6 +46,9 @@ const EditProfile = () => {
       if (response.ok) {
         setUser(data.user);
         setMessage("Profile updated successfully!");
+        setTimeout(() => {
+          navigate("/profile");
+        }, 800);
       } else {
         setMessage(`${data.message || "Update failed."}`);
       }
@@ -87,6 +90,7 @@ const EditProfile = () => {
   return (
     <div className="container-profile">
       <h1>Edit my profile</h1>
+      {message && <p className="status-message">{message}</p>}
 
       <div className="profile-content">
         <div className="avatar-container">
@@ -166,8 +170,6 @@ const EditProfile = () => {
         </div>
       </div>
       
-
-      {message && <p className="status-message">{message}</p>}
     </div>
   );
 };
