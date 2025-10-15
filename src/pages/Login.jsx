@@ -7,26 +7,38 @@ function Login() {
   const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:3000/users/sign_in", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user: { email, password } })
-    });
+    setMessage("");
 
-    if (!res.ok) {
-      console.error("Login failed");
-      return;
+    try {
+      const res = await fetch("http://localhost:3000/users/sign_in", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user: { email, password } }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+      // console.log("API response:", res.status, data);
+
+      if (!res.ok) {
+        const errorMsg =
+          data.message || data.error || "Invalid email or password.";
+        setMessage(errorMsg);
+        return;
+      }
+
+      const token = res.headers.get("Authorization")?.split(" ")[1];
+      login(data.user, token);
+      setMessage(data.message || "You are logged in.");
+      setTimeout(() => navigate("/profile"), 800);
+    } catch (error) {
+      console.error("Login error:", error);
+      setMessage("Server error. Please try again later.");
     }
-
-    const data = await res.json();
-    const token = res.headers.get("Authorization")?.split(" ")[1];
-    login(data.user, token);
-
-    navigate("/profile");
   };
 
   return (
@@ -34,6 +46,7 @@ function Login() {
       <div className="form-card">
         <h1 className="title">Login</h1>
       
+        {message && <p className="status-message">{message}</p>}
         <div>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
