@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
   const { user, token, setUser } = useContext(AuthContext);
@@ -10,6 +11,7 @@ const EditProfile = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -52,18 +54,48 @@ const EditProfile = () => {
     }
   };
 
+  const handleDelete = async () => {
+    if (!window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/users", {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert(data.message || "Your account has been deleted.");
+        setUser(null);
+        localStorage.removeItem("token");
+        navigate("/");
+      } else {
+        alert(data.message || "Failed to delete account.");
+      }
+    } catch (error) {
+      console.error("Error deleting account:", error);
+      alert("Network error. Please try again later.");
+    }
+  };
+
   return (
     <div className="container-profile">
       <h1>Edit my profile</h1>
-      <form onSubmit={handleSubmit} className="profile-form" encType="multipart/form-data">
 
-        <div className="form-group">
-          <label htmlFor="avatar">Avatar:</label>
+      <div className="profile-content">
+        <div className="avatar-container">
+          <label htmlFor="avatar"></label>
           {preview && (
             <img
               src={preview}
               alt="avatar preview"
-              style={{ width: "120px", height: "120px", borderRadius: "50%", objectFit: "cover", marginBottom: "1rem" }}
+              className="avatar"
             />
           )}
           <input
@@ -74,48 +106,66 @@ const EditProfile = () => {
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            id="name"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
+        <div className="form-edit">
+          <form onSubmit={handleSubmit}  encType="multipart/form-data" >
 
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
+            <div className="form-group">
+              <label htmlFor="name">Name:</label>
+              <input
+                id="name"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)} className="email-input"
+              />
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="password">New Password:</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+            <div className="form-group">
+              <label htmlFor="email">Email:</label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)} className="email-input"
+              />
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="passwordConfirmation">Confirm Password:</label>
-          <input
-            id="passwordConfirmation"
-            type="password"
-            value={passwordConfirmation}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
-          />
-        </div>
+            <div className="form-group">
+              <label htmlFor="password">New Password:</label>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)} className="email-input"
+              />
+            </div>
 
-        <button type="submit" className="btn-update">Update Profile</button>
-      </form>
+            <div className="form-group">
+              <label htmlFor="passwordConfirmation">Confirm Password:</label>
+              <input
+                id="passwordConfirmation"
+                type="password"
+                value={passwordConfirmation}
+                onChange={(e) => setPasswordConfirmation(e.target.value)} className="email-input"
+              />
+            </div>
+
+            <div className="form-actions">
+              <button type="submit">Update Profile</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div>
+        <div className="buttons-profile"> 
+          <button className="btn-edit">Download the extension</button>
+          <button className="btn-edit" onClick={() => navigate("/profile")}>go to my profile</button>
+        </div>
+        <div>
+          <button onClick={handleDelete} className="btn-edit">Delete profile</button>
+        </div>
+      </div>
+      
 
       {message && <p className="status-message">{message}</p>}
     </div>

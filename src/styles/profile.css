@@ -7,7 +7,7 @@
   height: 250px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 2rem;
+
 }
 
 .container-profile h1 {
@@ -54,5 +54,38 @@
 .buttons-profile {
   display: flex;
   gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* EDIT PROFILE */
+
+.profile-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form-edit {
+  max-width:700px;
+  width: 100%;
+}
+
+.btn-edit {
+  color: var(--dark);
+  background-color: var(--medium-red);
+  padding: 0.4rem 1.8rem;
+  border-radius: 1.5rem;
+  border: none;
+  box-shadow: 0 0 8px var(--shadow-red);
+  font-size: 1.2rem;
   margin-top: 2rem;
 }
