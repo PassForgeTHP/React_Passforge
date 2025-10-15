@@ -23,7 +23,6 @@ function Register() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           user: {
-            name,
             email,
             password,
             password_confirmation: passwordConfirmation,
@@ -40,7 +39,7 @@ function Register() {
         return;
       }
 
-      const token = res.headers.get("Authorization")?.split(" ")[1];
+      const token = data.token;
       login(data.user, token);
 
       setMessage(data.message || "Signed up successfully!");
@@ -65,7 +64,7 @@ function Register() {
             {message}
           </p>
         )}
-        
+
         {errors.length > 0 && (
           <ul className="error-list">
             {errors.map((err, i) => (

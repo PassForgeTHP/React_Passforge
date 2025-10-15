@@ -31,6 +31,7 @@ const EditProfile = () => {
     if (password) formData.append("user[password]", password);
     if (passwordConfirmation) formData.append("user[password_confirmation]", passwordConfirmation);
 
+    console.log("Token envoyé :", token);
     try {
       const response = await fetch("http://localhost:3000/users", {
         method: "PUT",
@@ -64,7 +65,6 @@ const EditProfile = () => {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,
-          "Content-Type": "application/json",
         },
       });
 
