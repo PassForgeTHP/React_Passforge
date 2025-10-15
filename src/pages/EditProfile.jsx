@@ -90,7 +90,7 @@ const EditProfile = () => {
   return (
     <div className="container-profile">
       <h1>Edit my profile</h1>
-      {message && <p className="status-message">{message}</p>}
+      {message && <div className="card-alerte"><p className="status-message">{message}</p></div>}
 
       <div className="profile-content">
         <div className="avatar-container">

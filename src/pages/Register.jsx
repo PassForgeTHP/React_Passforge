@@ -54,26 +54,29 @@ function Register() {
     <div className="container">
       <div className="form-card">
         <h1>Sign Up</h1>
+        
+          {message && (
+            <div className="card-alerte">
+              <p
+                className={`status-message ${
+                  message.toLowerCase().includes("failed") ? "error" : "success"
+                }`}
+              >
+                {message}
+              </p>
+            </div>
+          )}
 
-        {message && (
-          <p
-            className={`status-message ${
-              message.toLowerCase().includes("failed") ? "error" : "success"
-            }`}
-          >
-            {message}
-          </p>
-        )}
-
-        {errors.length > 0 && (
-          <ul className="error-list">
-            {errors.map((err, i) => (
-              <li key={i} className="error-item">
-                {err}
-              </li>
-            ))}
-          </ul>
-        )}
+          {errors.length > 0 && (
+            <ul className="card-alerte">
+              {errors.map((err, i) => (
+                <li key={i} className="error-item">
+                  {err}
+                </li>
+              ))}
+            </ul>
+          )}
+        
 
         <div>
           <form onSubmit={handleSubmit}>

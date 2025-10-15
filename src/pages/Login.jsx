@@ -46,7 +46,7 @@ function Login() {
       <div className="form-card">
         <h1 className="title">Login</h1>
       
-        {message && <p className="status-message">{message}</p>}
+        {message && <div className="card-alerte"><p className="status-message">{message}</p></div>}
         <div>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
