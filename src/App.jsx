@@ -22,6 +22,7 @@ import "./styles/form.css";
 import "./styles/profile.css";
 import GDPR from "./pages/GDPR";
 import PrivateRoute from "./components/PrivateRoute";
+import NotFound from "./pages/NotFound";
 
 function App() {
   // Initialize IndexedDB on app startup
@@ -52,6 +53,7 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/gdpr" element={<GDPR />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
 
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
