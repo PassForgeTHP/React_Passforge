@@ -194,3 +194,38 @@ footer {
 .error-item {
   color: var(--light);
 }
+
+/* NOT FOUND */
+
+.not-found {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: var(--light);
+ 
+  gap: 2rem;
+  margin: 12rem auto;
+  padding: 3rem 5.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--medium-red);
+  background: var(--dark);
+  box-shadow: 0 4px 15px var(--shadow-red);
+  width: 700px;
+}
+
+.btn-link {
+  color: var(--light);
+  text-decoration: none;
+  background-color: var(--medium-red);
+  padding: 0.4rem 1.8rem;
+  border-radius: 1.5rem;
+  border: none;
+  box-shadow: 0 0 8px var(--shadow-red);
+}
+
+.btn-link:hover{
+  color: var(--dark);
+  background-color: var(--light);
+  box-shadow: 0 0 8px var(--shadow-light);
+ 
+}
