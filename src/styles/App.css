@@ -55,7 +55,7 @@ footer {
 }
 
 .faq-container .card {
-  background: var(--gradient);
+  background: var(--gradient-dark);
   border: 0.1rem solid var(--light);
   color: var(--light);
   border-radius: 0.5rem;
@@ -93,7 +93,7 @@ footer {
 }
 
 .pricing-container-home .cards .card {
-  background: var(--gradient);
+  background: var(--gradient-dark);
   border: 0.1rem solid var(--light);
   color: var(--light);
   border-radius: 0.5rem;
@@ -132,9 +132,17 @@ footer {
 }
 
 .list-group {
-  background-color: var(--light);
+  background-color: var(--all-Light);
   border-radius: 0.3rem;
+  margin-top: 1rem;
+  border: .2rem solid var(--dark-red);
 }
+
+.list-group .list-group-item {
+  padding: 0.1rem .5rem;
+  color: var(--all-dark);
+}
+
 
 /* Security advice */
 

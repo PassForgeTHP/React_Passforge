@@ -1,6 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
+
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import useTheme from "../hooks/useTheme";
+
 import logo from "../assets/images/logo.svg";
 
 export default function Navbar() {
@@ -8,7 +11,11 @@ export default function Navbar() {
   const location = useLocation();
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
+
+  const {theme, toggleTheme}=useTheme();
+
   const { user, logout } = useContext(AuthContext);
+
 
   useEffect(() => {
     setIsOpen(false);
@@ -93,6 +100,15 @@ export default function Navbar() {
                 </li>
               </>
             )}
+                        <li>
+              <button 
+              className="theme-toggle"
+              onClick={toggleTheme}
+              type="button"
+              >
+                {theme === "dark" ?  "☀️": "🌙"}
+              </button>
+            </li>
           </ul>
         </div>
 

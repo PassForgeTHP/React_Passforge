@@ -18,6 +18,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import EditProfile from "./pages/EditProfile";
 import Contact from "./pages/Contact";
+import { ThemeProvider } from "./contexts/ThemeProvider";
 import "./styles/form.css";
 import "./styles/profile.css";
 import GDPR from "./pages/GDPR";
@@ -35,7 +36,8 @@ function App() {
   }, []);
 
   return (
-    <div className="app-wrapper">
+<ThemeProvider>
+      <div className="app-wrapper">
       <header>
         <Navbar />
       </header>
@@ -59,6 +61,7 @@ function App() {
         <Footer />
       </footer>
     </div>
+</ThemeProvider>
   );
 }
 
