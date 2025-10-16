@@ -4,11 +4,11 @@ footer {
   bottom: 0;
   width: 100%;
   background-color: var(--dark);
-  padding: 1rem;
+  padding: 1rem 3rem;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   border-top: 0.1rem solid var(--light);
-  z-index: 10;
 }
 
 .footer-left,
