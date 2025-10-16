@@ -44,6 +44,12 @@
     display: flex;
     flex-direction: column;
   }
+
+  .footer-left .footer-link,
+  .footer-right .footer-link {
+    border: none;
+    padding: 0.5rem 0;
+  }
 }
 
 @media screen and (min-width: 1014px) and (max-width: 1118px) {
