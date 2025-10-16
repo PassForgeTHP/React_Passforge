@@ -1,5 +1,5 @@
 .container-profile {
-  padding-top: 6rem;
+  padding-top: 5rem;
 }
 
 .avatar {
@@ -11,9 +11,8 @@
 }
 
 .container-profile h1 {
-  margin-bottom: 4rem;
-  margin-left: 8rem;
-  font-size: 72px;
+  margin-bottom: 5rem;
+
 }
 
 .profile-content {
@@ -77,15 +76,4 @@
 .form-edit {
   max-width:700px;
   width: 100%;
-}
-
-.btn-edit {
-  color: var(--dark);
-  background-color: var(--medium-red);
-  padding: 0.4rem 1.8rem;
-  border-radius: 1.5rem;
-  border: none;
-  box-shadow: 0 0 8px var(--shadow-red);
-  font-size: 1.2rem;
-  margin-top: 2rem;
 }

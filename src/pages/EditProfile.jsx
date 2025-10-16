@@ -162,11 +162,11 @@ const EditProfile = () => {
 
       <div>
         <div className="buttons-profile"> 
-          <button className="btn-edit">Download the extension</button>
-          <button className="btn-edit" onClick={() => navigate("/profile")}>go to my profile</button>
+          <button className="btn">Download the extension</button>
+          <button className="btn" onClick={() => navigate("/profile")}>go to my profile</button>
         </div>
         <div>
-          <button onClick={handleDelete} className="btn-edit">Delete profile</button>
+          <button onClick={handleDelete} className="btn">Delete profile</button>
         </div>
       </div>
       

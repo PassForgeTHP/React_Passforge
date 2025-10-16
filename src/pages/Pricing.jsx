@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 export default function Pricing() {
   return (
     <section className="pricing-container-home" id="pricing">
-      <h2> 🪙 Choose the plan that fits your needs</h2>
+      <h1>Choose the plan that fits your needs</h1>
       <div className="cards">
         <div className="card">
           <div className="card-body">
@@ -14,7 +14,7 @@ export default function Pricing() {
               <br />
               <br />
             </div>
-            <Link to="/register" className="link-pricing">
+            <Link to="/register" className="btn">
               Create a free account
             </Link>
 
@@ -35,7 +35,7 @@ export default function Pricing() {
               </p>
               <p>10€ billed annually </p>
             </div>
-            <Link to="/register" className="link-pricing">
+            <Link to="/register" className="btn">
               Create a Premium account
             </Link>
             <p className="card-text">Enjoy premium features!</p>
@@ -55,7 +55,7 @@ export default function Pricing() {
               </p>
               <p>40€ billed annually </p>
             </div>
-            <Link to="/register" className="link-pricing">
+            <Link to="/register" className="btn">
               Start Free Trial
             </Link>
             <p className="card-text">Secure your family logins!</p>

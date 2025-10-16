@@ -4,7 +4,7 @@ export default function SecurityAdvice() {
   return (
     <section className="security-advice-container">
       <div className="security-section">
-        <h2>Why PassForge ?</h2>
+        <h1>Why PassForge ?</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit
           amet diam turpis. Donec semper malesuada nulla, sit amet lobortis
@@ -16,7 +16,7 @@ export default function SecurityAdvice() {
       <div className="block-text-img left">
         <img src={img1} alt="image 1" className="block-two" />
         <div className="security-section block-one">
-          <h2>How to use ?</h2>
+          <h1>How to use ?</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit
             amet diam turpis. Donec semper malesuada nulla, sit amet lobortis
@@ -28,7 +28,7 @@ export default function SecurityAdvice() {
       </div>
       <div className="block-text-img right">
         <div className="security-section block-one">
-          <h2>Our tips </h2>
+          <h1>Our tips </h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit
             amet diam turpis. Donec semper malesuada nulla, sit amet lobortis
