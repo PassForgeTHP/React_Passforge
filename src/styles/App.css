@@ -1,31 +1,31 @@
 /* FOOTER */
 footer {
-  position: fixed;
+  position: relative;
   bottom: 0;
-  left: 0;
   width: 100%;
   background-color: var(--dark);
-  padding: 1rem 3rem;
-  z-index: 1001;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   border-top: 0.1rem solid var(--light);
+  z-index: 10;
 }
 
 .footer-left,
-.footer-right,
-.container-foot {
+.footer-right {
   display: flex;
   gap: 1rem;
 }
-
-.footer-link {
-  text-decoration: none;
+.container-foot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.footer-link,
-.container-foot {
+.footer-link {
   color: var(--light);
+  text-decoration: none;
 }
 
 .footer-link:hover {

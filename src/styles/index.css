@@ -31,76 +31,6 @@
   --rgba-dark: rgba(0, 0, 0, 0.5);
 }
 
-
-/* CSS Reset complet */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  width: 100%;
-  overflow-x: hidden;
-}
-
-body {
-  width: 100%;
-  min-height: 100vh;
-  font-family: var(--font-family);
-  background-color: var(--dark);
-  overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-#root {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-.app-wrapper {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-header,
-footer {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-h1,
-h2,
-h3 {
-  color: var(--medium-red);
-}
-
-p {
-  color: var(--light);
-}
-
-main {
-  width: 95%;
-  margin: 1rem auto;
-}
-
 .theme-toggle{
   cursor: pointer;
   background: var(--light);
@@ -115,6 +45,50 @@ main {
 .theme-toggle:hover{
   transform: scale(1.05);
 }
+
+/* CSS Reset complet */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-family);
+  background-color: var(--dark);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root, .app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  width: 90%;
+  margin: 0rem auto;
+  flex: 1;
+  padding: 2rem 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--medium-red);
+}
+
+p {
+  color: var(--light);
+}
+
 
 li{
   list-style: none;
