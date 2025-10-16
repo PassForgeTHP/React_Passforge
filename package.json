@@ -12,6 +12,7 @@
     "format:check": "prettier --check src/**/*.{js,jsx,ts,tsx,json,css,md}"
   },
   "dependencies": {
+    "@iconify/react": "^6.0.2",
     "i18next": "^25.6.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

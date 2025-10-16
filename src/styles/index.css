@@ -35,11 +35,12 @@
   cursor: pointer;
   background: var(--light);
   color: var(--dark);
+  box-shadow: 0 0px 15px var(--shadow-light);
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.2rem 0.8rem;
   border-radius: 3rem;
-  font-size: 1rem;
   transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0.7rem 1rem;
 }
 
 .theme-toggle:hover{
