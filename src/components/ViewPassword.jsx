@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Icon } from "@iconify/react";
 
 export default function ViewPassword({value, onChange, placeholder}){
   const [showPwd, setShowPwd]=useState(false)
@@ -15,7 +16,11 @@ export default function ViewPassword({value, onChange, placeholder}){
     className="view-hide-pwd"
     onClick={()=>setShowPwd(!showPwd)}
     >
-      {showPwd? '👁️':"🙈"}
+      {showPwd? (
+                  <Icon icon="mdi:eye-outline" width="20" />
+                ) : (
+                  <Icon icon="mdi:eye-off-outline" width="20"/>
+                )}
     </button>
   </div>)
 }
