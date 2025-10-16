@@ -117,8 +117,7 @@ export default function GDPR() {
       <div>
         <h3>Contact</h3>
         <p>
-          If you have questions about this policy or your data, contact: 📩
-          privacy@passforge.com
+          If you have questions about this policy or your data, contact: passforge1@gmail.com
         </p>
       </div>
     </section>
