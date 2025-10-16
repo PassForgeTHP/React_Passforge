@@ -22,6 +22,8 @@ import { ThemeProvider } from "./contexts/ThemeProvider";
 import "./styles/form.css";
 import "./styles/profile.css";
 import GDPR from "./pages/GDPR";
+import PrivateRoute from "./components/PrivateRoute";
+import NotFound from "./pages/NotFound";
 
 function App() {
   // Initialize IndexedDB on app startup
@@ -47,14 +49,18 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/security-advice" element={<SecurityAdvice />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/gdpr" element={<GDPR />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+
+          <Route element={<PrivateRoute />}>
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/edit-profile" element={<EditProfile />} />
+          </Route>
         </Routes>
       </main>
       <footer>

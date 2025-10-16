@@ -8,37 +8,76 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [message, setMessage] = useState("");
+  const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setMessage("");
+    setErrors([]);
 
-    const res = await fetch("http://localhost:3000/users", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        user: { email, password, password_confirmation: passwordConfirmation }
-      }),
-    });
+    try {
+      const res = await fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user: {
+            email,
+            password,
+            password_confirmation: passwordConfirmation,
+          },
+        }),
+      });
 
-    if (!res.ok) {
-      console.error("Signup failed");
-      return;
+      const data = await res.json().catch(() => ({}));
+      console.log("API response:", res.status, data);
+
+      if (!res.ok) {
+        setMessage(data.message || "Signup failed.");
+        if (data.errors) setErrors(data.errors);
+        return;
+      }
+
+      const token = data.token;
+      login(data.user, token);
+
+      setMessage(data.message || "Signed up successfully!");
+      setTimeout(() => navigate("/profile"), 800);
+    } catch (error) {
+      console.error("Signup error:", error);
+      setMessage("Server error. Please try again later.");
     }
-
-    const data = await res.json();
-    const token = res.headers.get("Authorization")?.split(" ")[1];
-
-    login(data.user, token);
-
-    navigate("/profile");
   };
 
   return (
     <div className="container">
       <div className="form-card">
         <h1>Sign Up</h1>
-      
+        
+          {message && (
+            <div className="card-alerte">
+              <p
+                className={`status-message ${
+                  message.toLowerCase().includes("failed") ? "error" : "success"
+                }`}
+              >
+                {message}
+              </p>
+            </div>
+          )}
+
+          {errors.length > 0 && (
+            <ul className="card-alerte">
+              {errors.map((err, i) => (
+                <li key={i} className="error-item">
+                  {err}
+                </li>
+              ))}
+            </ul>
+          )}
+        
+
         <div>
           <form onSubmit={handleSubmit}>
             <div className="form-group">

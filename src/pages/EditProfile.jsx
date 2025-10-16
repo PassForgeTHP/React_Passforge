@@ -31,6 +31,7 @@ const EditProfile = () => {
     if (password) formData.append("user[password]", password);
     if (passwordConfirmation) formData.append("user[password_confirmation]", passwordConfirmation);
 
+    console.log("Token envoyé :", token);
     try {
       const response = await fetch("http://localhost:3000/users", {
         method: "PUT",
@@ -45,6 +46,9 @@ const EditProfile = () => {
       if (response.ok) {
         setUser(data.user);
         setMessage("Profile updated successfully!");
+        setTimeout(() => {
+          navigate("/profile");
+        }, 800);
       } else {
         setMessage(`${data.message || "Update failed."}`);
       }
@@ -64,7 +68,6 @@ const EditProfile = () => {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,
-          "Content-Type": "application/json",
         },
       });
 
@@ -87,6 +90,7 @@ const EditProfile = () => {
   return (
     <div className="container-profile">
       <h1>Edit my profile</h1>
+      {message && <div className="card-alerte"><p className="status-message">{message}</p></div>}
 
       <div className="profile-content">
         <div className="avatar-container">
@@ -166,8 +170,6 @@ const EditProfile = () => {
         </div>
       </div>
       
-
-      {message && <p className="status-message">{message}</p>}
     </div>
   );
 };
