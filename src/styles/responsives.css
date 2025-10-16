@@ -140,6 +140,10 @@
   .security-advice-container {
     margin: 7rem 2rem 10rem;
   }
+
+  .text-container-home h1 {
+    font-size: 5.5rem!important;
+  }
 }
 
 @media screen and (max-width: 420px) {

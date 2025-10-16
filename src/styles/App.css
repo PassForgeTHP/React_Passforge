@@ -240,7 +240,7 @@ footer {
 }
 
 .btn-link {
-  color: var(--light);
+  color: var(--dark);
   text-decoration: none;
   background-color: var(--medium-red);
   padding: 0.4rem 1.8rem;
@@ -254,4 +254,17 @@ footer {
   background-color: var(--light);
   box-shadow: 0 0 8px var(--shadow-light);
  
+}
+
+
+/* COMPONENTS */ 
+.btn {
+  color: var(--dark);
+  background-color: var(--medium-red);
+  padding: 0.4rem 1.8rem;
+  border-radius: 1.5rem;
+  border: none;
+  box-shadow: 0 0 8px var(--shadow-red);
+  font-size: 1rem;
+  margin-top: 2rem;
 }
