@@ -1,0 +1,204 @@
+.navbar {
+  background-color: var(--dark);
+  box-shadow: 0 0.1rem 0.5rem var(--shadow-dark);
+  position: fixed;
+  top: 0;
+  height: 3.5rem;
+  border-bottom: 0.1rem solid var(--shadow-light);
+  width: 100%;
+}
+
+.img-container img {
+  height: 2.2rem;
+  width: auto;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+
+.container-fluid {
+  margin: 0 auto;
+  
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.navbar-toggler {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--light);
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.navbar-toggler:hover {
+  transform: scale(1.1);
+}
+
+.links-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.container-left,
+.container-right {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  top: 0;
+}
+
+.container-left .nav-item {
+  height: 3.5rem;
+  border-right: 0.1rem solid var(--shadow-light);
+  padding-right: 1.1rem;
+}
+
+.container-right .nav-item {
+  height: 3.5rem;
+  border-left: 0.1rem solid var(--shadow-light);
+  padding-left: 1.1rem;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: var(--light);
+  font-weight: 500;
+  padding: 1rem 2rem;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.nav-item a:hover {
+  color: var(--medium-red);
+}
+
+.nav-item a.active {
+  background-color: var(--gradient-dark);
+  color: var(--light);
+}
+
+.offcanvas {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 16rem;
+  height: 100vh;
+  background: var(--light);
+  box-shadow: 12px 0 10px var(--shadow-dark);
+  transition: right 0.4s ease;
+  padding: 2rem 1.5rem;
+  z-index: 1100;
+  overflow-y: auto;
+}
+
+.offcanvas.open {
+  right: 0;
+}
+
+.offcanvas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.offcanvas-header h3 {
+  margin: 0;
+  color: var(--dark);
+  font-size: 1.2rem;
+}
+
+.close-btn {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--dark);
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg);
+  color: var(--medium-red);
+}
+
+.offcanvas ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0 0;
+}
+.offcanvas li {
+  margin-bottom: 0.5rem;
+}
+
+.offcanvas a {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.offcanvas a:hover {
+  color: var(--base-red);
+}
+
+.offcanvas a.active {
+  color: var(--medium-red);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--rgba-dark);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+  z-index: 1050;
+}
+
+.overlay.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.logout-btn {
+  outline: none;
+  background: none;
+  border: none;
+  color: var(--light);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  display: block;
+  font-weight: 500;
+  padding: 1rem 2rem;
+}
+
+.logout-btn:hover {
+  color: var(--medium-red);
+  text-decoration: none;
+}
+
+.logout-menu-btn {
+  outline: none;
+  background: none;
+  border: none;
+  color: var(--dark);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  display: block;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+}

@@ -1,0 +1,87 @@
+.container-profile {
+  padding-top: 4rem;
+}
+
+.avatar {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+
+}
+
+.container-profile h1 {
+  margin-bottom: 5rem;
+
+}
+
+.profile-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.profile-card {
+  padding: 3rem 5.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--medium-red);
+  background: var(--dark);
+  box-shadow: 0 4px 15px var(--shadow-red);
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.profile-card button {
+  color: var(--dark);
+  background-color: var(--medium-red);
+  padding: 0.4rem 1.8rem;
+  border-radius: 1.5rem;
+  border: none;
+  box-shadow: 0 0 8px var(--shadow-red);
+  font-size: 1.2rem;
+}
+
+.profile-card button:hover {
+  background-color: var(--light);
+  box-shadow: 0 0 8px var(--shadow-light);
+}
+
+.buttons-profile {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* EDIT PROFILE */
+
+.profile-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8rem;
+  flex-wrap: wrap;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form-edit {
+  max-width:700px;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 2rem;
+}

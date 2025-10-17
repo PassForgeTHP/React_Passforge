@@ -1,8 +1,101 @@
-:root{
+:root {
   --base-red: #77080e;
   --dark: #1a1720;
   --dark-red: #470508;
   --light: #e3d3bf;
   --medium-red: #af0024;
   --font-family: "Outfit", sans-serif;
+  --gradient-dark: linear-gradient(90deg, #af0024 0%, #77080e 50%, #470508 100%);
+  --gradient-dark-light: linear-gradient(90deg, #77080e 0%, #af0024 50%, #e3d3bf 100%);
+  --shadow-light: rgba(255, 255, 255, 0.2);
+  --shadow-dark: rgba(0, 0, 0, 0.2);
+  --shadow-red: rgba(255, 0, 0, 0.2);
+  --rgba-dark: rgba(0, 0, 0, 0.5);
+  --all-Light: #e3d3bf;
+  --all-dark: #1a1720;
 }
+
+[data-theme="light"] {
+  --all-Light: #e3d3bf;
+  --all-dark: #1a1720;
+  --base-red: #e3d3bf;
+  --dark: #e3d3bf;
+  --dark-red: #470508;
+  --light: #1a1720;
+  --medium-red: #af0024;
+  --font-family: "Outfit", sans-serif;
+  --gradient-dark:  #e3d3bf ;
+  --shadow-light: rgba(0, 0, 0, 0.2);
+  --shadow-dark: rgba(255, 255, 255, 0.2);
+  --shadow-red: rgba(255, 0, 0, 0.2);
+  --rgba-dark: rgba(0, 0, 0, 0.5);
+}
+
+.theme-toggle{
+  cursor: pointer;
+  background: var(--light);
+  color: var(--dark);
+  box-shadow: 0 0px 15px var(--shadow-light);
+  border: none;
+  padding: 0.2rem 0.8rem;
+  border-radius: 3rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0.7rem 1rem;
+}
+
+.theme-toggle:hover{
+  transform: scale(1.05);
+}
+
+/* CSS Reset complet */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-family);
+  background-color: var(--dark);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root, .app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  width: 90%;
+  margin: 0rem auto;
+  flex: 1;
+  padding: 2rem 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--medium-red);
+}
+
+h1 {
+  font-size: 72px;
+  font-weight: 400;
+}
+
+p {
+  color: var(--light);
+}
+
+li{
+  list-style: none;
+}
+

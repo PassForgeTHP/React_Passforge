@@ -1,0 +1,303 @@
+import { create } from 'zustand'
+import {
+  generateSalt,
+  generateIV,
+  deriveKey,
+  encryptData,
+  decryptData
+} from '../services/cryptoService.js'
+import { vaultOperations } from '../services/indexedDB.js'
+import { downloadVault, uploadVault } from '../services/apiService.js'
+
+const useVaultStore = create((set, get) => ({
+  // State
+  isLocked: true,
+  passwords: [],
+  masterKey: null, // CryptoKey object stored in RAM while unlocked
+  salt: null, // 32-byte salt for PBKDF2 key derivation
+  iv: null, // 12-byte IV for AES-GCM encryption (changes on each save)
+
+  // Internal helper: Save vault to IndexedDB (encrypted) and sync to backend
+  saveVault: async () => {
+    const { passwords, masterKey, salt } = get()
+
+    // Create vault structure
+    const vaultData = {
+      passwords,
+      version: '1.0',
+      updatedAt: new Date().toISOString()
+    }
+
+    // Serialize to JSON
+    const vaultJSON = JSON.stringify(vaultData)
+
+    // Encrypt vault with AES-256-GCM (generates new IV internally)
+    const { encrypted, iv: newIV } = await encryptData(vaultJSON, masterKey)
+
+    // Prepare encrypted vault payload
+    const encryptedVaultData = {
+      encrypted_vault: encrypted,
+      iv: newIV,
+      salt: salt,
+      version: '1.0',
+      updatedAt: new Date().toISOString()
+    }
+
+    // Save encrypted vault to IndexedDB (always succeeds, for offline access)
+    await vaultOperations.set(encryptedVaultData)
+
+    // Try to sync to backend (optional, fails gracefully if offline)
+    try {
+      await uploadVault(encryptedVaultData)
+      console.log('Vault synced to backend successfully')
+    } catch (apiError) {
+      // Backend unavailable or user not authenticated, continue with local save
+      console.warn('Backend sync failed, vault saved locally only:', apiError.message)
+    }
+
+    // Update IV in state (for next encryption)
+    set({ iv: newIV })
+  },
+
+  // Actions
+  /**
+   * Unlock the vault by decrypting it with the master password.
+   *
+   * For first-time users, creates a new encrypted vault.
+   * For existing users, decrypts the vault from IndexedDB.
+   *
+   * @param {string} masterPassword - User's master password
+   * @returns {Promise<{success: boolean, message?: string, error?: string}>} Result object
+   *
+   * @example
+   * const result = await unlock("MySecurePassword123")
+   * if (result.success) {
+   *   console.log("Vault unlocked:", result.message)
+   * }
+   */
+  unlock: async (masterPassword) => {
+    try {
+      // Step 1: Try to fetch vault from backend API first (for sync)
+      let storedVault = null
+      try {
+        storedVault = await downloadVault()
+        // If backend returns vault, also save to IndexedDB for offline access
+        if (storedVault) {
+          await vaultOperations.set(storedVault)
+        }
+      } catch (apiError) {
+        // Backend unavailable or user not authenticated, fallback to IndexedDB
+        console.log('Backend unavailable, using IndexedDB:', apiError.message)
+        storedVault = await vaultOperations.get()
+      }
+
+      // Handle first-time unlock (no vault exists yet)
+      if (!storedVault) {
+        // Generate new salt for this user
+        const newSalt = generateSalt()
+
+        // Create empty vault
+        const emptyVault = {
+          passwords: [],
+          version: '1.0',
+          createdAt: new Date().toISOString()
+        }
+
+        // Derive key from master password
+        const key = await deriveKey(masterPassword, newSalt)
+
+        // Serialize vault to JSON
+        const vaultJSON = JSON.stringify(emptyVault)
+
+        // Encrypt with new IV
+        const { encrypted, iv } = await encryptData(vaultJSON, key)
+
+        // Save to IndexedDB
+        await vaultOperations.set({
+          encrypted_vault: encrypted,
+          iv: iv,
+          salt: newSalt,
+          version: '1.0',
+          updatedAt: new Date().toISOString()
+        })
+
+        // Set state for unlocked empty vault
+        set({
+          isLocked: false,
+          passwords: [],
+          masterKey: key,
+          salt: newSalt,
+          iv: iv
+        })
+
+        return { success: true, message: 'Vault created and unlocked' }
+      }
+
+      // Step 2: Decrypt existing vault
+      // Derive key from master password and stored salt
+      const key = await deriveKey(masterPassword, storedVault.salt)
+
+      // Decrypt vault using stored IV
+      const decryptedJSON = await decryptData(
+        storedVault.encrypted_vault,
+        key,
+        storedVault.iv
+      )
+
+      // Parse decrypted JSON
+      const vaultData = JSON.parse(decryptedJSON)
+
+      // Step 3: Load passwords into RAM
+      set({
+        isLocked: false,
+        passwords: vaultData.passwords || [],
+        masterKey: key,
+        salt: storedVault.salt,
+        iv: storedVault.iv
+      })
+
+      return { success: true, message: 'Vault unlocked successfully' }
+    } catch (error) {
+      console.error('Unlock failed:', error)
+      return { success: false, error: error.message }
+    }
+  },
+
+  /**
+   * Lock the vault by clearing all sensitive data from RAM.
+   *
+   * Clears: passwords, masterKey, salt, and iv.
+   * User must unlock again with master password to access vault.
+   *
+   * @example
+   * lock() // Vault is now locked, all data cleared from RAM
+   */
+  lock: () => {
+    // Clear all sensitive data from RAM
+    set({
+      isLocked: true,
+      passwords: [], // Clear decrypted passwords
+      masterKey: null, // Clear encryption key (most critical)
+      salt: null, // Clear salt
+      iv: null // Clear current IV
+    })
+  },
+
+  /**
+   * Add a new password to the vault.
+   *
+   * Adds password to RAM and re-encrypts entire vault to IndexedDB.
+   *
+   * @param {Object} passwordData - Password data (title, domain, username, password, notes)
+   * @returns {Promise<{success: boolean, password: Object}>} Result with created password
+   *
+   * @example
+   * const result = await addPassword({
+   *   title: "GitHub",
+   *   domain: "github.com",
+   *   username: "user@example.com",
+   *   password: "MyPassword123",
+   *   notes: "Personal account"
+   * })
+   */
+  addPassword: async (passwordData) => {
+    const { passwords, saveVault } = get()
+
+    // Add password to RAM
+    const newPassword = {
+      id: Date.now(),
+      ...passwordData,
+      created_at: new Date().toISOString()
+    }
+
+    set({
+      passwords: [...passwords, newPassword]
+    })
+
+    // Re-encrypt and save vault to IndexedDB
+    await saveVault()
+
+    return { success: true, password: newPassword }
+  },
+
+  /**
+   * Update an existing password in the vault.
+   *
+   * Updates password in RAM and re-encrypts entire vault to IndexedDB.
+   *
+   * @param {number|string} id - Password ID
+   * @param {Object} updatedData - Fields to update
+   * @returns {Promise<{success: boolean}>} Result object
+   *
+   * @example
+   * await updatePassword(123, { password: "NewPassword456" })
+   */
+  updatePassword: async (id, updatedData) => {
+    const { passwords, saveVault } = get()
+
+    // Update password in RAM
+    const updatedPasswords = passwords.map(pwd =>
+      pwd.id === id ? { ...pwd, ...updatedData } : pwd
+    )
+
+    set({ passwords: updatedPasswords })
+
+    // Re-encrypt and save vault to IndexedDB
+    await saveVault()
+
+    return { success: true }
+  },
+
+  /**
+   * Delete a password from the vault.
+   *
+   * Removes password from RAM and re-encrypts entire vault to IndexedDB.
+   *
+   * @param {number|string} id - Password ID
+   * @returns {Promise<{success: boolean}>} Result object
+   *
+   * @example
+   * await deletePassword(123)
+   */
+  deletePassword: async (id) => {
+    const { passwords, saveVault } = get()
+
+    // Remove password from RAM
+    const filteredPasswords = passwords.filter(pwd => pwd.id !== id)
+
+    set({ passwords: filteredPasswords })
+
+    // Re-encrypt and save vault to IndexedDB
+    await saveVault()
+
+    return { success: true }
+  },
+
+  /**
+   * Search passwords by title, domain, or username.
+   *
+   * Searches in RAM only (vault must be unlocked).
+   * Returns all passwords if query is empty.
+   *
+   * @param {string} query - Search query
+   * @returns {Array} Matching passwords
+   *
+   * @example
+   * const results = searchPasswords("github")
+   * // Returns passwords where title, domain, or username contains "github"
+   */
+  searchPasswords: (query) => {
+    const { passwords } = get()
+
+    if (!query) return passwords
+
+    const lowerQuery = query.toLowerCase()
+    return passwords.filter(pwd =>
+      pwd.title.toLowerCase().includes(lowerQuery) ||
+      pwd.domain.toLowerCase().includes(lowerQuery) ||
+      pwd.username.toLowerCase().includes(lowerQuery)
+    )
+  }
+}))
+
+export default useVaultStore
