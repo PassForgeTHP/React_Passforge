@@ -18,7 +18,7 @@ function Register() {
     setErrors([]);
 
     try {
-      const res = await fetch("http://localhost:3000/users", {
+      const res = await fetch("https://rails-passforge2.onrender.com/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
