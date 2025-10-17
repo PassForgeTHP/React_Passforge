@@ -6,6 +6,7 @@ import ViewPassword from "../components/ViewPassword";
 function Login() {
   const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ function Login() {
       }
 
       const token = res.headers.get("Authorization")?.split(" ")[1];
-      login(data.user, token);
+      login(data.user, token, rememberMe);
       setMessage(data.message || "You are logged in.");
       setTimeout(() => navigate("/profile"), 800);
     } catch (error) {
@@ -60,6 +61,16 @@ function Login() {
               onChange={(e)=>setPassword(e.target.value)}
               placeholder='password'
               />
+            </div>
+            <div>
+              <label className="remember-me">
+                <input
+                  type="checkbox"
+                  checked={rememberMe}
+                  onChange={() => setRememberMe(!rememberMe)}
+                />
+                Remember me
+              </label>
             </div>
             <div className="form-actions">
               <button type="submit">Login</button>

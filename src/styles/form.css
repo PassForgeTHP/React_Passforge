@@ -122,3 +122,33 @@ form button:hover{
   background: none;
   box-shadow: none;
 }
+
+.remember-me input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 10px solid var(--light);
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s, border 0.2s;
+  background-color: white;
+  box-sizing: border-box;
+  padding: 0;
+  margin-right: 0.5rem;
+}
+
+.remember-me input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--medium-red);
+}
