@@ -39,7 +39,7 @@ export function AuthProvider({ children }) {
 
   const logout = async () => {
     if (token) {
-      await fetch("http://localhost:3000/users/sign_out", {
+      await fetch("https://passforge-api.onrender.com/users/sign_out", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

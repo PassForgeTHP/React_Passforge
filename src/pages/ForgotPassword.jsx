@@ -9,7 +9,7 @@ const ForgotPassword = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/users/password", {
+      const response = await fetch("https://passforge-api.onrender.com/users/password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user: { email } }),

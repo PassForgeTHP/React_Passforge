@@ -9,7 +9,7 @@ export default function Contact() {
   const handleSubmit = async(e)=>{
     e.preventDefault()
     try {
-      const response = await fetch('https://rails-passforge2.onrender.com/contacts',{
+      const response = await fetch('https://passforge-api.onrender.com/contacts',{
         method:'POST',
         headers:{
           "Content-Type": "application/json",
