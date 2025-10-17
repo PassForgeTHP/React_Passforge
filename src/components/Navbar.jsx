@@ -193,6 +193,21 @@ export default function Navbar() {
                 </li>
               </>
             )}
+
+            <li>
+              <button 
+              className="theme-toggle"
+              onClick={toggleTheme}
+              type="button"
+              >
+                {theme === "dark" ? (
+                  <Icon icon="ph:sun" width="24" />
+                ) : (
+                  <Icon icon="ph:moon" width="24"/>
+                )}
+              </button>
+            </li>
+            
           </ul>
         </div>
         <div

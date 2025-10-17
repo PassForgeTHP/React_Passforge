@@ -140,7 +140,7 @@ footer {
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-  margin: 4rem 2rem 5rem;
+  margin: 4rem 2rem 2rem;
 }
 .security-advice-container img {
   width: 20rem;
