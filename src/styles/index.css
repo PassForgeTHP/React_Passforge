@@ -96,6 +96,7 @@ p {
 }
 
 li{
+  color: var(--light);
   list-style: none;
 }
 
