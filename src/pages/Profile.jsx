@@ -12,7 +12,7 @@ const Profile = () => {
     const fetchUserData = async () => {
       try {
          console.log("Token:", token);
-        const res = await fetch("https://rails-passforge2.onrender.com/member-data", {
+        const res = await fetch("https://passforge-api.onrender.com/member-data", {
           headers: {
             "Authorization": `Bearer ${token}`,
             "Content-Type": "application/json"
@@ -44,7 +44,7 @@ const Profile = () => {
     }
 
     try {
-      const response = await fetch("https://rails-passforge2.onrender.com/users", {
+      const response = await fetch("https://passforge-api.onrender.com/users", {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,

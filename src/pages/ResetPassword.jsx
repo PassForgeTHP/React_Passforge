@@ -15,7 +15,7 @@ const ResetPassword = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/users/password", {
+      const response = await fetch("https://passforge-api.onrender.com/users/password", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

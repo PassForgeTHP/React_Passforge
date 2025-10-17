@@ -6,7 +6,7 @@
  */
 
 // Base URL for the Rails backend
-export const API_BASE_URL = 'https://rails-passforge2.onrender.com'
+export const API_BASE_URL = 'https://passforge-api.onrender.com'
 
 // API Endpoints
 export const API_ENDPOINTS = {
