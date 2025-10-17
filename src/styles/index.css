@@ -25,12 +25,27 @@
   --medium-red: #af0024;
   --font-family: "Outfit", sans-serif;
   --gradient-dark:  #e3d3bf ;
-  --shadow-light: rgba(255, 255, 255, 0.2);
-  --shadow-dark: rgba(0, 0, 0, 0.2);
+  --shadow-light: rgba(0, 0, 0, 0.2);
+  --shadow-dark: rgba(255, 255, 255, 0.2);
   --shadow-red: rgba(255, 0, 0, 0.2);
   --rgba-dark: rgba(0, 0, 0, 0.5);
 }
 
+.theme-toggle{
+  cursor: pointer;
+  background: var(--light);
+  color: var(--dark);
+  box-shadow: 0 0px 15px var(--shadow-light);
+  border: none;
+  padding: 0.2rem 0.8rem;
+  border-radius: 3rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0.7rem 1rem;
+}
+
+.theme-toggle:hover{
+  transform: scale(1.05);
+}
 
 /* CSS Reset complet */
 * {
@@ -44,46 +59,25 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  width: 100%;
-  overflow-x: hidden;
-}
-
 body {
   width: 100%;
   min-height: 100vh;
   font-family: var(--font-family);
   background-color: var(--dark);
-  overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#root {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+#root, .app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.app-wrapper {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-header,
-footer {
-  width: 100%;
-  margin: 0;
-  padding: 0;
+main {
+  width: 90%;
+  margin: 0rem auto;
+  flex: 1;
+  padding: 2rem 0;
 }
 
 h1,
@@ -92,28 +86,13 @@ h3 {
   color: var(--medium-red);
 }
 
+h1 {
+  font-size: 72px;
+  font-weight: 400;
+}
+
 p {
   color: var(--light);
-}
-
-main {
-  width: 95%;
-  margin: 1rem auto;
-}
-
-.theme-toggle{
-  cursor: pointer;
-  background: var(--light);
-  color: var(--dark);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 3rem;
-  font-size: 1rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.theme-toggle:hover{
-  transform: scale(1.05);
 }
 
 li{

@@ -27,14 +27,13 @@ form {
 .container h1 {
   margin-bottom: 4rem;
   text-align: left;
-  font-size: 72px;
 }
 
 label {
   color: var(--light);
 }
 
-.email-input, .subject-input, .content-input{
+form input {
   padding: 0.5rem 1rem;
   background-color: var(--dark);
   color: var(--light);  
@@ -89,34 +88,37 @@ form button:hover{
   color: var(--light);
 }
 
-.password-input{
-  border: none;
-  background-color: var(--dark);
-  color: var(--light);  
-  font-size: 1rem;
-}
-
-.password-hide-view{
+.password-hide-view {
   display: flex;
-  padding: 0.1rem 1rem;
-  border: 1px solid var(--medium-red);
-  box-shadow: 0 0 8px var(--shadow-red);
+  align-items: center;
   border-radius: 8px;
-
+  background-color: var(--dark);
 }
 
-.view-hide-pwd{
-  margin-left: 50px;
+.password-input {
+  flex: 1;
+  background-color: var(--dark);
+  color: var(--light);
+  font-size: 1rem;
+  outline: none;
+}
+
+.view-hide-pwd {
   background: var(--dark);
-  border: none !important;
-  padding: 0.1rem 0.2rem !important;
-  box-shadow: none !important;
-  background: var(--dark)!important;
+  box-shadow: none;
+  border: 1px solid var(--medium-red);
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem;
+  transition: color 0.2s ease;
 }
 
-.view-hide-pwd:hover{
-  cursor: pointer;
-  background: var(--dark)!important;
-   box-shadow: none !important;
-   border: none !important;
+.view-hide-pwd:hover {
+  color: var(--medium-red);
+  background: none;
+  box-shadow: none;
 }

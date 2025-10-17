@@ -97,7 +97,7 @@ const EditProfile = () => {
           <label htmlFor="avatar"></label>
           {preview && (
             <img
-              src={preview}
+              src={preview || user?.avatar || defaultAvatar}
               alt="avatar preview"
               className="avatar"
             />
@@ -107,7 +107,11 @@ const EditProfile = () => {
             type="file"
             accept="image/*"
             onChange={handleFileChange}
+            style={{ display: "none" }}
           />
+          <label htmlFor="avatar" className="btn">
+            Change avatar
+          </label>
         </div>
 
         <div className="form-edit">
@@ -160,13 +164,13 @@ const EditProfile = () => {
         </div>
       </div>
 
-      <div>
+      <div className="actions">
         <div className="buttons-profile"> 
-          <button className="btn-edit">Download the extension</button>
-          <button className="btn-edit" onClick={() => navigate("/profile")}>go to my profile</button>
+          <button className="btn">Download the extension</button>
+          <button className="btn" onClick={() => navigate("/profile")}>go to my profile</button>
         </div>
         <div>
-          <button onClick={handleDelete} className="btn-edit">Delete profile</button>
+          <button onClick={handleDelete} className="btn">Delete profile</button>
         </div>
       </div>
       

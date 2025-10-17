@@ -10,10 +10,10 @@ function Home() {
         <h1>PassForge</h1>
         <p>Not your vault, not your secrets</p>
         <div>
-          <Link to="/security-advice" className="home-link">
+          <Link to="/security-advice" className="btn">
             Discover
           </Link>
-          <Link to="/register" className="home-link">
+          <Link to="/register" className="btn">
             Register
           </Link>
         </div>

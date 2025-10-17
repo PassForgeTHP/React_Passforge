@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-
+import { Icon } from '@iconify/react';
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import useTheme from "../hooks/useTheme";
@@ -64,6 +64,19 @@ export default function Navbar() {
             </li>
           </ul>
           <ul className="container-right">
+            <li>
+              <button 
+              className="theme-toggle"
+              onClick={toggleTheme}
+              type="button"
+              >
+                {theme === "dark" ? (
+                  <Icon icon="ph:sun" width="24" />
+                ) : (
+                  <Icon icon="ph:moon" width="24"/>
+                )}
+              </button>
+            </li>
            {user ? (
               <>
                 <li className="nav-item">
@@ -100,15 +113,6 @@ export default function Navbar() {
                 </li>
               </>
             )}
-                        <li>
-              <button 
-              className="theme-toggle"
-              onClick={toggleTheme}
-              type="button"
-              >
-                {theme === "dark" ?  "☀️": "🌙"}
-              </button>
-            </li>
           </ul>
         </div>
 

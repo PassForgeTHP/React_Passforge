@@ -40,9 +40,7 @@ function App() {
   return (
 <ThemeProvider>
       <div className="app-wrapper">
-      <header>
-        <Navbar />
-      </header>
+      <Navbar />
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -63,9 +61,7 @@ function App() {
           </Route>
         </Routes>
       </main>
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </div>
 </ThemeProvider>
   );
