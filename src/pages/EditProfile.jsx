@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import defaultAvatar from "../assets/images/default-avatar.jpg";
 
 const EditProfile = () => {
   const { user, token, setUser } = useContext(AuthContext);
