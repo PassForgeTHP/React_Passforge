@@ -46,6 +46,13 @@ export function AuthProvider({ children }) {
           Authorization: `Bearer ${token}`,
         },
       }).catch(() => {});
+
+      if (window.chrome && chrome.runtime) {
+        chrome.runtime.sendMessage(
+          "modnkfblpeombgeanjodmnlpcihidmmj",
+          { type: "CLEAR_TOKEN" }
+        );
+      }
     }
 
     setUser(null);

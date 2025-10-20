@@ -34,6 +34,17 @@ function Login() {
 
       const token = res.headers.get("Authorization")?.split(" ")[1];
       login(data.user, token, rememberMe);
+
+      if (window.chrome && chrome.runtime) {
+        chrome.runtime.sendMessage(
+          "modnkfblpeombgeanjodmnlpcihidmmj", 
+          { type: "STORE_TOKEN", token },
+          (response) => {
+            console.log("Token envoyé à l’extension :", response);
+          }
+        );
+      }
+
       setMessage(data.message || "You are logged in.");
       setTimeout(() => navigate("/profile"), 800);
     } catch (error) {
