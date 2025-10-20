@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import defaultAvatar from "../assets/images/default-avatar.jpg";
 import { useNavigate } from "react-router-dom";
+import TwoFALink from "../components/profile/2falink";
 
 const Profile = () => {
   const { token, user, setUser } = useContext(AuthContext);
@@ -81,6 +82,7 @@ const Profile = () => {
         <div className="profile-card">
           <p><strong>Name:</strong> {user.name}</p>
           <p><strong>Email:</strong> {user.email}</p>
+          <TwoFALink />
           <div className="buttons-profile">
             <button onClick={() => navigate("/edit-profile")}>Edit profile</button>
             <button onClick={handleDelete}>Delete profile</button>
