@@ -13,7 +13,8 @@ const Profile = () => {
     const fetchUserData = async () => {
       try {
          console.log("Token:", token);
-        const res = await fetch("https://passforge-api.onrender.com/member-data", {
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+        const res = await fetch(`${apiUrl}/member-data`, {
           headers: {
             "Authorization": `Bearer ${token}`,
             "Content-Type": "application/json"
@@ -45,7 +46,8 @@ const Profile = () => {
     }
 
     try {
-      const response = await fetch("https://passforge-api.onrender.com/users", {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+      const response = await fetch(`${apiUrl}/users`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,

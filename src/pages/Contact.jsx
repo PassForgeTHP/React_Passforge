@@ -9,7 +9,8 @@ export default function Contact() {
   const handleSubmit = async(e)=>{
     e.preventDefault()
     try {
-      const response = await fetch('https://passforge-api.onrender.com/contacts',{
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+      const response = await fetch(`${apiUrl}/contacts`,{
         method:'POST',
         headers:{
           "Content-Type": "application/json",

@@ -15,7 +15,8 @@ const ResetPassword = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://passforge-api.onrender.com/users/password", {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+      const response = await fetch(`${apiUrl}/users/password`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

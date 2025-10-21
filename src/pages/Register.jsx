@@ -18,7 +18,8 @@ function Register() {
     setErrors([]);
 
     try {
-      const res = await fetch("https://passforge-api.onrender.com/users", {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+      const res = await fetch(`${apiUrl}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

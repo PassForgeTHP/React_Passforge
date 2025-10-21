@@ -34,7 +34,8 @@ const EditProfile = () => {
 
     console.log("Token envoyé :", token);
     try {
-      const response = await fetch("https://passforge-api.onrender.com/users", {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+      const response = await fetch(`${apiUrl}/users`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -65,7 +66,8 @@ const EditProfile = () => {
     }
 
     try {
-      const response = await fetch("https://passforge-api.onrender.com/users", {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+      const response = await fetch(`${apiUrl}/users`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,
