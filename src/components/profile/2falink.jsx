@@ -1,56 +1,85 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import Setup2FAModal from './Setup2FAModal';
-import PasswordConfirmModal from './PasswordConfirmModal'; // Import the new modal
 import './ToggleSwitch.css'; // Import the CSS for the toggle switch
+import './Modal.css'; // Import the CSS for the modal
 
 const TwoFALink = () => {
   const { user, token, setUser } = useContext(AuthContext);
   const [isSetupModalOpen, setIsSetupModalOpen] = useState(false);
-  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
   const [error, setError] = useState('');
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [pendingAction, setPendingAction] = useState(''); // 'enable' or 'disable'
 
   const is2FAEnabled = user?.two_factor_enabled || false;
 
-  const handleDisable = async () => {
-    setError('');
-    if (window.confirm("Are you sure you want to disable two-factor authentication?")) {
-      try {
-        const response = await fetch('https://passforge-api.onrender.com/2fa/disable', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        });
+  const verifyPassword = async () => {
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+      const response = await fetch(`${apiUrl}/api/users/verify_password`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({ password }),
+      });
 
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.message || 'Failed to disable 2FA.');
-        }
-
-        const updatedUser = await response.json();
-        setUser(updatedUser.user);
-      } catch (err) {
-        setError(err.message);
+      if (!response.ok) {
+        throw new Error('Incorrect password.');
       }
+
+      return true;
+    } catch (err) {
+      setPasswordError(err.message);
+      return false;
+    }
+  };
+
+  const handlePasswordSubmit = async (e) => {
+    e.preventDefault();
+    setPasswordError('');
+    const isValid = await verifyPassword();
+    if (!isValid) return;
+
+    setShowPasswordModal(false);
+    setPassword('');
+
+    if (pendingAction === 'enable') {
+      setIsSetupModalOpen(true);
+    } else if (pendingAction === 'disable') {
+      await handleDisable();
+    }
+  };
+
+  const handleDisable = async () => {
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+      const response = await fetch(`${apiUrl}/api/auth/two_factor/disable`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to disable 2FA.');
+      }
+
+      const updatedUser = await response.json();
+      setUser(updatedUser.user);
+    } catch (err) {
+      setError(err.message);
     }
   };
 
   const handleToggleChange = (e) => {
     const isChecked = e.target.checked;
-    if (isChecked) {
-      // If user intends to enable 2FA, open the password confirmation modal first
-      setIsPasswordModalOpen(true);
-    } else {
-      // If user intends to disable 2FA, start the disable process
-      handleDisable();
-    }
-  };
-
-  const onPasswordSuccess = () => {
-    // When password is confirmed, close password modal and open setup modal
-    setIsPasswordModalOpen(false);
-    setIsSetupModalOpen(true);
+    setPendingAction(isChecked ? 'enable' : 'disable');
+    setShowPasswordModal(true);
   };
 
   return (
@@ -74,16 +103,36 @@ const TwoFALink = () => {
       
       {error && <p className="error-message" style={{ marginTop: '10px' }}>{error}</p>}
 
-      <PasswordConfirmModal 
-        isOpen={isPasswordModalOpen} 
-        onClose={() => setIsPasswordModalOpen(false)} 
-        onSuccess={onPasswordSuccess} 
+      <Setup2FAModal
+        isOpen={isSetupModalOpen}
+        onClose={() => setIsSetupModalOpen(false)}
       />
 
-      <Setup2FAModal 
-        isOpen={isSetupModalOpen} 
-        onClose={() => setIsSetupModalOpen(false)} 
-      />
+      {showPasswordModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Confirm Password</h2>
+            <p>Please enter your password to {pendingAction === 'enable' ? 'enable' : 'disable'} 2FA.</p>
+            <form onSubmit={handlePasswordSubmit}>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              {passwordError && <p className="error-message">{passwordError}</p>}
+              <div className="modal-actions">
+                <button type="submit" className="btn">Confirm</button>
+                <button type="button" className="btn btn-secondary" onClick={() => { setShowPasswordModal(false); setPassword(''); setPasswordError(''); }}>Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

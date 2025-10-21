@@ -39,7 +39,8 @@ export function AuthProvider({ children }) {
 
   const logout = async () => {
     if (token) {
-      await fetch("https://passforge-api.onrender.com/users/sign_out", {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+      await fetch(`${apiUrl}/users/sign_out`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
