@@ -11,8 +11,8 @@ const Profile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-         console.log("Token:", token);
-        const res = await fetch("https://passforge-api.onrender.com/member-data", {
+        //  console.log("Token:", token);
+        const res = await fetch("http://localhost:3000/member-data", {
           headers: {
             "Authorization": `Bearer ${token}`,
             "Content-Type": "application/json"

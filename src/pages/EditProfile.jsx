@@ -34,7 +34,7 @@ const EditProfile = () => {
 
     console.log("Token envoyé :", token);
     try {
-      const response = await fetch("https://passforge-api.onrender.com/users", {
+      const response = await fetch("http://localhost:3000/users", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -65,7 +65,7 @@ const EditProfile = () => {
     }
 
     try {
-      const response = await fetch("https://passforge-api.onrender.com/users", {
+      const response = await fetch("https://http://localhost:3000/users", {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,
