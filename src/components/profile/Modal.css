@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--rgba-dark);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,12 +12,13 @@
 }
 
 .modal-content {
-  background-color: white;
+  background-color: var(--light);
+  color: var(--dark);
   padding: 20px 30px;
   border-radius: 8px;
   max-width: 500px;
   width: 100%;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 15px var(--shadow-dark);
 }
 
 .modal-actions {

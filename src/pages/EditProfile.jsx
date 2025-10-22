@@ -2,9 +2,12 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import defaultAvatar from "../assets/images/default-avatar.jpg";
+import useSettingsStore from "../stores/settingsStore";
+import TwoFALink from "../components/profile/2falink";
 
 const EditProfile = () => {
   const { user, token, setUser } = useContext(AuthContext);
+  const { autoLockTimeout, setAutoLockTimeout } = useSettingsStore();
   const [name, setName] = useState(user?.name || "");
   const [email, setEmail] = useState(user?.email || "");
   const [avatar, setAvatar] = useState(null);
@@ -57,6 +60,37 @@ const EditProfile = () => {
     } catch (error) {
       console.error("Error updating profile:", error);
       setMessage("Network error. Please try again later.");
+    }
+  };
+
+  const handleLogoutAll = async () => {
+    if (!window.confirm("Are you sure you want to logout from all devices?")) {
+      return;
+    }
+
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+      const response = await fetch(`${apiUrl}/api/users/logout_all`, {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert(data.message || "Logged out from all devices.");
+        setUser(null);
+        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
+        navigate("/");
+      } else {
+        alert(data.message || "Failed to logout.");
+      }
+    } catch (error) {
+      console.error("Error logging out:", error);
+      alert("Network error. Please try again later.");
     }
   };
 
@@ -165,9 +199,39 @@ const EditProfile = () => {
             </div>
           </form>
         </div>
-      </div>
+       </div>
 
-      <div className="actions">
+       <div className="security-section">
+         <h2>Security Settings</h2>
+
+         <div className="form-group">
+           <label htmlFor="auto-lock">Auto-lock timeout: {autoLockTimeout} minutes</label>
+           <input
+             id="auto-lock"
+             type="range"
+             min="1"
+             max="30"
+             value={autoLockTimeout}
+             onChange={(e) => setAutoLockTimeout(Number(e.target.value))}
+           />
+         </div>
+
+         <TwoFALink />
+
+         <div className="sessions-section">
+           <h3>Active Sessions</h3>
+           <ul>
+             <li>
+               Current session - {new Date().toLocaleString()}
+               <button className="btn btn-secondary" onClick={handleLogoutAll}>Logout</button>
+             </li>
+           </ul>
+         </div>
+
+         <button className="btn" onClick={handleLogoutAll}>Logout from all devices</button>
+       </div>
+
+       <div className="actions">
         <div className="buttons-profile"> 
           <button className="btn">Download the extension</button>
           <button className="btn" onClick={() => navigate("/profile")}>go to my profile</button>

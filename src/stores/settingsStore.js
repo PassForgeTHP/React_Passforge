@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-const useSettingsStore = create((set, get) => ({
+const useSettingsStore = create((set) => ({
   // State
   theme: 'dark',
   language: 'en',
