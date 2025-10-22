@@ -1,5 +1,6 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 
+/* eslint-disable react-refresh/only-export-components */
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
@@ -39,7 +40,8 @@ export function AuthProvider({ children }) {
 
   const logout = async () => {
     if (token) {
-      await fetch("https://passforge-api.onrender.com/users/sign_out", {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+      await fetch(`${apiUrl}/users/sign_out`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

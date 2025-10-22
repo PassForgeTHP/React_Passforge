@@ -1,7 +1,6 @@
 import { create } from 'zustand'
 import {
   generateSalt,
-  generateIV,
   deriveKey,
   encryptData,
   decryptData

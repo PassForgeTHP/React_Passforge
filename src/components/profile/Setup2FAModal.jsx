@@ -3,7 +3,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import './Modal.css'; // Import the CSS for the modal
 
 const Setup2FAModal = ({ isOpen, onClose }) => {
-  const { token, user, setUser } = useContext(AuthContext);
+  const { token, setUser } = useContext(AuthContext);
   const [qrCode, setQrCode] = useState('');
   const [otp, setOtp] = useState('');
   const [error, setError] = useState('');
@@ -12,11 +12,14 @@ const Setup2FAModal = ({ isOpen, onClose }) => {
     if (isOpen) {
       const fetchQRCode = async () => {
         try {
-          const response = await fetch('https://passforge-api.onrender.com/2fa/setup', {
+          const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+          const fetchOptions = {
+            method: 'POST',
             headers: {
               'Authorization': `Bearer ${token}`,
             },
-          });
+          };
+          const response = await fetch(`${apiUrl}/api/auth/two_factor/setup`, fetchOptions);
           if (!response.ok) throw new Error('Failed to fetch QR code.');
           const data = await response.json();
           setQrCode(data.qr_code_svg);
@@ -30,7 +33,8 @@ const Setup2FAModal = ({ isOpen, onClose }) => {
 
   const handleVerify = async () => {
     try {
-      const response = await fetch('https://passforge-api.onrender.com/2fa/enable', {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+      const response = await fetch(`${apiUrl}/api/auth/two_factor/verify`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
