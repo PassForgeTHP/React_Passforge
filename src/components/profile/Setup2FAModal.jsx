@@ -139,6 +139,12 @@ const Setup2FAModal = ({ isOpen, onClose }) => {
                 placeholder="123456"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && otp.length === 6) {
+                    e.preventDefault();
+                    handleVerify();
+                  }
+                }}
               />
             </div>
 
