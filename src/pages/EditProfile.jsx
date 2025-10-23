@@ -132,13 +132,11 @@ const EditProfile = () => {
       <div className="profile-content">
         <div className="avatar-container">
           <label htmlFor="avatar"></label>
-          {preview && (
-            <img
-              src={preview || user?.avatar || defaultAvatar}
-              alt="avatar preview"
-              className="avatar"
-            />
-          )}
+          <img
+            src={preview || user?.avatar || defaultAvatar}
+            alt="avatar preview"
+            className="avatar"
+          />
           <input
             id="avatar"
             type="file"
