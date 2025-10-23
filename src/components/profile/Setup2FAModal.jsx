@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import useRefreshUser from '../../hooks/useRefreshUser';
 import './Modal.css'; // Import the CSS for the modal
@@ -6,6 +6,7 @@ import './Modal.css'; // Import the CSS for the modal
 const Setup2FAModal = ({ isOpen, onClose }) => {
   const { token } = useContext(AuthContext);
   const refreshUser = useRefreshUser();
+  const otpInputRef = useRef(null);
   const [qrCode, setQrCode] = useState('');
   const [secret, setSecret] = useState('');
   const [otp, setOtp] = useState('');
@@ -35,6 +36,13 @@ const Setup2FAModal = ({ isOpen, onClose }) => {
       fetchQRCode();
     }
   }, [isOpen, token]);
+
+  // Auto-focus on OTP input when QR code is loaded
+  useEffect(() => {
+    if (qrCode && otpInputRef.current) {
+      otpInputRef.current.focus();
+    }
+  }, [qrCode]);
 
   const handleVerify = async () => {
     try {
@@ -133,6 +141,7 @@ const Setup2FAModal = ({ isOpen, onClose }) => {
             <div className="form-group">
               <label htmlFor="otp-code">Verification Code</label>
               <input
+                ref={otpInputRef}
                 id="otp-code"
                 type="text"
                 maxLength="6"
