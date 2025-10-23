@@ -20,6 +20,7 @@ function Login() {
       const res = await fetch(`${apiUrl}/users/sign_in`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ user: { email, password } }),
       });
 
@@ -33,10 +34,16 @@ function Login() {
         return;
       }
 
-      const token = res.headers.get("Authorization")?.split(" ")[1];
-      login(data.user, token, rememberMe);
-      setMessage(data.message || "You are logged in.");
-      setTimeout(() => navigate("/profile"), 800);
+      // Check if 2FA is required
+      if (data.requires_2fa) {
+        setMessage(data.message || "Please enter your 2FA code");
+        setTimeout(() => navigate("/two-factor-verify"), 800);
+      } else {
+        const token = res.headers.get("Authorization")?.split(" ")[1];
+        login(data.user, token, rememberMe);
+        setMessage(data.message || "You are logged in.");
+        setTimeout(() => navigate("/profile"), 800);
+      }
     } catch (error) {
       console.error("Login error:", error);
       setMessage("Server error. Please try again later.");

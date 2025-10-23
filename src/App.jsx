@@ -24,6 +24,7 @@ import "./styles/profile.css";
 import GDPR from "./pages/GDPR";
 import PrivateRoute from "./components/PrivateRoute";
 import NotFound from "./pages/NotFound";
+import TwoFactorVerify from "./pages/TwoFactorVerify";
 
 function App() {
   // Initialize IndexedDB on app startup
@@ -53,6 +54,7 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/gdpr" element={<GDPR />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/two-factor-verify" element={<TwoFactorVerify />} />
           <Route path="*" element={<NotFound />} />
 
           <Route element={<PrivateRoute />}>
