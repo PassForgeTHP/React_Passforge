@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import useRefreshUser from '../../hooks/useRefreshUser';
-import './Modal.css'; // Import the CSS for the modal
+import '../../styles/Modal.css'; // Import the CSS for the modal
 
 const Setup2FAModal = ({ isOpen, onClose }) => {
   const { token } = useContext(AuthContext);
