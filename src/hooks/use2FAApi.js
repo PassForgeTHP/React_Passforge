@@ -10,6 +10,7 @@ import { AuthContext } from '../contexts/AuthContext';
 export const use2FAApi = () => {
   const { token } = useContext(AuthContext);
   const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+  const isLocalhost = apiUrl.includes('localhost');
 
   const setup = async () => {
     const response = await fetch(`${apiUrl}/api/auth/two_factor/setup`, {
@@ -68,7 +69,7 @@ export const use2FAApi = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      credentials: 'include',
+      ...(isLocalhost && { credentials: 'include' }),
       body: JSON.stringify(body),
     });
 
