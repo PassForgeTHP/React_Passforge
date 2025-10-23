@@ -29,13 +29,9 @@ import TwoFactorVerify from "./pages/TwoFactorVerify";
 function App() {
   // Initialize IndexedDB on app startup
   useEffect(() => {
-    initDB()
-      .then(() => {
-        console.log("IndexedDB initialized successfully");
-      })
-      .catch((error) => {
-        console.error("Failed to initialize IndexedDB:", error);
-      });
+    initDB().catch((error) => {
+      console.error("Failed to initialize IndexedDB:", error);
+    });
   }, []);
 
   return (
