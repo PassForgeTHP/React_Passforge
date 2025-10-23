@@ -1,11 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
+import useRefreshUser from '../../hooks/useRefreshUser';
 import Setup2FAModal from './Setup2FAModal';
 import './ToggleSwitch.css'; // Import the CSS for the toggle switch
 import './Modal.css'; // Import the CSS for the modal
 
 const TwoFALink = () => {
-  const { user, token, setUser } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
+  const refreshUser = useRefreshUser();
   const [isSetupModalOpen, setIsSetupModalOpen] = useState(false);
   const [error, setError] = useState('');
   const [showPasswordModal, setShowPasswordModal] = useState(false);
@@ -66,11 +68,11 @@ const TwoFALink = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to disable 2FA.');
+        throw new Error(errorData.error || errorData.message || 'Failed to disable 2FA.');
       }
 
-      const updatedUser = await response.json();
-      setUser(updatedUser.user);
+      // Refresh user data to update two_factor_enabled status
+      await refreshUser();
     } catch (err) {
       setError(err.message);
     }
