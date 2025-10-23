@@ -32,7 +32,6 @@ function Register() {
       });
 
       const data = await res.json().catch(() => ({}));
-      console.log("API response:", res.status, data);
 
       if (!res.ok) {
         setMessage(data.message || "Signup failed.");

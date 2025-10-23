@@ -12,7 +12,6 @@ const Profile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-         console.log("Token:", token);
         const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
         const res = await fetch(`${apiUrl}/member-data`, {
           headers: {

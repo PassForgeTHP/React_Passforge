@@ -17,8 +17,6 @@ const TwoFALink = () => {
 
   const is2FAEnabled = user?.two_factor_enabled || false;
 
-  console.log('TwoFALink render - is2FAEnabled:', is2FAEnabled, 'user.two_factor_enabled:', user?.two_factor_enabled, 'user:', user);
-
   const verifyPassword = async () => {
     try {
       const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';

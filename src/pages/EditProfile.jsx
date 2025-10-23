@@ -35,7 +35,6 @@ const EditProfile = () => {
     if (password) formData.append("user[password]", password);
     if (passwordConfirmation) formData.append("user[password_confirmation]", passwordConfirmation);
 
-    console.log("Token envoyé :", token);
     try {
       const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
       const response = await fetch(`${apiUrl}/users`, {
