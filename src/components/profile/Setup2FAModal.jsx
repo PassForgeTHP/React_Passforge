@@ -5,6 +5,7 @@ import './Modal.css'; // Import the CSS for the modal
 const Setup2FAModal = ({ isOpen, onClose }) => {
   const { token, setUser } = useContext(AuthContext);
   const [qrCode, setQrCode] = useState('');
+  const [secret, setSecret] = useState('');
   const [otp, setOtp] = useState('');
   const [error, setError] = useState('');
 
@@ -22,7 +23,8 @@ const Setup2FAModal = ({ isOpen, onClose }) => {
           const response = await fetch(`${apiUrl}/api/auth/two_factor/setup`, fetchOptions);
           if (!response.ok) throw new Error('Failed to fetch QR code.');
           const data = await response.json();
-          setQrCode(data.qr_code_svg);
+          setQrCode(data.qr_base64);
+          setSecret(data.secret);
         } catch (err) {
           setError(err.message);
         }
@@ -40,7 +42,7 @@ const Setup2FAModal = ({ isOpen, onClose }) => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
         },
-        body: JSON.stringify({ otp_code: otp }),
+        body: JSON.stringify({ secret: secret, code: otp }),
       });
 
       if (!response.ok) {
@@ -65,9 +67,24 @@ const Setup2FAModal = ({ isOpen, onClose }) => {
       <div className="modal-content">
         <h2>Set up Two-Factor Authentication</h2>
         <p>Scan this QR code with your authenticator app (e.g., 2FAS, Google Authenticator).</p>
-        
-        <div className="qr-code-display" dangerouslySetInnerHTML={{ __html: qrCode || '<p>Loading QR code...</p>' }} />
-        
+
+        {qrCode ? (
+          <div className="qr-code-display">
+            <img src={qrCode} alt="2FA QR Code" style={{ width: '300px', height: '300px' }} />
+          </div>
+        ) : (
+          <p>Loading QR code...</p>
+        )}
+
+        {secret && (
+          <div style={{ marginTop: '15px', padding: '10px', backgroundColor: '#f5f5f5', borderRadius: '5px' }}>
+            <p style={{ margin: '5px 0', fontSize: '12px', color: '#666' }}>Or enter this secret key manually:</p>
+            <p style={{ margin: '5px 0', fontFamily: 'monospace', fontSize: '14px', wordBreak: 'break-all' }}>
+              <strong>{secret}</strong>
+            </p>
+          </div>
+        )}
+
         {error && <p className="error-message">{error}</p>}
 
         <p>Then, enter the 6-digit code from your app to verify the setup.</p>
