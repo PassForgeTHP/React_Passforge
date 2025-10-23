@@ -201,36 +201,6 @@ const EditProfile = () => {
         </div>
        </div>
 
-       <div className="security-section">
-         <h2>Security Settings</h2>
-
-         <div className="form-group">
-           <label htmlFor="auto-lock">Auto-lock timeout: {autoLockTimeout} minutes</label>
-           <input
-             id="auto-lock"
-             type="range"
-             min="1"
-             max="30"
-             value={autoLockTimeout}
-             onChange={(e) => setAutoLockTimeout(Number(e.target.value))}
-           />
-         </div>
-
-         <TwoFALink />
-
-         <div className="sessions-section">
-           <h3>Active Sessions</h3>
-           <ul>
-             <li>
-               Current session - {new Date().toLocaleString()}
-               <button className="btn btn-secondary" onClick={handleLogoutAll}>Logout</button>
-             </li>
-           </ul>
-         </div>
-
-         <button className="btn" onClick={handleLogoutAll}>Logout from all devices</button>
-       </div>
-
        <div className="actions">
         <div className="buttons-profile"> 
           <button className="btn">Download the extension</button>
