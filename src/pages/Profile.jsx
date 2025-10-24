@@ -3,6 +3,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import defaultAvatar from "../assets/images/default-avatar.jpg";
 import { useNavigate } from "react-router-dom";
 import TwoFALink from "../components/profile/2falink";
+import SEO from "../components/SEO";
 
 const Profile = () => {
   const { token, user, setUser } = useContext(AuthContext);
@@ -102,6 +103,11 @@ const Profile = () => {
 
   return (
     <div className="container-profile">
+      <SEO
+        title="PassForge | Profile"
+        description="Access and manage your PassForge account securely. View your profile information, update settings, control active sessions, and manage security options like two-factor authentication."
+        canonical="https://pass-forge-en.netlify.app/profile"
+      />
       <h1>My profile</h1>
       <div className="profile-content">
         <img

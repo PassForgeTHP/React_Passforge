@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import ViewPassword from "../components/ViewPassword";
+import SEO from "../components/SEO";
 
 function Login() {
   const { login } = useContext(AuthContext);
@@ -52,6 +53,11 @@ function Login() {
 
   return (
     <div className="container">
+      <SEO
+        title="PassForge | Login"
+        description="Access your PassForge account safely. View, edit, and manage your passwords with end-to-end encryption and complete privacy."
+        canonical="https://pass-forge-en.netlify.app/login"
+      />
       <div className="form-card">
         <h1 className="title">Login</h1>
       
