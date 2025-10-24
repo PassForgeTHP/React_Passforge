@@ -1,6 +1,7 @@
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ViewPassword from "../components/ViewPassword";
+import SEO from "../components/SEO";
 
 const ResetPassword = () => {
   const [searchParams] = useSearchParams();
@@ -42,6 +43,11 @@ const ResetPassword = () => {
 
   return (
     <div className="container">
+      <SEO
+        title="PassForge | Reset password"
+        description="Choose a new password for your PassForge account. Ensure your encrypted passwords remain safe and your account stays fully protected."
+        canonical="https://pass-forge-en.netlify.app/reset-password"
+      />
       <div className="form-card">
         <h1>Reset your password</h1>
 

@@ -88,7 +88,7 @@ const TwoFALink = () => {
     <div className="two-fa-section">
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div>
-          <strong>Two-Factor Authentication</strong>
+          <p><strong>Two-Factor Authentication</strong></p>
           <p style={{ margin: 0, color: is2FAEnabled ? 'green' : '#666' }}>
             {is2FAEnabled ? "Enabled" : "Disabled"}
           </p>
