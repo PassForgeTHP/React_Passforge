@@ -87,7 +87,7 @@ function Login() {
               </label>
             </div>
             <div className="form-actions">
-              <button type="submit">Login</button>
+              <button type="submit" className="btn">Login</button>
               <Link to="/forgot-password" className="form-link">Forgot password ?</Link>
               <Link to="/register" className="form-link">Register</Link>
             </div>

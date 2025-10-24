@@ -61,22 +61,6 @@ form input:focus {
   gap: 0.5rem;
 }
 
-form button {
-  color: var(--dark);
-  background-color: var(--medium-red);
-  padding: 0.4rem 1.8rem;
-  border-radius: 1.5rem;
-  border: none;
-  box-shadow: 0 0 8px var(--shadow-red);
-  font-size: 1.2rem;
-}
-
-form button:hover{
-  background-color: var(--light);
-  box-shadow: 0 0 8px var(--shadow-light);
- 
-}
-
 .form-actions {
   display: flex;
   flex-direction: column;

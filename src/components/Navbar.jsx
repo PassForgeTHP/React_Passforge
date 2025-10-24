@@ -69,6 +69,8 @@ export default function Navbar() {
               className="theme-toggle"
               onClick={toggleTheme}
               type="button"
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              aria-pressed={theme === "dark"}
               >
                 {theme === "dark" ? (
                   <Icon icon="ph:sun" width="24" />
