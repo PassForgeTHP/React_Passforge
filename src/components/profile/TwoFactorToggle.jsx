@@ -4,8 +4,6 @@ import { AuthContext } from '../../contexts/AuthContext';
 import use2FAApi from '../../hooks/use2FAApi';
 import useRefreshUser from '../../hooks/useRefreshUser';
 import Setup2FAModal from './Setup2FAModal';
-import './ToggleSwitch.css';
-import './Modal.css';
 import { useContext } from 'react';
 
 const TwoFactorToggle = () => {

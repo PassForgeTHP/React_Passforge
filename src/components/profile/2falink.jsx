@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import useRefreshUser from '../../hooks/useRefreshUser';
 import Setup2FAModal from './Setup2FAModal';
-import './ToggleSwitch.css'; // Import the CSS for the toggle switch
-import './Modal.css'; // Import the CSS for the modal
+import '../../styles/ToggleSwitch.css'; // Import the CSS for the toggle switch
+import '../../styles/Modal.css'; // Import the CSS for the modal
 
 const TwoFALink = () => {
   const { user, token } = useContext(AuthContext);

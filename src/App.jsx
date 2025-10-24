@@ -13,6 +13,8 @@ import "./styles/App.css";
 import "./styles/navbar.css";
 import "./styles/responsives.css";
 import "./styles/home.css";
+import "./styles/ToggleSwitch.css";
+import "./styles/Modal.css";
 import Profile from "./pages/Profile";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
@@ -29,13 +31,9 @@ import TwoFactorVerify from "./pages/TwoFactorVerify";
 function App() {
   // Initialize IndexedDB on app startup
   useEffect(() => {
-    initDB()
-      .then(() => {
-        console.log("IndexedDB initialized successfully");
-      })
-      .catch((error) => {
-        console.error("Failed to initialize IndexedDB:", error);
-      });
+    initDB().catch((error) => {
+      console.error("Failed to initialize IndexedDB:", error);
+    });
   }, []);
 
   return (

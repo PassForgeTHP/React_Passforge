@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useCallback } from "react";
 
 /* eslint-disable react-refresh/only-export-components */
 export const AuthContext = createContext();
@@ -18,8 +18,29 @@ export function AuthProvider({ children }) {
   const getStoredToken = () =>
     localStorage.getItem("token") || sessionStorage.getItem("token");
 
-  const [user, setUser] = useState(getStoredUser);
+  const [user, setUserState] = useState(getStoredUser);
   const [token, setToken] = useState(getStoredToken);
+
+  // Wrapper for setUser that persists to storage
+  const setUser = useCallback((userData) => {
+    setUserState(userData);
+
+    // Only persist if userData is not null
+    if (userData === null) {
+      return;
+    }
+
+    // Determine which storage to use based on where the token or user is currently stored
+    const isLocalStorage =
+      localStorage.getItem("token") !== null ||
+      localStorage.getItem("user") !== null;
+
+    if (isLocalStorage) {
+      localStorage.setItem("user", JSON.stringify(userData));
+    } else {
+      sessionStorage.setItem("user", JSON.stringify(userData));
+    }
+  }, []);
 
   const login = (userData, jwt, rememberMe) => {
     setUser(userData);

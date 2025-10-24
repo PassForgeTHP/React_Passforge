@@ -26,7 +26,6 @@ function Login() {
       });
 
       const data = await res.json().catch(() => ({}));
-      // console.log("API response:", res.status, data);
 
       if (!res.ok) {
         const errorMsg =
