@@ -28,56 +28,18 @@ function ExtensionLink() {
   const [error, setError] = useState("");
 
   /**
-   * Generate a fresh token from the API
-   */
-  const generateFreshToken = async () => {
-    setLoading(true);
-    setError("");
-
-    try {
-      const apiUrl =
-        import.meta.env.VITE_API_URL || "https://passforge-api.onrender.com";
-      const res = await fetch(`${apiUrl}/api/extension/token`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${contextToken}`,
-        },
-        credentials: "include",
-      });
-
-      if (!res.ok) {
-        throw new Error("Failed to generate token");
-      }
-
-      // Extract fresh token from Authorization header
-      const newToken = res.headers.get("Authorization")?.split(" ")[1];
-
-      if (!newToken) {
-        throw new Error("No token received from server");
-      }
-
-      setFreshToken(newToken);
-
-      // Update context with fresh token
-      const data = await res.json();
-      if (data.user) {
-        setUser(data.user);
-      }
-    } catch (err) {
-      console.error("Error generating token:", err);
-      setError("Failed to generate token. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  /**
-   * Generate token on component mount
+   * Initialize with current session token
+   * This is the JWT token already in the user's session
    */
   useEffect(() => {
-    generateFreshToken();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    if (contextToken) {
+      setFreshToken(contextToken);
+      setLoading(false);
+    } else {
+      setError("No authentication token found. Please login again.");
+      setLoading(false);
+    }
+  }, [contextToken])
 
   /**
    * Copy token to clipboard
@@ -153,13 +115,10 @@ function ExtensionLink() {
                 )}
               </button>
             </div>
-            <button
-              className="btn btn-secondary"
-              onClick={generateFreshToken}
-              style={{ marginTop: "1rem" }}
-            >
-              <HiRefresh /> Regenerate Token
-            </button>
+            <p className="token-info" style={{ marginTop: "1rem", fontSize: "0.9rem", color: "#666" }}>
+              <HiInformationCircle style={{ verticalAlign: "middle", marginRight: "0.25rem" }} />
+              To get a new token, logout and login again.
+            </p>
           </div>
         )}
 
