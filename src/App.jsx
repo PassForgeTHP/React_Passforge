@@ -27,6 +27,7 @@ import GDPR from "./pages/GDPR";
 import PrivateRoute from "./components/PrivateRoute";
 import NotFound from "./pages/NotFound";
 import TwoFactorVerify from "./pages/TwoFactorVerify";
+import ExtensionLink from "./pages/ExtensionLink";
 
 function App() {
   // Initialize IndexedDB on app startup
@@ -58,6 +59,7 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/edit-profile" element={<EditProfile />} />
+            <Route path="/extension-link" element={<ExtensionLink />} />
           </Route>
         </Routes>
       </main>
