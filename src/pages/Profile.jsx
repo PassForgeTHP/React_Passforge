@@ -133,6 +133,16 @@ const Profile = () => {
           </ul>
         </div>
 
+        <div className="extension-section">
+          <h3>Browser Extension</h3>
+          <p style={{ marginBottom: '1rem', color: '#666' }}>
+            Link your PassForge browser extension to access your passwords securely.
+          </p>
+          <button className="btn" onClick={() => navigate("/extension-link")}>
+            Get Extension Token
+          </button>
+        </div>
+
         <button className="btn" onClick={handleLogoutAll}>
           Logout from all devices
         </button>

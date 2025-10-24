@@ -17,11 +17,10 @@ function Login() {
 
     try {
       const apiUrl = import.meta.env.VITE_API_URL || "https://passforge-api.onrender.com";
-      const isLocalhost = apiUrl.includes("localhost");
       const res = await fetch(`${apiUrl}/users/sign_in`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        ...(isLocalhost && { credentials: "include" }),
+        credentials: "include",
         body: JSON.stringify({ user: { email, password } }),
       });
 
