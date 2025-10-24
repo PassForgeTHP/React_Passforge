@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import use2FAApi from "../hooks/use2FAApi";
+import SEO from "../components/SEO";
 
 function TwoFactorVerify() {
   const { login } = useContext(AuthContext);
@@ -38,6 +39,11 @@ function TwoFactorVerify() {
 
   return (
     <div className="container">
+      <SEO
+        title="PassForge | two Factor Verify"
+        description="Secure your PassForge account with two-factor authentication. Protect your encrypted passwords and ensure only you can access your account."
+        canonical="https://pass-forge-en.netlify.app/two-factor-verify"
+      />
       <div className="form-card">
         <h1 className="title">Two-Factor Authentication</h1>
 
