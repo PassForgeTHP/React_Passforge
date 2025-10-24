@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
+
 export default function Pricing() {
   return (
     <section className="pricing-container-home" id="pricing">
+      <SEO
+        title="PassForge | Pricing"
+        description="Compare PassForge pricing plans — from a Free tier to advanced Premium and Pro subscriptions — and protect your passwords across all devices."
+        canonical="https://pass-forge-en.netlify.app/pricing"
+      />
       <h1>Choose the plan that fits your needs</h1>
       <div className="cards">
         <div className="card">

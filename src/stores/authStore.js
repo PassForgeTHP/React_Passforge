@@ -7,7 +7,7 @@ const useAuthStore = create((set, get) => ({
   isAuthenticated: false,
 
   // Actions
-  login: async (email, password) => {
+  login: async (email) => {
     try {
       // TODO: Replace with real API call when Rails backend is ready
       // const response = await fetch(`${API_URL}/api/auth/login`, {

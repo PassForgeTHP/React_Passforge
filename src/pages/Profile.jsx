@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import defaultAvatar from "../assets/images/default-avatar.jpg";
 import { useNavigate } from "react-router-dom";
+import TwoFALink from "../components/profile/2falink";
+import SEO from "../components/SEO";
 
 const Profile = () => {
   const { token, user, setUser } = useContext(AuthContext);
@@ -11,8 +13,8 @@ const Profile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-         console.log("Token:", token);
-        const res = await fetch("https://passforge-api.onrender.com/member-data", {
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+        const res = await fetch(`${apiUrl}/member-data`, {
           headers: {
             "Authorization": `Bearer ${token}`,
             "Content-Type": "application/json"
@@ -22,7 +24,6 @@ const Profile = () => {
         if (!res.ok) throw new Error("Failed to fetch user data");
 
         const data = await res.json();
-        
         setUser(data.user);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -38,13 +39,45 @@ const Profile = () => {
   if (loading) return <p>Loading...</p>;
   if (!user) return <p>No users logged in</p>;
 
+  const handleLogoutAll = async () => {
+    if (!window.confirm("Are you sure you want to logout from all devices?")) {
+      return;
+    }
+
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+      const response = await fetch(`${apiUrl}/api/users/logout_all`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert(data.message || "Logged out from all devices.");
+        setUser(null);
+        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
+        navigate("/");
+      } else {
+        alert(data.message || "Failed to logout.");
+      }
+    } catch (error) {
+      console.error("Error logging out:", error);
+      alert("Network error. Please try again later.");
+    }
+  };
+
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
       return;
     }
 
     try {
-      const response = await fetch("https://passforge-api.onrender.com/users", {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+      const response = await fetch(`${apiUrl}/users`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -70,6 +103,11 @@ const Profile = () => {
 
   return (
     <div className="container-profile">
+      <SEO
+        title="PassForge | Profile"
+        description="Access and manage your PassForge account securely. View your profile information, update settings, control active sessions, and manage security options like two-factor authentication."
+        canonical="https://pass-forge-en.netlify.app/profile"
+      />
       <h1>My profile</h1>
       <div className="profile-content">
         <img
@@ -81,11 +119,29 @@ const Profile = () => {
         <div className="profile-card">
           <p><strong>Name:</strong> {user.name}</p>
           <p><strong>Email:</strong> {user.email}</p>
+          <TwoFALink />
           <div className="buttons-profile">
             <button onClick={() => navigate("/edit-profile")}>Edit profile</button>
             <button onClick={handleDelete}>Delete profile</button>
           </div>
         </div>
+      </div>
+
+      <div className="security-section">
+        <h2>Security Settings</h2>
+
+        <div className="sessions-section">
+          <h3>Active Sessions</h3>
+          <ul>
+            <li>
+              Current session - {new Date().toLocaleString()}
+            </li>
+          </ul>
+        </div>
+
+        <button className="btn" onClick={handleLogoutAll}>
+          Logout from all devices
+        </button>
       </div>
 
       <div className="buttons-profile">

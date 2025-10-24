@@ -1,6 +1,13 @@
+import SEO from "../components/SEO";
+
 export default function GDPR() {
   return (
     <section className="gdpr-section">
+      <SEO
+        title="PassForge | GDPR"
+        description="Read PassForge’s GDPR-compliant Privacy Policy to understand how your personal data is collected, stored, and protected. Learn about encryption, data retention, third-party compliance, and your privacy rights under EU law"
+        canonical="https://pass-forge-en.netlify.app/gdpr"
+      />
       <div>
         <h1>PassForge - Privacy Policy (GDPR Compliant)</h1>
         <p>Last updated: October 2025</p>

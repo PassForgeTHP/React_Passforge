@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-const useSyncStore = create((set, get) => ({
+const useSyncStore = create((set) => ({
   // State
   isSyncing: false,
   lastSync: null,

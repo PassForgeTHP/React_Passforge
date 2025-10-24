@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import ViewPassword from "../components/ViewPassword";
+import SEO from "../components/SEO";
 
 function Login() {
   const { login } = useContext(AuthContext);
@@ -16,14 +17,16 @@ function Login() {
     setMessage("");
 
     try {
-      const res = await fetch("https://passforge-api.onrender.com/users/sign_in", {
+      const apiUrl = import.meta.env.VITE_API_URL || "https://passforge-api.onrender.com";
+      const isLocalhost = apiUrl.includes("localhost");
+      const res = await fetch(`${apiUrl}/users/sign_in`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        ...(isLocalhost && { credentials: "include" }),
         body: JSON.stringify({ user: { email, password } }),
       });
 
       const data = await res.json().catch(() => ({}));
-      // console.log("API response:", res.status, data);
 
       if (!res.ok) {
         const errorMsg =
@@ -32,10 +35,16 @@ function Login() {
         return;
       }
 
-      const token = res.headers.get("Authorization")?.split(" ")[1];
-      login(data.user, token, rememberMe);
-      setMessage(data.message || "You are logged in.");
-      setTimeout(() => navigate("/profile"), 800);
+      // Check if 2FA is required
+      if (data.requires_2fa) {
+        setMessage(data.message || "Please enter your 2FA code");
+        setTimeout(() => navigate("/two-factor-verify"), 800);
+      } else {
+        const token = res.headers.get("Authorization")?.split(" ")[1];
+        login(data.user, token, rememberMe);
+        setMessage(data.message || "You are logged in.");
+        setTimeout(() => navigate("/profile"), 800);
+      }
     } catch (error) {
       console.error("Login error:", error);
       setMessage("Server error. Please try again later.");
@@ -44,6 +53,11 @@ function Login() {
 
   return (
     <div className="container">
+      <SEO
+        title="PassForge | Login"
+        description="Access your PassForge account safely. View, edit, and manage your passwords with end-to-end encryption and complete privacy."
+        canonical="https://pass-forge-en.netlify.app/login"
+      />
       <div className="form-card">
         <h1 className="title">Login</h1>
       

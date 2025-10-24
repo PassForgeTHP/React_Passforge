@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import ViewPassword from "../components/ViewPassword";
+import SEO from "../components/SEO";
 
 function Register() {
   const { login } = useContext(AuthContext);
@@ -18,7 +19,8 @@ function Register() {
     setErrors([]);
 
     try {
-      const res = await fetch("https://passforge-api.onrender.com/users", {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://passforge-api.onrender.com';
+      const res = await fetch(`${apiUrl}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -31,7 +33,6 @@ function Register() {
       });
 
       const data = await res.json().catch(() => ({}));
-      console.log("API response:", res.status, data);
 
       if (!res.ok) {
         setMessage(data.message || "Signup failed.");
@@ -52,6 +53,11 @@ function Register() {
 
   return (
     <div className="container">
+      <SEO
+        title="PassForge | Register"
+        description="Create your PassForge account to generate, store, and manage your passwords securely. Enjoy private, encrypted password management instantly"
+        canonical="https://pass-forge-en.netlify.app/register"
+      />
       <div className="form-card">
         <h1>Sign Up</h1>
         

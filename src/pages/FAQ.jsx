@@ -1,6 +1,13 @@
+import SEO from "../components/SEO";
+
 export default function FAQ() {
   return (
     <section className="faq-container-home" id="faq">
+      <SEO
+        title="PassForge | FAQ"
+        description="Check out the PassForge FAQ to learn everything about our password manager: AES-256 encryption, secure local storage, offline use, multi-device synchronisation, and complete data privacy."
+        canonical="https://pass-forge-en.netlify.app/faq"
+      />
       <h1>FAQ</h1>
       <div className="faq-container">
         <div className="card">

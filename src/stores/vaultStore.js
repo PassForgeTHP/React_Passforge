@@ -1,7 +1,6 @@
 import { create } from 'zustand'
 import {
   generateSalt,
-  generateIV,
   deriveKey,
   encryptData,
   decryptData
@@ -49,7 +48,6 @@ const useVaultStore = create((set, get) => ({
     // Try to sync to backend (optional, fails gracefully if offline)
     try {
       await uploadVault(encryptedVaultData)
-      console.log('Vault synced to backend successfully')
     } catch (apiError) {
       // Backend unavailable or user not authenticated, continue with local save
       console.warn('Backend sync failed, vault saved locally only:', apiError.message)
@@ -87,7 +85,6 @@ const useVaultStore = create((set, get) => ({
         }
       } catch (apiError) {
         // Backend unavailable or user not authenticated, fallback to IndexedDB
-        console.log('Backend unavailable, using IndexedDB:', apiError.message)
         storedVault = await vaultOperations.get()
       }
 
