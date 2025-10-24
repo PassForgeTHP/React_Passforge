@@ -1,9 +1,16 @@
 import img1 from "../assets/images/img1.png";
 import img2 from "../assets/images/img2.png";
+import SEO from "../components/SEO";
+
 export default function SecurityAdvice() {
   return (
     <section className="security-advice-container">
-      <div className="security-section">
+      <SEO
+        title="PassForge | Security Advice"
+        description="Discover how PassForge helps you create, store, and protect your passwords with advanced encryption. Learn essential cybersecurity tips and best practices to keep your accounts safe from online threats."
+        canonical="https://pass-forge-en.netlify.app/security-advice"
+      />
+      <div className="securityAdvice-section">
         <h1>Why PassForge ?</h1>
         <p>
           PassForge is a modern password manager — your personal forge for creating and securing unbreakable passwords. PassForge is more than just a password vault — it’s your digital armor, protect your data from leaks and brute-force attacks.
@@ -13,8 +20,8 @@ export default function SecurityAdvice() {
         </p>
       </div>
       <div className="block-text-img left">
-        <img src={img1} alt="image 1" className="block-two" />
-        <div className="security-section block-one">
+        <img src={img1} alt="Secure password encryption illustration" className="block-two" />
+        <div className="securityAdvice-section block-one">
           <h1>How to use ?</h1>
           <p>
             To start using <strong>PassForge</strong>, follow these simple steps — then enjoy powerful, private password management in seconds with features you'll love like: <strong>Instant search</strong> with advanced filters, <strong>Real-time strength</strong> evaluation, <strong>One-click copy</strong> with automatic clear.
@@ -32,7 +39,7 @@ export default function SecurityAdvice() {
         </div>
       </div>
       <div className="block-text-img right">
-        <div className="security-section block-one">
+        <div className="securityAdvice-section block-one">
           <h1>Our tips </h1>
           <p>
             Your online security matters. With just a few good habits, you can protect your accounts from most cyber threats. Here are our favorite tips to help you stay safe, build stronger passwords, and browse with confidence.
@@ -47,7 +54,7 @@ export default function SecurityAdvice() {
             <li><strong>Keep your software updated.</strong> Old browsers or extensions can have vulnerabilities.</li>
           </ul>
         </div>
-        <img src={img2} alt="image 2" className="block-two" />
+        <img src={img2} alt="lock illustration" className="block-two" />
       </div>
     </section>
   );
