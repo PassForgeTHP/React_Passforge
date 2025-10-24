@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SEO from "../components/SEO";
 
 export default function Contact() {
     const [email, setEmail]=useState('')
@@ -28,6 +29,11 @@ export default function Contact() {
   return (
     <div className="container">
       <div className="form-card">
+        <SEO
+          title="PassForge | Contact"
+          description="Need assistance? Contact our support team via our form."
+          canonical="https://pass-forge-en.netlify.app/contact"
+        />
         <h1 className="title">Contact</h1>
         <div>
           <form onSubmit={handleSubmit}>

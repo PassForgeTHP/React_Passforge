@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -29,6 +30,11 @@ const ForgotPassword = () => {
 
   return (
     <div className="container">
+      <SEO
+        title="PassForge | Forgot password"
+        description="Request a password reset for your PassForge account securely. Receive a link to set a new password and regain access safely."
+        canonical="https://pass-forge-en.netlify.app/forgot-password"
+      />
       <div className="form-card">
         <h1 className="title">Forgot password ?</h1>
       

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import defaultAvatar from "../assets/images/default-avatar.jpg";
 import useSettingsStore from "../stores/settingsStore";
 import TwoFALink from "../components/profile/2falink";
+import SEO from "../components/SEO";
 
 const EditProfile = () => {
   const { user, token, setUser } = useContext(AuthContext);
@@ -125,6 +126,11 @@ const EditProfile = () => {
 
   return (
     <div className="container-profile">
+      <SEO
+        title="PassForge | Edit Profile"
+        description="Edit your PassForge account details securely. Update your name, email, avatar, and password while managing account settings and privacy options."
+        canonical="https://pass-forge-en.netlify.app/edit-profile"
+      />
       <h1>Edit my profile</h1>
       {message && <div className="card-alerte"><p className="status-message">{message}</p></div>}
 
