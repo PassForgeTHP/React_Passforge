@@ -39,6 +39,15 @@ function Login() {
         setTimeout(() => navigate("/two-factor-verify"), 800);
       } else {
         const token = res.headers.get("Authorization")?.split(" ")[1];
+        console.log("🔑 Token from Authorization header:", token);
+        console.log("📦 Full Authorization header:", res.headers.get("Authorization"));
+
+        if (!token) {
+          console.error("❌ No token found in Authorization header");
+          setMessage("Login successful but no token received. Please try again.");
+          return;
+        }
+
         login(data.user, token, rememberMe);
         setMessage(data.message || "You are logged in.");
         setTimeout(() => navigate("/profile"), 800);

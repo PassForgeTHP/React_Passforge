@@ -33,7 +33,7 @@ const Profile = () => {
 
     if (token) fetchUserData();
     else setLoading(false);
-  }, [token, setUser]);
+  }, [token]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loading) return <p>Loading...</p>;
   if (!user) return <p>No users logged in</p>;
