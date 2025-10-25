@@ -8,10 +8,15 @@ This 3-week final project will demonstrate a revolutionary user interface and ad
 Just as a blacksmith transforms raw metal into a solid weapon, PassForge allows you to **generate cryptographically strong passwords**, de les **store them securely on the client side**, and **organize them intelligently**.
 
 [Penpot Prototype](https://design.penpot.app/#/view?file-id=aadbbc88-0e4c-80b8-8006-e9b14bd20194&page-id=4e81a81c-fc00-80db-8006-e9c810142ee1&section=interactions&index=0&share-id=10e879d4-e5a6-801a-8007-0219f5cef3ca)
+
 [Backend Repository](https://github.com/PassForgeTHP/Rails_Passforge)
+
 [Api Link](https://passforge-api.onrender.com/)
+
 [Extension Repository](https://github.com/PassForgeTHP/Extension_Passforge)
+
 [Website link](https://pass-forge-en.netlify.app/)
+
 [Projet Gestion link](https://github.com/orgs/PassForgeTHP/projects/1 )
 
 ---
