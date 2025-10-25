@@ -1,10 +1,7 @@
 /* ============================================================================
    Extension Link Page Styles
    ============================================================================
-
-   Styles for the /extension-link page where users can copy their JWT token
-   to link their browser extension to their account.
-   ============================================================================ */
+ */
 
 /* Info box with instructions */
 .info-box {
@@ -123,7 +120,6 @@
 .instructions li {
   margin-bottom: 12px;
   line-height: 1.6;
-  color: #555;
 }
 
 /* Warning box for security note */
