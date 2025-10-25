@@ -66,6 +66,7 @@ function App() {
       <Footer />
     </div>
 </ThemeProvider>
+</HelmetProvider>
   );
 }
 
