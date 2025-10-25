@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
 import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -28,6 +27,7 @@ import GDPR from "./pages/GDPR";
 import PrivateRoute from "./components/PrivateRoute";
 import NotFound from "./pages/NotFound";
 import TwoFactorVerify from "./pages/TwoFactorVerify";
+import ExtensionLink from "./pages/ExtensionLink";
 
 function App() {
   // Initialize IndexedDB on app startup
@@ -38,35 +38,36 @@ function App() {
   }, []);
 
   return (
-    <HelmetProvider>
-      <ThemeProvider>
-        <div className="app-wrapper">
-          <Navbar />
-          <main className="main-content">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/security-advice" element={<SecurityAdvice />} />
-              <Route path="/forgot-password" element={<ForgotPassword />} />
-              <Route path="/reset-password" element={<ResetPassword />} />
-              <Route path="/pricing" element={<Pricing />} />
-              <Route path="/faq" element={<FAQ />} />
-              <Route path="/gdpr" element={<GDPR />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/two-factor-verify" element={<TwoFactorVerify />} />
-              <Route path="*" element={<NotFound />} />
+<HelmetProvider>
+<ThemeProvider>
+      <div className="app-wrapper">
+      <Navbar />
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/security-advice" element={<SecurityAdvice />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/gdpr" element={<GDPR />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/two-factor-verify" element={<TwoFactorVerify />} />
+          <Route path="*" element={<NotFound />} />
 
-              <Route element={<PrivateRoute />}>
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/edit-profile" element={<EditProfile />} />
-              </Route>
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </ThemeProvider>
-    </HelmetProvider>
+          <Route element={<PrivateRoute />}>
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/edit-profile" element={<EditProfile />} />
+            <Route path="/extension-link" element={<ExtensionLink />} />
+          </Route>
+        </Routes>
+      </main>
+      <Footer />
+    </div>
+</ThemeProvider>
+</HelmetProvider>
   );
 }
 
