@@ -34,7 +34,7 @@ const Profile = () => {
 
     if (token) fetchUserData();
     else setLoading(false);
-  }, [token, setUser]);
+  }, [token]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loading) return <p>Loading...</p>;
   if (!user) return <p>No users logged in</p>;
@@ -137,6 +137,16 @@ const Profile = () => {
               Current session - {new Date().toLocaleString()}
             </li>
           </ul>
+        </div>
+
+        <div className="extension-section">
+          <h3>Browser Extension</h3>
+          <p>
+            Link your PassForge browser extension to access your passwords securely.
+          </p>
+          <button className="btn" onClick={() => navigate("/extension-link")}>
+            Get Extension Token
+          </button>
         </div>
 
         <button className="btn" onClick={handleLogoutAll}>

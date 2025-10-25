@@ -1,7 +1,5 @@
 /* FOOTER */
 footer {
-  position: relative;
-  bottom: 0;
   width: 100%;
   background-color: var(--dark);
   margin: 0;
@@ -240,7 +238,7 @@ footer {
   border: none;
   box-shadow: 0 0 8px var(--shadow-red);
   font-size: 1.2rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
   text-decoration: none;
 }
 
@@ -248,4 +246,20 @@ footer {
   color: var(--dark);
   background-color: var(--light);
   box-shadow: 0 0 15px var(--shadow-light);
+}
+
+/*      2 FA    */
+
+.two-fa {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.enabled {
+  color: green;
+}
+
+.disabled {
+  color: var(--light);
 }

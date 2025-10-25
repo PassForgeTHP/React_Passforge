@@ -2,8 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import useRefreshUser from '../../hooks/useRefreshUser';
 import Setup2FAModal from './Setup2FAModal';
-import '../../styles/ToggleSwitch.css'; // Import the CSS for the toggle switch
-import '../../styles/Modal.css'; // Import the CSS for the modal
+import SEO from "../../components/SEO";
 
 const TwoFALink = () => {
   const { user, token } = useContext(AuthContext);
@@ -86,10 +85,15 @@ const TwoFALink = () => {
 
   return (
     <div className="two-fa-section">
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <SEO
+        title="PassForge | two Factor Verify"
+        description="Secure your PassForge account with two-factor authentication. Protect your encrypted passwords and ensure only you can access your account."
+        canonical="https://pass-forge-en.netlify.app/two-factor-verify"
+      />
+      <div className="two-fa">
         <div>
           <p><strong>Two-Factor Authentication</strong></p>
-          <p style={{ margin: 0, color: is2FAEnabled ? 'green' : '#666' }}>
+          <p className={is2FAEnabled ? "enabled" : "disabled"}>
             {is2FAEnabled ? "Enabled" : "Disabled"}
           </p>
         </div>
@@ -103,7 +107,7 @@ const TwoFALink = () => {
         </label>
       </div>
       
-      {error && <p className="error-message" style={{ marginTop: '10px' }}>{error}</p>}
+      {error && <p className="error-message">{error}</p>}
 
       <Setup2FAModal
         isOpen={isSetupModalOpen}
@@ -116,7 +120,7 @@ const TwoFALink = () => {
             <h2>Confirm Password</h2>
             <p>Please enter your password to {pendingAction === 'enable' ? 'enable' : 'disable'} 2FA.</p>
             <form onSubmit={handlePasswordSubmit}>
-              <div className="form-group">
+              <div className="form-groups">
                 <label htmlFor="password">Password</label>
                 <input
                   id="password"
@@ -129,7 +133,7 @@ const TwoFALink = () => {
               {passwordError && <p className="error-message">{passwordError}</p>}
               <div className="modal-actions">
                 <button type="submit" className="btn">Confirm</button>
-                <button type="button" className="btn btn-secondary" onClick={() => { setShowPasswordModal(false); setPassword(''); setPasswordError(''); }}>Cancel</button>
+                <button type="button" className="btn" onClick={() => { setShowPasswordModal(false); setPassword(''); setPasswordError(''); }}>Cancel</button>
               </div>
             </form>
           </div>

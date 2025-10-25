@@ -113,7 +113,7 @@ function Register() {
               />
             </div>
             <div className="form-actions">
-              <button type="submit">Sign In</button>
+              <button type="submit" className="btn">Sign In</button>
               <Link to="/login" className="form-link">Login</Link>
             </div>
           </form>

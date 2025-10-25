@@ -46,35 +46,32 @@ form input {
 .content-input{
   min-height: 150px;
   resize: vertical;
+  background-color: var(--dark);
+  color: var(--light);  
+  border: 1px solid var(--medium-red);
+  box-shadow: 0 0 8px var(--shadow-red);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: var(--font-family);
+  padding: 0.5rem 1rem;
+}
+
+.content-input:focus {
+  border-color: var(--light);
+  box-shadow: 0 0 8px var(--shadow-light);
+  outline: none;
 }
 
 form input:focus {
   border-color: var(--light);
   box-shadow: 0 0 8px var(--shadow-light);
   outline: none;
-
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-}
-
-form button {
-  color: var(--dark);
-  background-color: var(--medium-red);
-  padding: 0.4rem 1.8rem;
-  border-radius: 1.5rem;
-  border: none;
-  box-shadow: 0 0 8px var(--shadow-red);
-  font-size: 1.2rem;
-}
-
-form button:hover{
-  background-color: var(--light);
-  box-shadow: 0 0 8px var(--shadow-light);
- 
 }
 
 .form-actions {
@@ -86,6 +83,7 @@ form button:hover{
 
 .form-link {
   color: var(--light);
+  cursor: pointer;
 }
 
 .password-hide-view {
