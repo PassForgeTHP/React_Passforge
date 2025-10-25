@@ -142,12 +142,34 @@
   }
 
   .text-container-home h1 {
-    font-size: 5.5rem!important;
+    font-size: 5rem!important;
   }
 }
 
 @media screen and (max-width: 420px) {
   .block-two {
     width: 14rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  form {
+    padding: 1rem 1.5rem !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  form {
+    padding: 1rem 1.5rem !important;
+  }
+
+  .password-hide-view {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
+
+  .password-input {
+    width: 100%;
   }
 }
