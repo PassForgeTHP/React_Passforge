@@ -19,6 +19,8 @@ Just as a blacksmith transforms raw metal into a solid weapon, PassForge allows 
 
 [Projet Gestion link](https://github.com/orgs/PassForgeTHP/projects/1 )
 
+[Executive Summary](https://drive.google.com/file/d/1L1cyum9akTXrJlM3SrZoZTESzxrk0eZP/view?usp=sharing)
+
 ---
 
 ### Technical Architecture
