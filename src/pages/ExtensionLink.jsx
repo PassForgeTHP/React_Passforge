@@ -120,8 +120,8 @@ function ExtensionLink() {
                 )}
               </button>
             </div>
-            <p className="token-info" style={{ marginTop: "1rem", fontSize: "0.9rem", color: "#666" }}>
-              <HiInformationCircle style={{ verticalAlign: "middle", marginRight: "0.25rem" }} />
+            <p className="token-info">
+              <HiInformationCircle/>
               To get a new token, logout and login again.
             </p>
           </div>

@@ -247,3 +247,19 @@ footer {
   background-color: var(--light);
   box-shadow: 0 0 15px var(--shadow-light);
 }
+
+/*      2 FA    */
+
+.two-fa {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.enabled {
+  color: green;
+}
+
+.disabled {
+  color: var(--light);
+}

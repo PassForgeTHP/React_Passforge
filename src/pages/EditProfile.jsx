@@ -147,6 +147,7 @@ const EditProfile = () => {
             type="file"
             accept="image/*"
             onChange={handleFileChange}
+            style={{ display: "none" }}
           />
           <label htmlFor="avatar" className="btn">
             Change avatar
@@ -197,7 +198,7 @@ const EditProfile = () => {
             </div>
 
             <div className="form-actions">
-              <button type="submit">Update Profile</button>
+              <button type="submit" className="btn">Update Profile</button>
             </div>
           </form>
         </div>
