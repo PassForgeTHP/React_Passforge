@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import ViewPassword from "../components/ViewPassword";
+import SEO from "../components/SEO";
 
 function Register() {
   const { login } = useContext(AuthContext);
@@ -52,6 +53,11 @@ function Register() {
 
   return (
     <div className="container">
+      <SEO
+        title="PassForge | Register"
+        description="Create your PassForge account to generate, store, and manage your passwords securely. Enjoy private, encrypted password management instantly"
+        canonical="https://pass-forge-en.netlify.app/register"
+      />
       <div className="form-card">
         <h1>Sign Up</h1>
         
