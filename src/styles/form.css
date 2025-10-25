@@ -52,7 +52,6 @@ form input:focus {
   border-color: var(--light);
   box-shadow: 0 0 8px var(--shadow-light);
   outline: none;
-
 }
 
 .form-group {
