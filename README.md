@@ -1,36 +1,23 @@
-# Projet Final : PassForge - Gestionnaire de Mots de Passe React
+# Final Project: PassForge — React Password Manager
 
-## 🎓 **CERTIFICATION DÉVELOPPEUR FRONTEND**
+## Project Vision
 
-Ce projet constitue le **projet final de certification** pour l'obtention du certificat de **Développeur Frontend**. Toutes les fonctionnalités développées doivent strictement respecter les critères d'évaluation du référentiel d'activité présentés dans ce document.
+**PassForge** is a modern password manager built with React — your personal forge to create and secure unbreakable passwords.
+This 3-week final project will demonstrate a revolutionary user interface and advanced security features, while validating all required frontend development skills.
 
----
+Just as a blacksmith transforms raw metal into a solid weapon, PassForge allows you to **generate cryptographically strong passwords**, de les **store them securely on the client side**, and **organize them intelligently**.
 
-## 🎯 Vision du Projet
-
-**PassForge** est un gestionnaire de mots de passe moderne développé en React — votre **forge personnelle** pour créer et sécuriser des mots de passe indestructibles. Ce projet final de 3 semaines démontrera une interface utilisateur révolutionnaire et des fonctionnalités de sécurité avancées, tout en validant l'ensemble des compétences requises pour la certification frontend.
-
-Comme un forgeron transforme le métal brut en arme solide, PassForge vous permet de **générer des mots de passe cryptographiquement robustes**, de les **stocker localement avec sécurité**, et de les **organiser intelligemment**.
-
-### 🚀 Objectifs Pédagogiques
-- Maîtriser ReactJS 14 
-- Implémenter des concepts de sécurité web avancés
-- Créer une UX/UI moderne et accessible
-- Travailler en équipe 
-- Déployer une application complète en production
-
-### 🎖️ Objectifs d'Évaluation
-- **Frontend Excellence** : Interface utilisateur impressionnante
-- **Fonctionnalités Avancées** : Au-delà d'un CRUD basique
-- **Sécurité** : Chiffrement client-side et bonnes pratiques
-- **Collaboration** : Organisation équipe et code quality
-- **Innovation** : Features uniques et différenciation
+[Penpot Prototype](https://design.penpot.app/#/view?file-id=aadbbc88-0e4c-80b8-8006-e9b14bd20194&page-id=4e81a81c-fc00-80db-8006-e9c810142ee1&section=interactions&index=0&share-id=10e879d4-e5a6-801a-8007-0219f5cef3ca)
+[Backend Repository](https://github.com/PassForgeTHP/Rails_Passforge)
+[Api Link](https://passforge-api.onrender.com/)
+[Extension Repository](https://github.com/PassForgeTHP/Extension_Passforge)
+[Website link](https://pass-forge-en.netlify.app/)
+[Projet Gestion link](https://github.com/orgs/PassForgeTHP/projects/1 )
 
 ---
 
-## 🏗️ Architecture Technique
-
-### Stack Technologique
+### Technical Architecture
+#### Tech Stack
 
 ```javascript
 // Dependencies principales (Adapté pour certification)
@@ -81,166 +68,59 @@ passforge/
 
 ---
 
-## 📋 Fonctionnalités Core
+## Core Features
 
-### 🔐 Gestion des Mots de Passe
+### Password Management
 
-**Features Essentielles :**
-- CRUD complet des credentials (Create, Read, Update, Delete)
-- Recherche instantanée avec filtres avancés
-- Organisation par dossiers et tags
-- Notes sécurisées attachées aux comptes
-- Historique des modifications
+**Essential Features : **
+- Full CRUD for credentials (Create, Read, Update, Delete)
+- Instant search with advanced filters
+- Folder and tag organization
+- Secure notes attached to accounts
+- Change history tracking
 
-### 🛡️ Sécurité & Chiffrement
+### Security & Encryption
 
 **Master Password System :**
-- Authentification par mot de passe maître
-- Dérivation de clé avec PBKDF2 (Web Crypto API)
-- Session timeout automatique
-- Verrouillage manuel instantané
+- Authentication via master password
+- Key derivation with PBKDF2 (Web Crypto API)
+- Automatic session timeout
+- Manual instant lock
 
+### Password Generator
 
-### 🎰 Générateur de Mots de Passe
+**Advanced Features:**
+- Cryptographically secure password generation
+- Full customization options
+- Presets for different platforms
+- Generated password history
+- Real-time strength evaluation
 
-**Features Avancées :**
-- Générateur cryptographiquement sécurisé
-- Options de personnalisation complètes
-- Presets pour différents sites
-- Historique des mots de passe générés
-- Évaluation de force en temps réel
+### Analytics & Dashboard
 
-### 📊 Analytics & Dashboard
+**Security Metrics:**
+- Global vault security score
+- Weak / reused / old password detection
+- Security improvement recommendations
+- Usage statistics
 
-**Métriques de Sécurité :**
-- Score de sécurité global du vault
-- Mots de passe faibles/réutilisés/anciens
-- Recommendations d'amélioration
-- Statistiques d'usage
+### Import/Export
 
-### 📤 Import/Export
-
-**Formats Supportés :**
-- JSON chiffré natif PassForge
-- CSV standard (1Password, Bitwarden, LastPass)
-- Import depuis navigateurs (Chrome, Firefox)
-- Export sélectif par dossier/tag
-
-#### **Solution Multi-Appareils : Export/Import Manuel** ⭐
-
-**Problématique :** IndexedDB étant local au navigateur, les données ne sont pas automatiquement synchronisées entre appareils (PC, MacBook, téléphone).
-
-**Solution Recommandée pour la Certification :**
-Export/Import manuel d'un fichier JSON chiffré - Simple, sécurisé, et suffisant pour le MVP.
-
-
-**Sécurité :**
-- ✅ Fichier chiffré avec le master password (AES-GCM)
-- ✅ Même si volé, illisible sans le master password
-- ✅ Pas de dépendance à un serveur tiers
-- ✅ L'utilisateur contrôle où sont stockées ses données
-
-**Avantages pour la Certification :**
-- ✅ Simple à implémenter (2-3 heures)
-- ✅ Reste 100% frontend (pas de backend)
-- ✅ Démontrable facilement au jury
-- ✅ Solution utilisée par des outils professionnels (KeePass)
-
-**Note :** Une synchronisation cloud end-to-end encrypted est prévue en Phase 2 (après certification), où le serveur stockerait le vault chiffré sans jamais pouvoir le déchiffrer.
+**Supported Formats:**
+- Encrypted PassForge JSON
+- Standard CSV (1Password, Bitwarden, LastPass)
+- Browser imports (Chrome, Firefox)
+- Selective export by folder/tag
 
 ---
-
-
-## 🛡️ Sécurité Détaillée
+## Detailed Security
 
 ### Storage Security
 
-**IndexedDB Encryption Layer :**
-- Toutes les données sensibles chiffrées
-- Metadata minimal en plaintext pour search
-- Auto-purge après inactivité
-- Secure key derivation et storage
-
-### Browser Security Features
-
-**Content Security Policy :**
-```html
-<meta http-equiv="Content-Security-Policy"
-      content="default-src 'self';
-               script-src 'self' 'unsafe-inline';
-               style-src 'self' 'unsafe-inline';
-               img-src 'self' data: https:;">
-```
-
-**Security Headers :**
-- Strict-Transport-Security
-- X-Content-Type-Options: nosniff
-- X-Frame-Options: DENY
-- Referrer-Policy: strict-origin
+**IndexedDB Encryption Layer:**
+- All sensitive data encrypted
+- Minimal plaintext metadata for search
+- Auto-purge after inactivity
+- Secure key derivation and storage
 
 ---
-
-## 🔄 Migration Path vers MetaVault Rust
-
-### Architecture Preparation
-
-**React Learnings for Rust Migration :**
-- **State Management Patterns** → Zustand concepts vers Rust state
-- **Crypto Implementation** → Web Crypto vers native Rust crypto
-- **Component Architecture** → React components vers Dioxus components
-- **Storage Layer** → IndexedDB vers SQLCipher
-
-### Code Reusability
-
-**Assets Réutilisables :**
-- ✅ **UX Flows** → Logic flows identical
-- ✅ **Security Patterns** → Crypto algorithms same
-- ✅ **Test Cases** → Business logic tests portable
-
-### Technical Debt Documentation
-
-**Migration Notes :**
-```markdown
-## React → Rust Migration Plan
-
-### Phase 1: Core Logic Port
-- [ ] Crypto utilities (Web Crypto → rust crypto crates)
-- [ ] Storage layer (IndexedDB → SQLCipher)
-- [ ] State management (Zustand → Rust state patterns)
-
-### Phase 2: UI Components Port
-- [ ] Component library (React → Dioxus)
-- [ ] Styling system (Tailwind → Dioxus Tailwind)
-- [ ] Animations (Framer Motion → CSS animations)
-
-### Phase 3: Advanced Features
-- [ ] Add Web3 functionality
-- [ ] Implement offline-first sync
-- [ ] Add multi-platform support
-```
-
----
-
-## 📚 Documentation & Resources
-
-### Technical Documentation
-
-### Learning Resources
-
-**Pour l'Équipe :**
-- [Next.js 14 Documentation](https://nextjs.org/docs)
-- [React Security Best Practices](https://owasp.org/www-project-reactsecuritybestpractices/)
-- [Web Crypto API Guide](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API)
-- [Accessibility Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
-
----
-
-## 🎯 Conclusion
-
-Ce projet servira de **foundation solide** pour une future migration vers MetaVault en Rust, tout en impressionnant les évaluateurs avec une approche professionnelle et des fonctionnalités avancées.
-
-
----
-
-*Document créé le 27 septembre 2024 - Version 1.0*
-*Projet Final Formation - Équipe de 3 développeurs - 3 semaines*
