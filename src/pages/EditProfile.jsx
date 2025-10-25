@@ -147,7 +147,6 @@ const EditProfile = () => {
             type="file"
             accept="image/*"
             onChange={handleFileChange}
-            style={{ display: "none" }}
           />
           <label htmlFor="avatar" className="btn">
             Change avatar

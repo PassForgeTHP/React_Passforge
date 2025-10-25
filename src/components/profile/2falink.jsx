@@ -2,8 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import useRefreshUser from '../../hooks/useRefreshUser';
 import Setup2FAModal from './Setup2FAModal';
-import '../../styles/ToggleSwitch.css'; // Import the CSS for the toggle switch
-import '../../styles/Modal.css'; // Import the CSS for the modal
+import SEO from "../../components/SEO";
 
 const TwoFALink = () => {
   const { user, token } = useContext(AuthContext);
@@ -86,6 +85,11 @@ const TwoFALink = () => {
 
   return (
     <div className="two-fa-section">
+      <SEO
+        title="PassForge | two Factor Verify"
+        description="Secure your PassForge account with two-factor authentication. Protect your encrypted passwords and ensure only you can access your account."
+        canonical="https://pass-forge-en.netlify.app/two-factor-verify"
+      />
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div>
           <p><strong>Two-Factor Authentication</strong></p>

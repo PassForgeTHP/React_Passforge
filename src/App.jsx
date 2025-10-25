@@ -29,6 +29,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import NotFound from "./pages/NotFound";
 import TwoFactorVerify from "./pages/TwoFactorVerify";
 import ExtensionLink from "./pages/ExtensionLink";
+import "./styles/extensionLink.css";
 
 function App() {
   // Initialize IndexedDB on app startup

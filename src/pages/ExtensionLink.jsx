@@ -6,7 +6,7 @@ import {
   HiInformationCircle,
   HiRefresh,
 } from "react-icons/hi";
-import "../styles/extensionLink.css";
+import SEO from "./../components/SEO";
 
 /**
  * ExtensionLink Page
@@ -59,6 +59,11 @@ function ExtensionLink() {
 
   return (
     <div className="container">
+      <SEO
+        title="PassForge | link your extension"
+        description="Securely connect your PassForge browser extension to your account using a one-time authentication token. Zero-knowledge design ensures your master password and vault data remain fully private."
+        canonical="https://pass-forge-en.netlify.app/extension-link"
+      />
       <div className="form-card">
         <h1 className="title">Link Your Extension</h1>
 
