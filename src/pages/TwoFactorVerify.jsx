@@ -64,7 +64,7 @@ function TwoFactorVerify() {
                 autoFocus
                 maxLength={useBackupCode ? undefined : 6}
               />
-              <p style={{ fontSize: "0.9rem", color: "var(--light)", marginTop: "0.5rem" }}>
+              <p>
                 {useBackupCode
                   ? "Enter one of your backup codes"
                   : "Enter the code from your authenticator app"}
@@ -75,17 +75,11 @@ function TwoFactorVerify() {
               <button type="submit">Verify</button>
               <button
                 type="button"
-                className="form-link"
+                className="link"
                 onClick={() => {
                   setUseBackupCode(!useBackupCode);
                   setCode("");
                   setMessage("");
-                }}
-                style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  textDecoration: "underline"
                 }}
               >
                 {useBackupCode ? "Use authenticator code" : "Use backup code instead"}

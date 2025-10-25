@@ -141,7 +141,7 @@ const Profile = () => {
 
         <div className="extension-section">
           <h3>Browser Extension</h3>
-          <p style={{ marginBottom: '1rem', color: '#666' }}>
+          <p>
             Link your PassForge browser extension to access your passwords securely.
           </p>
           <button className="btn" onClick={() => navigate("/extension-link")}>

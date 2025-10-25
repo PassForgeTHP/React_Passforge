@@ -198,7 +198,7 @@ const EditProfile = () => {
             </div>
 
             <div className="form-actions">
-              <button type="submit">Update Profile</button>
+              <button type="submit" className="btn">Update Profile</button>
             </div>
           </form>
         </div>

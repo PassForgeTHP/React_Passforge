@@ -96,17 +96,17 @@ const Setup2FAModal = ({ isOpen, onClose }) => {
           // Show backup codes after successful setup
           <>
             <h2>2FA Enabled Successfully!</h2>
-            <p style={{ color: 'var(--medium-red)', fontWeight: 'bold' }}>
+            <p>
               Save these backup codes in a secure location. They will not be shown again.
             </p>
-            <div style={{ marginTop: '15px', padding: '15px', backgroundColor: '#f5f5f5', borderRadius: '5px', maxHeight: '300px', overflowY: 'auto' }}>
+            <div className="backup-codes">
               {backupCodes.map((code, index) => (
-                <p key={index} style={{ margin: '5px 0', fontFamily: 'monospace', fontSize: '14px' }}>
+                <p key={index}>
                   {code}
                 </p>
               ))}
             </div>
-            <div className="modal-actions" style={{ marginTop: '20px' }}>
+            <div className="modal-actions">
               <button className="btn" onClick={handleClose}>I have saved my backup codes</button>
             </div>
           </>
@@ -118,16 +118,16 @@ const Setup2FAModal = ({ isOpen, onClose }) => {
 
             {qrCode ? (
               <div className="qr-code-display">
-                <img src={qrCode} alt="2FA QR Code" style={{ width: '300px', height: '300px' }} />
+                <img src={qrCode} alt="2FA QR Code" />
               </div>
             ) : (
               <p>Loading QR code...</p>
             )}
 
             {secret && (
-              <div style={{ marginTop: '15px', padding: '10px', backgroundColor: '#f5f5f5', borderRadius: '5px' }}>
-                <p style={{ margin: '5px 0', fontSize: '12px', color: '#666' }}>Or enter this secret key manually:</p>
-                <p style={{ margin: '5px 0', fontFamily: 'monospace', fontSize: '14px', wordBreak: 'break-all' }}>
+              <div className="secret-box">
+                <p>Or enter this secret key manually:</p>
+                <p className="secret">
                   <strong>{secret}</strong>
                 </p>
               </div>
@@ -137,7 +137,7 @@ const Setup2FAModal = ({ isOpen, onClose }) => {
 
             <p>Then, enter the 6-digit code from your app to verify the setup.</p>
 
-            <div className="form-group">
+            <div className="form-groups">
               <label htmlFor="otp-code">Verification Code</label>
               <input
                 ref={otpInputRef}
@@ -158,7 +158,7 @@ const Setup2FAModal = ({ isOpen, onClose }) => {
 
             <div className="modal-actions">
               <button className="btn" onClick={handleVerify}>Verify & Enable</button>
-              <button className="btn btn-secondary" onClick={handleClose}>Cancel</button>
+              <button className="btn" onClick={handleClose}>Cancel</button>
             </div>
           </>
         )}

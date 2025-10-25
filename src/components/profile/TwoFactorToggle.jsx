@@ -87,10 +87,10 @@ const TwoFactorToggle = () => {
 
   return (
     <div className="two-fa-section">
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div className="two-fa">
         <div>
           <strong>Two-Factor Authentication</strong>
-          <p style={{ margin: 0, color: is2FAEnabled ? 'green' : '#666' }}>
+          <p className={is2FAEnabled ? "enabled" : "disabled"}>
             {is2FAEnabled ? "Enabled" : "Disabled"}
           </p>
         </div>
@@ -104,7 +104,7 @@ const TwoFactorToggle = () => {
         </label>
       </div>
       
-      {error && <p className="error-message" style={{ marginTop: '10px' }}>{error}</p>}
+      {error && <p className="error-message">{error}</p>}
 
       <Setup2FAModal
         isOpen={isSetupModalOpen}
@@ -117,7 +117,7 @@ const TwoFactorToggle = () => {
             <h2>Confirm Password</h2>
             <p>Please enter your password to {pendingAction === 'enable' ? 'enable' : 'disable'} 2FA.</p>
             <form onSubmit={handlePasswordSubmit}>
-              <div className="form-group">
+              <div className="form-groups">
                 <label htmlFor="password">Password</label>
                 <input
                   id="password"
@@ -130,7 +130,7 @@ const TwoFactorToggle = () => {
               {passwordError && <p className="error-message">{passwordError}</p>}
               <div className="modal-actions">
                 <button type="submit" className="btn">Confirm</button>
-                <button type="button" className="btn btn-secondary" onClick={() => { setShowPasswordModal(false); setPassword(''); setPasswordError(''); }}>Cancel</button>
+                <button type="button" className="btn" onClick={() => { setShowPasswordModal(false); setPassword(''); setPasswordError(''); }}>Cancel</button>
               </div>
             </form>
           </div>

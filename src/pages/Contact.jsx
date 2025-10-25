@@ -74,7 +74,7 @@ export default function Contact() {
               />
             </div>
             <div className="form-actions">
-              <button type="submit">Send</button>
+              <button type="submit" className="btn">Send</button>
               {status && <p>{status}</p>}
             </div>
           </form>
